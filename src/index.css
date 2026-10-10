@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* ───────── Design tokens — lấy từ KV Tán Đa (đã kiểm tra tương phản WCAG trên nền night) ───────── */
+@theme {
+  --color-night: #0E0B09;      /* đêm sâu phố cổ / nhựa đường */
+  --color-night-2: #15100C;
+  --color-card: #1B1511;
+  --color-line: #3A2E24;
+  --color-cream: #F4E9D8;      /* 16.3:1 trên night */
+  --color-muted: #B9A993;      /* 8.6:1 */
+  --color-amber: #F2B544;      /* ánh đèn đường / cây đa phát sáng — 10.7:1 */
+  --color-amber-deep: #C9862A;
+  --color-brick: #A63A28;      /* đỏ gạch phố cổ (nền, chữ cream 5.4:1) */
+  --color-brick-text: #E8735A; /* đỏ gạch dùng làm chữ — 6.6:1 */
+  --color-moss: #3F5634;       /* xanh rêu (nền, chữ cream 6.8:1) */
+  --color-moss-text: #A3BE8C;  /* xanh rêu dùng làm chữ — 9.6:1 */
+  --color-ink: #1A120A;        /* chữ trên nền amber — 10.1:1 */
+
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Space Mono", ui-monospace, Consolas, monospace;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body {
+    @apply bg-night text-cream font-sans antialiased;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--color-amber); color: var(--color-ink); }
+  :focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  button, a, [role="button"], label[for], select { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+}
+
+/* Hạt giấy in — gợi chất báo in, phủ toàn trang rất nhẹ */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.9 0 0 0 0 0.8 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Organic bento — bo góc lệch nhịp như mảng tường phố cổ */
+.organic-a { border-radius: 2rem 0.75rem 2rem 0.75rem; }
+.organic-b { border-radius: 0.75rem 2rem 0.75rem 2rem; }
+.organic-c { border-radius: 2rem 2rem 0.75rem 2rem; }
+.organic-d { border-radius: 0.75rem 0.75rem 2rem 0.75rem; }
+
+/* Chữ glow ánh đèn đường */
+.glow-amber { text-shadow: 0 0 24px rgba(242, 181, 68, 0.35); }
+
+/* Băng keo dán poster */
+.tape {
+  position: absolute;
+  width: 92px;
+  height: 26px;
+  background: rgba(244, 233, 216, 0.78);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  clip-path: polygon(3% 0, 97% 4%, 100% 50%, 96% 100%, 2% 96%, 0 45%);
+}
+
+/* Lỗ răng cưa của vé */
+.ticket-perf {
+  background-image: radial-gradient(circle, var(--color-night) 6px, transparent 6.5px);
+}
+
+/* Barcode giả cho cuống vé */
+.barcode {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-ink) 0 2px, transparent 2px 4px,
+    var(--color-ink) 4px 5px, transparent 5px 8px,
+    var(--color-ink) 8px 11px, transparent 11px 12px
+  );
+}
+
+/* Xuất hiện khi cuộn tới — CSS thuần để không phụ thuộc requestAnimationFrame */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-y, 24px));
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.reveal.is-in { opacity: 1; transform: none; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: var(--d, 0s); }
+
+/* Marquee thông điệp */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 38s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+  .reveal { opacity: 1; transform: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

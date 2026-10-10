@@ -1,0 +1,33 @@
+# Build mỗi lần commit lên main; nếu đã cài secret Cloudflare thì đăng luôn lên tanda-show.pages.dev
+name: Build & Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      HAS_CF: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Deploy lên Cloudflare Pages
+        if: env.HAS_CF == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=tanda-show --branch=main
+      - name: Chưa cài secret Cloudflare
+        if: env.HAS_CF != 'true'
+        run: echo "Đã build thành công. Chưa có CLOUDFLARE_API_TOKEN nên bỏ qua bước đăng lên web (xem README mục 2)."

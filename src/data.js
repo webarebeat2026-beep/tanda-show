@@ -1,0 +1,205 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   DỮ LIỆU TRANG — sửa ở đây, không cần đụng vào component.
+   ⚠ Các mục đánh dấu [CẦN ĐIỀN] là chỗ trống chờ thông tin thật từ BTC
+     (tên nghệ sĩ, link tiết mục, bản nghe thử, chủ đề đêm diễn...).
+   ───────────────────────────────────────────────────────────────────────── */
+import rapper from './assets/kv/rapper.webp'
+import tyBa from './assets/kv/ty-ba.webp'
+import aoDaiGuitar from './assets/kv/aodai-guitar.webp'
+import guitarLua from './assets/kv/guitar-lua.webp'
+import nonLaMay from './assets/kv/non-la-may.webp'
+import phoHangMam from './assets/kv/pho-hang-mam.webp'
+import lynkLee from './assets/artists/lynk-lee.webp'
+import pinkFrog from './assets/artists/pink-frog.webp'
+import theMagma from './assets/artists/the-magma.webp'
+import vinhKhuat from './assets/artists/vinh-khuat.webp'
+import sloth from './assets/artists/sloth.webp'
+import nghich from './assets/artists/nghich.webp'
+import logoBND from './assets/logo/bao-nhan-dan.webp'
+import logoBeat from './assets/logo/beat-network.webp'
+import logoNVH from './assets/logo/nha-van-hoa.webp'
+
+export const SLOGAN = 'Một tán đa. Nhiều thanh âm. Những cuộc gặp mới.'
+
+export const NAV = [
+  { href: '#ve-tan-da', label: 'Về Tán Đa' },
+  { href: '#nghe-si', label: 'Nghệ sĩ' },
+  { href: '#de-cu', label: 'Đề cử & Bình chọn' },
+  { href: '#dem-dien', label: 'Đêm diễn' },
+]
+
+/* Section 3 — Line-up tháng 10 (nguồn: hồ sơ chương trình chính thức "Chính.pdf", 10/2026).
+   showId: khớp với SHOWS bên dưới — thẻ được nhóm theo đêm diễn, thẻ đầu mỗi nhóm là thẻ dọc lớn.
+   tone: màu duotone khi hover (amber | brick | moss).
+   setlist: tiết mục chính (không đưa tiết mục dự phòng lên trang).
+   tentative: true → hiện nhãn "Dự kiến".
+   videoUrl / preview: để '' thì ẩn nút xem lại / nghe thử. */
+export const ARTISTS = [
+  {
+    id: 'lynk-lee',
+    showId: 'ha-noi',
+    name: 'Lynk Lee',
+    role: 'Nghệ sĩ khách mời',
+    blurb: 'Sinh năm 1988 tại Bắc Ninh. Giải nhất cuộc thi Tiếng hát sinh viên Trường Đại học Mở Hà Nội (2009–2010), bán kết Vietnam’s Got Talent 2013, Top 6 Miss International Queen Vietnam 2025.',
+    setlist: ['Buồn Thì Cứ Khóc Đi', 'Tát nước đầu đình', 'Cho tôi xin một vé đi tuổi thơ'],
+    image: lynkLee,
+    w: 533, h: 800,
+    pos: 'center 20%',
+    alt: 'Ca sĩ Lynk Lee mặc đầm đen, tựa bên khung cửa sổ',
+    tone: 'amber',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'pink-frog',
+    showId: 'ha-noi',
+    name: 'Pink Frog',
+    role: 'Nghệ sĩ indie',
+    blurb: '',
+    setlist: ['Lần đầu', 'Người ơi', 'Ngày nào', 'Mong em', 'Ô cửa'],
+    image: pinkFrog,
+    w: 576, h: 576,
+    pos: 'center 30%',
+    alt: 'Nghệ sĩ Pink Frog đội mũ xanh, đeo kính, cười tươi trên nền cam',
+    tone: 'brick',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'the-magma',
+    showId: 'ha-noi',
+    name: 'The Magma',
+    role: 'Band indie',
+    blurb: '',
+    setlist: ['Manifest', 'A song for you', 'Chẳng thể níu đôi tay', 'Be mine', 'Trái tim tự do'],
+    image: theMagma,
+    w: 800, h: 533,
+    pos: 'center 35%',
+    alt: 'Sáu thành viên ban nhạc The Magma trong trang phục tối màu',
+    tone: 'moss',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'vinh-khuat',
+    showId: 'phu-nu',
+    name: 'Vinh Khuất',
+    role: 'Nghệ sĩ khách mời',
+    tentative: true,
+    blurb: 'Sinh năm 1990 tại Hà Nội. Thí sinh ấn tượng nhất Giọng ca vàng 2005 tại Đức, giải nhất Made in Schauburg 2008, quán quân Boss Loop Station World Championship, nghệ sĩ được yêu thích nhất cuộc thi sáng tác ca khúc “Hören 2012” tại Hannover.',
+    setlist: ['Quá lâu', 'Em là ai', 'Em không thể đẹp hơn'],
+    image: vinhKhuat,
+    w: 640, h: 427,
+    pos: '55% center',
+    alt: 'Nghệ sĩ Vinh Khuất mặc vest, hát bên đàn phím trên sân khấu',
+    tone: 'brick',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'sloth',
+    showId: 'phu-nu',
+    name: 'Sloth',
+    role: 'Band indie',
+    blurb: '',
+    setlist: ['Vẫn Vậy', 'Khi mà', 'Tan Biến'],
+    image: sloth,
+    w: 800, h: 533,
+    pos: 'center 30%',
+    alt: 'Ba thành viên ban nhạc Sloth đeo cà vạt vàng, giơ tay chữ V',
+    tone: 'amber',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'nghich',
+    showId: 'phu-nu',
+    name: 'Nghịch',
+    role: 'Band indie',
+    blurb: '',
+    setlist: ['Chớp', 'Xinh', 'Ánh Đèn Đại Lộ'],
+    image: nghich,
+    w: 800, h: 533,
+    pos: 'center 35%',
+    alt: 'Năm thành viên ban nhạc Nghịch trong trang phục thể thao rực rỡ ở hậu trường',
+    tone: 'moss',
+    videoUrl: '',
+    preview: '',
+  },
+]
+
+/* Section 4 — Danh sách gương mặt để bình chọn (luân phiên hiển thị). */
+export const CANDIDATES = [
+  { id: 'c1', name: 'Gương mặt 01', genre: 'Rap · Hip-hop', image: rapper, preview: '' },
+  { id: 'c2', name: 'Gương mặt 02', genre: 'Dân gian đương đại', image: tyBa, preview: '' },
+  { id: 'c3', name: 'Gương mặt 03', genre: 'Rock · Áo dài điện', image: aoDaiGuitar, preview: '' },
+  { id: 'c4', name: 'Gương mặt 04', genre: 'Indie rock', image: guitarLua, preview: '' },
+  { id: 'c5', name: 'Gương mặt 05', genre: 'Indie folk', image: nonLaMay, preview: '' },
+  { id: 'c6', name: 'Gương mặt 06', genre: 'City pop', image: phoHangMam, preview: '' },
+]
+
+/* Section 5 — Lịch diễn. Thêm đêm mới vào SHOWS theo thứ tự thời gian.
+   Vé "Cuộc hẹn sắp tới" tự chọn đêm gần nhất chưa diễn ra; hết lịch → hiện đêm cuối với dấu "Đã diễn ra".
+   timeLabel: null → giờ chưa công bố (vé ghi "Đang cập nhật", file lịch tạo sự kiện cả ngày). */
+const VENUE = {
+  venue: '71 Hàng Trống',
+  address: '71 Hàng Trống, Hoàn Kiếm, Hà Nội',
+  mapUrl: 'https://www.google.com/maps/search/?api=1&query=71+H%C3%A0ng+Tr%E1%BB%91ng%2C+Ho%C3%A0n+Ki%E1%BA%BFm%2C+H%C3%A0+N%E1%BB%99i',
+}
+
+export const SHOWS = [
+  {
+    id: 'ha-noi',
+    title: 'Tán Đa Show',
+    theme: 'Chủ đề Hà Nội · Kỷ niệm 71 năm Giải phóng Thủ đô',
+    shortTheme: 'Chủ đề Hà Nội',
+    start: '2026-10-10T20:00:00+07:00',
+    durationHours: 1.5,
+    durationLabel: 'Khoảng 75–90 phút',
+    timeLabel: '20H',
+    dateLabel: '10.10.2026',
+    dayLabel: '10.10',
+    ...VENUE,
+    parts: [
+      { title: 'Phần 1 · Kỷ niệm 71 năm Giải phóng Thủ đô', text: 'Dàn giao hưởng gồm 3 violin, 1 cello, 1 sáo, 1 saxophone và 1 piano, với những tiết mục mang màu sắc Hà Nội.' },
+      { title: 'Phần 2 · Thanh âm', text: '2 band nhạc/nghệ sĩ indie trẻ trình diễn ca khúc của chính mình và 1 nghệ sĩ nổi tiếng giao lưu cùng khán giả.' },
+    ],
+  },
+  {
+    id: 'phu-nu',
+    title: 'Tán Đa Show',
+    theme: 'Chủ đề Phụ nữ Việt Nam · Mừng ngày 20.10',
+    shortTheme: 'Chủ đề Phụ nữ Việt Nam',
+    start: '2026-10-24T00:00:00+07:00',
+    durationHours: 1.5,
+    durationLabel: 'Khoảng 75–90 phút',
+    timeLabel: null, // [CẦN ĐIỀN] giờ diễn khi BTC chốt — nhớ sửa luôn giờ trong `start`
+    dateLabel: '24.10.2026',
+    dayLabel: '24.10',
+    ...VENUE,
+    parts: [
+      { title: 'Phần 1 · Ngày Phụ nữ Việt Nam 20.10', text: 'Nhóm hợp xướng 10–15 nghệ sĩ nam biểu diễn và gửi tặng quà tới những người phụ nữ đi dạo phố đi bộ, cùng theo dõi chương trình.' },
+      { title: 'Phần 2 · Thanh âm', text: '2 band nhạc/nghệ sĩ indie trẻ trình diễn ca khúc của chính mình và 1 nghệ sĩ nổi tiếng giao lưu cùng khán giả.' },
+    ],
+  },
+]
+
+/* Nghệ sĩ của một đêm diễn (tên kèm "dự kiến" nếu chưa chốt) */
+export const lineupOf = (showId) =>
+  ARTISTS.filter((a) => a.showId === showId).map((a) => (a.tentative ? `${a.name} (dự kiến)` : a.name))
+
+/* Thời điểm kết thúc của một đêm (giờ chưa công bố → hết ngày) */
+export const showEnd = (show) =>
+  new Date(show.start).getTime() + (show.timeLabel ? (show.durationHours || 2) * 3600e3 : 24 * 3600e3)
+
+/* Đơn vị — theo KV chính thức tháng 10/2026 */
+/* Chân trang: đơn vị có logo thì hiện logo (w/h = kích thước file gốc), chưa có logo thì hiện chữ */
+export const ORGANIZERS = [
+  { role: 'Đơn vị chỉ đạo', names: [{ name: 'Báo Nhân Dân', logo: logoBND, w: 520, h: 187 }] },
+  { role: 'Đơn vị phối hợp tổ chức', names: [{ name: 'BEAT Network', logo: logoBeat, w: 440, h: 121 }] },
+  { role: 'Đơn vị thực hiện', names: [{ name: 'Nhà Văn Hóa', logo: logoNVH, w: 440, h: 131 }] },
+]
+
+/* Gửi form về đâu — để '' thì chỉ lưu tạm trên trình duyệt (bản demo).
+   Khi có backend (Supabase / Google Apps Script / Formspree...), điền URL nhận POST JSON. */
+export const SUBMIT_ENDPOINT = ''
