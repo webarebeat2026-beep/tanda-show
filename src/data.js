@@ -218,7 +218,7 @@ export const SHOWS = [
   {
     id: 'ha-noi',
     title: 'Tán Đa Show',
-    theme: 'Chủ đề Hà Nội · Kỷ niệm 71 năm Giải phóng Thủ đô',
+    theme: 'Chủ đề Hà Nội · Kỷ niệm 72 năm Giải phóng Thủ đô',
     shortTheme: 'Chủ đề Hà Nội',
     start: '2026-10-10T20:00:00+07:00',
     durationHours: 1.5,
@@ -228,7 +228,7 @@ export const SHOWS = [
     dayLabel: '10.10',
     ...VENUE,
     parts: [
-      { title: 'Phần 1 · Kỷ niệm 71 năm Giải phóng Thủ đô', text: 'Dàn giao hưởng gồm 3 violin, 1 cello, 1 sáo, 1 saxophone và 1 piano, với những tiết mục mang màu sắc Hà Nội.' },
+      { title: 'Phần 1 · Kỷ niệm 72 năm Giải phóng Thủ đô', text: 'Dàn giao hưởng gồm 3 violin, 1 cello, 1 sáo, 1 saxophone và 1 piano, với những tiết mục mang màu sắc Hà Nội.' },
       { title: 'Phần 2 · Thanh âm', text: '2 band nhạc/nghệ sĩ indie trẻ trình diễn ca khúc của chính mình và 1 nghệ sĩ nổi tiếng giao lưu cùng khán giả.' },
     ],
   },
