@@ -13,9 +13,10 @@ const fmtDate = (iso) => iso.split('-').reverse().join('.')
 /* Ảnh đại diện của bài — chưa có ảnh thì hiện tên báo trên nền giấy */
 function Thumb({ item, featured }) {
   const kind = KIND[item.kind]
+  const [broken, setBroken] = useState(false) // ảnh thiếu/lỗi trên máy chủ → hiện thẻ chữ
   return (
     <div className={`relative overflow-hidden bg-night ${featured ? 'aspect-[16/10] lg:aspect-auto lg:h-full' : 'aspect-[16/10]'}`}>
-      {item.image ? (
+      {item.image && !broken ? (
         <img
           src={`./${item.image}`}
           alt=""
@@ -23,6 +24,7 @@ function Thumb({ item, featured }) {
           height="400"
           loading="lazy"
           decoding="async"
+          onError={() => setBroken(true)}
           className="h-full w-full object-cover saturate-[0.85] transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.04]"
         />
       ) : (
