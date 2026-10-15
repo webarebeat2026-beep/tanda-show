@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, Heart, MessageCircle, Pause, Play, CirclePlay, Volume2, VolumeX } from 'lucide-react'
-import { ARTISTS, SHOWS } from '../data'
+import { ArrowRight, ChevronDown, Heart, MessageCircle, Pause, Play, CirclePlay, Volume2, VolumeX } from 'lucide-react'
+import { ARTISTS, SHOWS, lineupOf, showEnd } from '../data'
 import { submitForm, useAudioPreview, useStoredState } from '../lib'
 import { Button, Eyebrow, Field, Modal, Reveal, useToast } from './ui'
 
@@ -12,11 +12,12 @@ const TONES = {
 }
 
 /* Bố cục organic bento trên desktop, lặp cho từng đêm diễn:
-   thẻ 1 (nghệ sĩ khách mời): dọc, cao 2 hàng · thẻ 2-3: ngang, so le ảnh trái/phải */
+   thẻ 1 (nghệ sĩ khách mời): dọc, cao 2 hàng · thẻ 2-3: ngang, so le ảnh trái/phải · thẻ 4: ngang, hết chiều rộng */
 const LAYOUT = [
   { grid: 'sm:col-span-2 lg:col-span-5 lg:row-span-2', shape: 'organic-a', horizontal: false },
   { grid: 'lg:col-span-7', shape: 'organic-b', horizontal: true },
   { grid: 'lg:col-span-7', shape: 'organic-c', horizontal: true, reverse: true },
+  { grid: 'sm:col-span-2 lg:col-span-12', shape: 'organic-d', horizontal: true },
 ]
 const hasPreview = ARTISTS.some((a) => a.preview)
 
@@ -99,7 +100,7 @@ function GlitchImage({ artist, tone, horizontal }) {
   )
 }
 
-function ArtistCard({ artist, show, index, audio, soundOn, onMessage, wanted, onWant }) {
+function ArtistCard({ artist, show, index, audio, soundOn, onMessage, wanted, onWant, reveal = true }) {
   const tone = TONES[artist.tone]
   const toast = useToast()
   const playing = audio.playingId === artist.id
@@ -109,8 +110,10 @@ function ArtistCard({ artist, show, index, audio, soundOn, onMessage, wanted, on
     if (!audio.play(artist.id, artist.preview)) toast(`Bản nghe thử của ${artist.name} sẽ sớm được cập nhật.`)
   }
 
+  /* thẻ trong đêm đã thu gọn không dùng hiệu ứng hiện khi cuộn (đang ẩn thì IntersectionObserver không bắt được) */
+  const Wrap = reveal ? Reveal : 'div'
   return (
-    <Reveal delay={0.06 * index} className={`${L.grid} h-full`}>
+    <Wrap {...(reveal ? { delay: 0.06 * index } : {})} className={`${L.grid} h-full`}>
       <motion.article
         initial="rest"
         animate="rest"
@@ -193,7 +196,84 @@ function ArtistCard({ artist, show, index, audio, soundOn, onMessage, wanted, on
           </div>
         </div>
       </motion.article>
-    </Reveal>
+    </Wrap>
+  )
+}
+
+/* Đêm diễn trước: chỉ hiện chủ đề + ngày; rê chuột (máy tính) hoặc bấm để mở đầy đủ, rời chuột thì thu lại */
+function CollapsedShow({ show, children }) {
+  const [hoverOpen, setHoverOpen] = useState(false)
+  const [pinned, setPinned] = useState(false)
+  const [canHover, setCanHover] = useState(false)
+  const timer = useRef()
+  const lastScroll = useRef(0)
+  const open = hoverOpen || pinned
+  const done = Date.now() > showEnd(show)
+  const lineup = lineupOf(show.id)
+
+  useEffect(() => {
+    setCanHover(window.matchMedia?.('(hover: hover) and (pointer: fine)').matches ?? false)
+    /* đang cuộn trang thì không tự mở, tránh trang giật khi con trỏ lướt qua */
+    const onScroll = () => {
+      lastScroll.current = Date.now()
+      clearTimeout(timer.current)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      clearTimeout(timer.current)
+    }
+  }, [])
+
+  const arm = () => {
+    if (!canHover || Date.now() - lastScroll.current < 400) return
+    clearTimeout(timer.current)
+    if (!hoverOpen) timer.current = setTimeout(() => setHoverOpen(true), 200)
+  }
+  const disarm = () => {
+    clearTimeout(timer.current)
+    if (hoverOpen) timer.current = setTimeout(() => setHoverOpen(false), 180)
+  }
+  const toggle = () => {
+    clearTimeout(timer.current)
+    if (pinned) {
+      setPinned(false)
+      setHoverOpen(false)
+    } else setPinned(true)
+  }
+
+  return (
+    <div className="mt-5" onMouseEnter={arm} onMouseMove={arm} onMouseLeave={disarm}>
+      <button
+        type="button"
+        onClick={toggle}
+        aria-expanded={open}
+        aria-controls={`show-${show.id}`}
+        className={`organic-d group flex w-full cursor-pointer flex-wrap items-center gap-x-5 gap-y-2 border bg-card px-5 py-4 text-left transition-colors sm:px-7 sm:py-5 ${
+          open ? 'border-amber/60' : 'border-line hover:border-amber/50'
+        }`}
+      >
+        <span className="font-serif text-3xl font-black leading-none text-amber">{show.dayLabel}</span>
+        <span className="order-last w-full sm:order-none sm:w-auto sm:min-w-0 sm:flex-1">
+          <span className="block font-serif text-lg italic leading-snug text-cream sm:text-xl">{show.theme}</span>
+          {lineup.length > 0 && <span className="mt-1 block text-sm text-muted">{lineup.join(' · ')}</span>}
+        </span>
+        <span className="ml-auto flex items-center gap-3">
+          <span className={`rounded-full px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider ${done ? 'border border-line text-muted' : 'bg-moss text-cream'}`}>
+            {done ? 'Đã diễn ra' : 'Sắp diễn ra'}
+          </span>
+          <span className="hidden font-mono text-[11px] uppercase tracking-wider text-muted sm:inline">
+            {open ? (pinned ? 'Thu gọn' : 'Bấm để giữ mở') : canHover ? 'Rê chuột để xem' : 'Bấm để xem'}
+          </span>
+          <ChevronDown size={22} className={`text-amber transition-transform duration-300 ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
+        </span>
+      </button>
+      <div className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+        <div id={`show-${show.id}`} className="overflow-hidden" inert={open ? undefined : ''}>
+          <div className="pt-5">{children}</div>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -256,18 +336,26 @@ export default function Artists() {
     }
   }
 
+  /* Đêm sắp tới (hoặc mới nhất) hiện đầy đủ ở đầu, các đêm còn lại xếp từ mới đến cũ */
+  const now = Date.now()
+  const withArtists = SHOWS.filter((s) => ARTISTS.some((a) => a.showId === s.id))
+  const current = withArtists.find((s) => showEnd(s) > now) || withArtists[withArtists.length - 1]
+  const ordered = current
+    ? [current, ...withArtists.filter((s) => s !== current).sort((a, b) => new Date(b.start) - new Date(a.start))]
+    : []
+
   return (
     <section id="nghe-si" aria-labelledby="artists-title" className="relative bg-night-2 py-24 sm:py-32">
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber/40 to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <Reveal className="max-w-3xl">
-            <Eyebrow>Nghệ sĩ tháng 10</Eyebrow>
+            <Eyebrow>Nghệ sĩ Tán Đa</Eyebrow>
             <h2 id="artists-title" className="mt-5 font-serif text-4xl font-bold leading-tight text-cream sm:text-5xl">
-              Những thanh âm <span className="italic text-amber">ghé Tán Đa tháng này</span>
+              Những thanh âm <span className="italic text-amber">ghé Tán Đa</span>
             </h2>
             <p className="mt-5 text-[17px] leading-relaxed text-muted">
-              Mỗi đêm diễn có một nghệ sĩ khách mời cùng những band nhạc, nghệ sĩ indie trẻ mang ca khúc của chính mình đến gốc đa. Khám phá gương mặt và tiết mục của từng đêm.
+              Mỗi đêm diễn có một nghệ sĩ khách mời cùng những band nhạc, nghệ sĩ indie trẻ mang ca khúc của chính mình đến gốc đa. Đêm gần nhất ở ngay dưới đây; các đêm trước được thu gọn, mở ra để xem lại gương mặt và tiết mục.
             </p>
           </Reveal>
           {hasPreview && (
@@ -284,30 +372,39 @@ export default function Artists() {
           )}
         </div>
 
-        {SHOWS.map((show) => {
+        {ordered.map((show, idx) => {
           const list = ARTISTS.filter((a) => a.showId === show.id)
-          if (!list.length) return null
+          const cards = (
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-12">
+              {list.map((a, i) => (
+                <ArtistCard
+                  key={a.id}
+                  artist={a}
+                  show={show}
+                  index={i}
+                  audio={audio}
+                  soundOn={soundOn}
+                  onMessage={setMessaging}
+                  wanted={!!wanted[a.id]}
+                  onWant={onWant}
+                  reveal={idx === 0}
+                />
+              ))}
+            </div>
+          )
+          if (idx > 0) return <CollapsedShow key={show.id} show={show}>{cards}</CollapsedShow>
           return (
             <div key={show.id} className="mt-14">
               <Reveal className="mb-6 flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-line pb-4">
                 <h3 className="font-serif text-3xl font-black text-amber">{show.dayLabel}</h3>
                 <p className="font-serif text-xl italic text-cream">{show.theme}</p>
               </Reveal>
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-12">
-                {list.map((a, i) => (
-                  <ArtistCard
-                    key={a.id}
-                    artist={a}
-                    show={show}
-                    index={i}
-                    audio={audio}
-                    soundOn={soundOn}
-                    onMessage={setMessaging}
-                    wanted={!!wanted[a.id]}
-                    onWant={onWant}
-                  />
-                ))}
-              </div>
+              {cards}
+              {ordered.length > 1 && (
+                <Reveal className="mt-14 border-b border-line pb-4">
+                  <h3 className="font-mono text-xs uppercase tracking-[0.22em] text-muted">Các đêm diễn trước</h3>
+                </Reveal>
+              )}
             </div>
           )
         })}

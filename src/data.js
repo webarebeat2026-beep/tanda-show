@@ -15,6 +15,10 @@ import theMagma from './assets/artists/the-magma.webp'
 import vinhKhuat from './assets/artists/vinh-khuat.webp'
 import sloth from './assets/artists/sloth.webp'
 import nghich from './assets/artists/nghich.webp'
+import tuanCry from './assets/artists/tuan-cry.webp'
+import macMaiSuong from './assets/artists/mac-mai-suong.webp'
+import ocean502 from './assets/artists/502-ocean.webp'
+import thienKim from './assets/artists/thien-kim.webp'
 import logoBND from './assets/logo/bao-nhan-dan.webp'
 import logoBeat from './assets/logo/beat-network.webp'
 import logoNVH from './assets/logo/nha-van-hoa.webp'
@@ -29,8 +33,9 @@ export const NAV = [
   { href: '#bao-chi', label: 'Báo chí' },
 ]
 
-/* Section 3 — Line-up tháng 10 (nguồn: hồ sơ chương trình chính thức "Chính.pdf", 10/2026).
+/* Section 3 — Nghệ sĩ từng đêm diễn (nguồn: hồ sơ chương trình chính thức "SHOW tháng 9.pdf", "Chính.pdf").
    showId: khớp với SHOWS bên dưới — thẻ được nhóm theo đêm diễn, thẻ đầu mỗi nhóm là thẻ dọc lớn.
+   Trên trang: đêm sắp tới (hoặc mới nhất) hiện đầy đủ, các đêm trước thu gọn — rê chuột / bấm để mở.
    tone: màu duotone khi hover (amber | brick | moss).
    setlist: tiết mục chính (không đưa tiết mục dự phòng lên trang).
    tentative: true → hiện nhãn "Dự kiến".
@@ -86,7 +91,6 @@ export const ARTISTS = [
     showId: 'phu-nu',
     name: 'Vinh Khuất',
     role: 'Nghệ sĩ khách mời',
-    tentative: true,
     blurb: 'Sinh năm 1990 tại Hà Nội. Thí sinh ấn tượng nhất Giọng ca vàng 2005 tại Đức, giải nhất Made in Schauburg 2008, quán quân Boss Loop Station World Championship, nghệ sĩ được yêu thích nhất cuộc thi sáng tác ca khúc “Hören 2012” tại Hannover.',
     setlist: ['Quá lâu', 'Em là ai', 'Em không thể đẹp hơn'],
     image: vinhKhuat,
@@ -127,6 +131,66 @@ export const ARTISTS = [
     videoUrl: '',
     preview: '',
   },
+  {
+    id: 'tuan-cry',
+    showId: 'trung-thu',
+    name: 'Tuấn Cry',
+    role: 'Nghệ sĩ',
+    blurb: 'Sinh năm 1992 tại Bắc Ninh. Các thành tựu: Ca khúc của năm, MV của năm, Sự kết hợp xuất sắc, Top 10 Ca khúc được yêu thích nhất, Ca khúc được yêu thích trên radio do Làn Sóng Xanh bình chọn.',
+    setlist: ['Chim sa cá lặn', 'Liễu yếu đào tơ', 'Mối duyên vàng (ft. Võ Thu Hà)'],
+    image: tuanCry,
+    w: 533, h: 800,
+    pos: 'center 20%',
+    alt: 'Ca sĩ Tuấn Cry mặc áo đỏ mận, tay chống cằm trên nền tối',
+    tone: 'amber',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'mac-mai-suong',
+    showId: 'trung-thu',
+    name: 'Mạc Mai Sương',
+    role: 'Nghệ sĩ',
+    blurb: '',
+    setlist: ['Đá tan', 'Thu gọi'],
+    image: macMaiSuong,
+    w: 660, h: 439,
+    pos: 'center 30%',
+    alt: 'Ca sĩ Mạc Mai Sương tóc xoăn, mặc vest đen, hát bên chân micro',
+    tone: 'brick',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: '502-ocean',
+    showId: 'trung-thu',
+    name: '502 Ocean',
+    role: 'Band',
+    blurb: '',
+    setlist: ['Chờ em', 'Chúng ta giữa đêm'],
+    image: ocean502,
+    w: 800, h: 778,
+    pos: 'center 25%',
+    alt: 'Ba thành viên ban nhạc 502 Ocean đứng trên nền trắng',
+    tone: 'moss',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'thien-kim',
+    showId: 'trung-thu',
+    name: 'Đặng Kim Thiên Kim',
+    role: 'Nghệ sĩ nhí',
+    blurb: 'Sinh năm 2012 tại Hà Nội. Theo học hệ trung cấp 6 năm ngành Nhạc cụ dân tộc tại Học viện Âm nhạc Việt Nam; từng tham gia concert quốc gia “Tổ Quốc trong tim”.',
+    setlist: ['Rằm rộ'],
+    image: thienKim,
+    w: 600, h: 800,
+    pos: 'center 12%',
+    alt: 'Bé Đặng Kim Thiên Kim đeo khăn quàng đỏ, cầm giấy chứng nhận và hoa hướng dương',
+    tone: 'amber',
+    videoUrl: '',
+    preview: '',
+  },
 ]
 
 /* Section 4 — Danh sách gương mặt để bình chọn (luân phiên hiển thị). */
@@ -149,6 +213,24 @@ const VENUE = {
 }
 
 export const SHOWS = [
+  {
+    id: 'trung-thu',
+    title: 'Tán Đa Show',
+    theme: 'Số đầu tiên · Chủ đề Trung thu, cùng chiến dịch Rằm Rộ',
+    shortTheme: 'Chủ đề Trung thu',
+    start: '2026-09-19T20:00:00+07:00',
+    durationHours: 1.5,
+    durationLabel: 'Khoảng 75–90 phút',
+    timeLabel: '20H',
+    dateLabel: '19.09.2026',
+    dayLabel: '19.09',
+    ...VENUE,
+    parts: [
+      { title: 'Phần 1 · Mở màn chương trình', text: 'Tiết mục múa lân, giới thiệu chương trình và nghệ sĩ nhí thể hiện ca khúc chủ đề. Đại diện các bên tổ chức phát biểu về mục đích của chương trình.' },
+      { title: 'Phần 2 · Thanh âm', text: '2–3 nghệ sĩ biểu diễn các ca khúc dựa trên tinh thần chủ đề gốc.' },
+      { title: 'Phần 3 · Ký ức trên thân cây', text: 'Trình chiếu mapping trên thân cây đa với chất liệu thị giác: trăng rằm, ánh đèn lồng, đầu sư tử Việt cổ, phố cổ, mặt nạ giấy bồi, bóng trẻ em rước đèn...' },
+    ],
+  },
   {
     id: 'ha-noi',
     title: 'Tán Đa Show',
@@ -185,7 +267,7 @@ export const SHOWS = [
   },
 ]
 
-/* Nghệ sĩ của một đêm diễn (tên kèm "dự kiến" nếu chưa chốt) */
+/* Nghệ sĩ của một đêm diễn (tên kèm "dự kiến" nếu đánh dấu tentative) */
 export const lineupOf = (showId) =>
   ARTISTS.filter((a) => a.showId === showId).map((a) => (a.tentative ? `${a.name} (dự kiến)` : a.name))
 

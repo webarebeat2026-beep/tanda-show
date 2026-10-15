@@ -9,7 +9,7 @@ import { Eyebrow, Reveal } from './ui'
 const PILLARS = [
   {
     image: congDong,
-    pos: 'center 55%',
+    pos: 'center 40%',
     title: 'Điểm hẹn cộng đồng',
     text: 'Gặp nhau qua những trải nghiệm nghệ thuật chung.',
     shape: 'organic-a',
@@ -18,7 +18,7 @@ const PILLARS = [
   },
   {
     image: sanKhau,
-    pos: 'center 45%',
+    pos: '45% center',
     title: 'Sân khấu cho nghệ sĩ trẻ',
     text: 'Có cơ hội biểu diễn, được biết đến và kết nối với khán giả.',
     shape: 'organic-b',
@@ -27,7 +27,7 @@ const PILLARS = [
   },
   {
     image: space,
-    pos: 'center 62%',
+    pos: 'center 55%',
     title: 'Không gian khám phá',
     text: 'Tìm thấy những giọng ca, cách thể hiện và cảm hứng mới.',
     shape: 'organic-c',

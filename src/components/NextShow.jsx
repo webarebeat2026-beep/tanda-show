@@ -158,20 +158,25 @@ function Ticket({ show, past }) {
   )
 }
 
-/* Lịch các đêm trong tháng — chương trình từng phần + nghệ sĩ */
+/* Lịch các đêm trong tháng của đêm kế tiếp — chương trình từng phần + nghệ sĩ */
+const COUNT = ['', 'Một', 'Hai', 'Ba', 'Bốn', 'Năm']
 function Schedule({ nextId }) {
-  if (SHOWS.length < 2) return null
+  const ref = SHOWS.find((s) => s.id === nextId) || SHOWS[SHOWS.length - 1] // hết lịch → tháng của đêm cuối
+  if (!ref) return null
+  const month = ref.start.slice(0, 7) // 'YYYY-MM'
+  const shows = SHOWS.filter((s) => s.start.startsWith(month))
+  if (shows.length < 2) return null
   const now = Date.now()
   return (
     <div className="mx-auto mt-20 max-w-5xl">
       <Reveal className="text-center">
         <h3 className="font-serif text-3xl font-bold text-cream sm:text-4xl">
-          Lịch Tán Đa <span className="italic text-amber">tháng 10</span>
+          Lịch Tán Đa <span className="italic text-amber">tháng {Number(month.slice(5))}</span>
         </h3>
-        <p className="mt-3 text-muted">Hai cuộc hẹn dưới gốc đa 305 tuổi trong khuôn viên Báo Nhân Dân, mỗi đêm khoảng 75–90 phút.</p>
+        <p className="mt-3 text-muted">{COUNT[shows.length] || shows.length} cuộc hẹn dưới gốc đa 305 tuổi trong khuôn viên Báo Nhân Dân, mỗi đêm khoảng 75–90 phút.</p>
       </Reveal>
       <ol className="mt-10 grid gap-5 md:grid-cols-2">
-        {SHOWS.map((s, i) => {
+        {shows.map((s, i) => {
           const done = now > showEnd(s)
           const isNext = s.id === nextId
           return (
