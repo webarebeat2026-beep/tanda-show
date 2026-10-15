@@ -1,0 +1,42 @@
+# Danh sách bài báo viết về Tán Đa — mỗi dòng 1 link bài gốc.
+# Thêm bài mới: dán link vào cuối file rồi chạy  python tools/press/crawl_press.py
+# Tuỳ chọn ghi đè (cách nhau bằng " | "):  link | Tên báo | id đêm diễn (khớp SHOWS trong crawl_press.py)
+# Dòng bắt đầu bằng # bị bỏ qua.
+
+# ── Số 01 · 19.09.2026 ──
+https://nhandan.vn/bao-nhan-dan-ra-mat-khong-gian-nghe-thuat-cong-dong-voi-chuong-trinh-am-nhac-tan-da-post989523.html
+https://nhandan.vn/nhung-sac-mau-am-nhac-duoi-tan-da-post989669.html
+https://nhandan.vn/video-duoi-tan-da-nhung-thanh-am-con-mai-trong-long-khan-gia-thu-do-post989951.html
+https://www.vietnamplus.vn/bao-nhan-dan-bien-goc-da-tram-tuoi-thanh-khong-gian-nghe-thuat-cong-dong-post1137098.vnp
+https://www.vietnamplus.vn/tan-da-diem-hen-van-hoa-moi-giua-thu-do-ha-noi-post1137227.vnp
+https://vtv.vn/show-tan-da-them-diem-hen-van-hoa-cua-cong-dong-ben-ho-hoan-kiem-100260920075954085.htm
+https://htv.vn/bao-nhan-dan-ra-mat-khong-gian-nghe-thuat-cong-dong-tan-da-show-222260920154924285.htm
+https://www.qdnd.vn/van-hoa/doi-song/khong-gian-nghe-thuat-cong-dong-duoi-tan-da-di-san-1057629
+https://hanoimoi.vn/show-tan-da-mo-khong-gian-nghe-thuat-cong-dong-moi-ben-ho-hoan-kiem-1757343.html
+https://congluan.vn/bao-nhan-dan-ra-mat-diem-hen-am-nhac-ben-ho-hoan-kiem-post361149.html
+https://danviet.vn/ha-noi-co-them-mot-diem-hen-nghe-thuat-dac-biet-duoi-tan-da-300-nam-tuoi-d1460737.html
+https://phunuvietnam.vn/bao-nhan-dan-ra-mat-khong-gian-nghe-thuat-cong-dong-ben-goc-da-hon-300-tuoi-238260919130858688.htm
+https://phunuvietnam.vn/show-dien-tan-da-dau-tien-thu-hut-dong-dao-cong-chung-tre-tuoi-238260920142908358.htm
+https://thethaovanhoa.vn/bao-nhan-dan-ra-mat-khong-gian-nghe-thuat-cong-dong-ben-goc-da-hon-300-tuoi-20260920022447477.htm
+https://vntravel.org.vn/bao-nhan-dan-ra-mat-khong-gian-nghe-thuat-tan-da-mo-ra-mot-diem-hen-van-hoa-cho-du-lich-dem-ha-noi-a9789.html
+https://soha.vn/bao-nhan-dan-ra-mat-khong-gian-nghe-thuat-cong-dong-voi-chuong-trinh-am-nhac-tan-da-198260919115514179.htm
+https://cafef.vn/bao-nhan-dan-ra-mat-khong-gian-nghe-thuat-cong-dong-voi-chuong-trinh-am-nhac-tan-da-188260919140549332.chn
+https://afamily.vn/bao-nhan-dan-ra-mat-khong-gian-nghe-thuat-cong-dong-voi-chuong-trinh-am-nhac-tan-da-236260919141726363.chn
+
+# ── Số 02 · 10.10.2026 ──
+https://nhandan.vn/gan-2000-khan-gia-thuong-thuc-so-thu-2-cua-tan-da-show-tai-khuon-vien-bao-nhan-dan-post994372.html
+https://nhandan.vn/anh-khan-gia-hoa-nhip-trong-chuong-trinh-tan-da-so-thu-2-post994396.html
+https://nhandan.vn/video-an-tuong-tan-da-show-so-2-voi-gan-2000-khan-gia-post994401.html
+https://nhandan.vn/anh-tan-da-so-thu-2-hen-nhau-giua-thu-do-thang-muoi-post994393.html
+https://nhandan.vn/am-nhac-la-gach-noi-nhieu-the-he-post994684.html
+https://www.vietnamplus.vn/chuong-trinh-tan-da-show-lang-nghe-thanh-am-ha-noi-theo-cach-cua-nguoi-tre-post1141272.vnp
+https://vtv.vn/tan-da-show-so-2-nghe-si-tre-ke-cau-chuyen-am-nhac-giua-long-ha-noi-100261011092008177.htm
+https://hanoimoi.vn/tan-da-show-02-tran-ngap-cam-hung-ve-ha-noi-thang-10-1760521.html
+https://nguoihanoi.vn/tan-da-show-02-ha-noi-thang-muoi-ngan-vang-duoi-tan-cay-tram-tuoi-102874.html
+https://svvn.tienphong.vn/tu-san-khau-duoi-tan-da-den-co-hoi-cho-nhung-tai-nang-am-nhac-tre-post1884929.tpo
+https://anninhthudo.vn/tan-da-show-tro-lai-tao-diem-hen-am-nhac-giua-long-thu-do-post671577.antd
+https://congly.vn/dem-nhac-tan-da-thu-hut-gan-2-000-khan-gia-542769.html
+https://baophapluat.vn/tan-da-ket-noi-am-nhac-va-khong-gian-mo.html
+https://baoxaydung.vn/tu-goc-da-mo-ra-khong-gian-nghe-thuat-tre-giua-long-ha-noi-192261010223546876.htm
+https://phunuvietnam.vn/tan-da-so-2-hoi-tho-tre-giua-long-ha-noi-238261011001919857.htm
+https://vntravel.org.vn/tan-da-show-02-ket-noi-cam-xuc-ve-ha-noi-qua-suc-song-am-nhac-tre-a10007.html

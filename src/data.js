@@ -26,6 +26,7 @@ export const NAV = [
   { href: '#nghe-si', label: 'Nghệ sĩ' },
   { href: '#de-cu', label: 'Đề cử & Bình chọn' },
   { href: '#dem-dien', label: 'Đêm diễn' },
+  { href: '#bao-chi', label: 'Báo chí' },
 ]
 
 /* Section 3 — Line-up tháng 10 (nguồn: hồ sơ chương trình chính thức "Chính.pdf", 10/2026).

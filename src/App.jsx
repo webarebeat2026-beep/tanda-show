@@ -5,6 +5,7 @@ import About, { SloganMarquee } from './components/About'
 import Artists from './components/Artists'
 import Vote from './components/Vote'
 import NextShow from './components/NextShow'
+import Press from './components/Press'
 import Footer from './components/Footer'
 import { ToastProvider } from './components/ui'
 
@@ -24,6 +25,7 @@ export default function App() {
             <Artists />
             <Vote />
             <NextShow />
+            <Press />
           </main>
           <Footer />
         </div>

@@ -5,7 +5,7 @@ Trang giới thiệu **Tán Đa Show** — không gian âm nhạc cộng đồng
 
 **Trang đang chạy:** https://tanda-show.pages.dev
 
-Công nghệ: React 18 + Tailwind CSS 4 + Framer Motion 11 (Vite). Bản build ra **1 file `index.html` duy nhất** (ảnh, CSS, JS nhúng sẵn).
+Công nghệ: React 18 + Tailwind CSS 4 + Framer Motion 11 (Vite). Bản build ra file `index.html` (ảnh, CSS, JS nhúng sẵn) + thư mục `press/` (ảnh đại diện các bài báo, tải lười khi cuộn tới).
 
 ---
 
@@ -23,6 +23,14 @@ Có thể sửa ngay trên GitHub: mở file → bấm biểu tượng ✏️ (E
 | Nơi nhận form đề cử / liên hệ | `SUBMIT_ENDPOINT` | Để trống = chỉ lưu tạm trên trình duyệt người xem. Điền URL nhận POST JSON (Google Apps Script, Formspree, Supabase…) để thu dữ liệu thật |
 
 Chỗ nào còn ghi `[CẦN ĐIỀN]` là thông tin BTC chưa cung cấp.
+
+### Mục "Báo chí nói về Tán Đa"
+Danh sách bài báo nằm ở `tools/press/sources.txt` (mỗi dòng 1 link bài gốc). Khi có bài mới:
+1. Dán link vào cuối `tools/press/sources.txt`.
+2. Chạy `python tools/press/crawl_press.py` (cần Python + `pip install pillow`) — script tự đọc tiêu đề, sapo, ngày đăng, ảnh đại diện của bài, ghi ra `src/press.js` và ảnh `public/press/`.
+3. Commit cả 3 chỗ (`sources.txt`, `src/press.js`, `public/press/`) → trang tự cập nhật.
+
+Bài được tự xếp vào "Số 01 / Số 02 / ..." theo ngày đăng (danh sách đêm diễn ở biến `SHOWS` đầu file `crawl_press.py`). Muốn ghi đè tên báo hoặc đêm diễn: `link | Tên báo | so-02`.
 
 ### Đổi ảnh
 - Ảnh nằm trong `src/assets/` (`artists/` ảnh nghệ sĩ, `kv/` key visual, `logo/` logo).
@@ -48,8 +56,8 @@ npm install        # lần đầu
 npm run dev        # xem trực tiếp tại http://localhost:5173, sửa code tự tải lại
 npm run build      # → dist/index.html
 ```
-Sau đó nén `dist/index.html` thành file `.zip` (index.html nằm ở gốc zip) → Cloudflare Pages → project `tanda-show` → **Create deployment** → tải file zip lên.
-`dist/index.html` cũng có thể mở trực tiếp bằng trình duyệt hoặc đưa lên bất kỳ hosting tĩnh nào.
+Sau đó nén **toàn bộ nội dung thư mục `dist/`** (`index.html` + thư mục `press/`) thành file `.zip` (index.html nằm ở gốc zip) → Cloudflare Pages → project `tanda-show` → **Create deployment** → tải file zip lên.
+`dist/` cũng có thể mở trực tiếp bằng trình duyệt hoặc đưa lên bất kỳ hosting tĩnh nào.
 
 ---
 
