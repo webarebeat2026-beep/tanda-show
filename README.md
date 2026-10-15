@@ -17,7 +17,6 @@ Có thể sửa ngay trên GitHub: mở file → bấm biểu tượng ✏️ (E
 |---|---|---|
 | Lịch đêm diễn | `SHOWS` | Thêm đêm mới theo thứ tự thời gian. Vé "Cuộc hẹn sắp tới" tự chọn đêm gần nhất chưa diễn ra. `timeLabel: null` = giờ chưa công bố |
 | Nghệ sĩ / line-up | `ARTISTS` | `showId` phải khớp `id` của đêm trong `SHOWS`. Trên trang: đêm sắp tới (hoặc mới nhất) hiện đầy đủ, các đêm trước tự thu gọn (rê chuột / bấm để mở). `tentative: true` = hiện chữ "dự kiến" |
-| Danh sách bình chọn | `CANDIDATES` | Luân phiên 3 gương mặt / lượt, tự đổi sau 9 giây |
 | Menu đầu trang | `NAV` | |
 | Đơn vị tổ chức (chân trang) | `ORGANIZERS` | Có logo thì hiện logo, chưa có thì hiện chữ |
 | Nơi nhận form đề cử / liên hệ | `SUBMIT_ENDPOINT` | Để trống = chỉ lưu tạm trên trình duyệt người xem. Điền URL nhận POST JSON (Google Apps Script, Formspree, Supabase…) để thu dữ liệu thật |

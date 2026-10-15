@@ -62,9 +62,10 @@ export default function About() {
         <Reveal className="organic-a relative overflow-hidden border border-line bg-card p-7 sm:p-10 lg:col-span-7">
           <div aria-hidden="true" className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(242,181,68,0.18),transparent_70%)]" />
           <Eyebrow>Vì sao có Tán Đa?</Eyebrow>
-          <h2 id="about-title" className="mt-5 font-serif text-3xl font-bold leading-tight text-cream sm:text-[2.6rem]">
-            Cho người trẻ một điểm hẹn.{' '}
-            <span className="italic text-amber">Cho nghệ sĩ trẻ một cơ hội được nghe.</span>
+          {/* mỗi câu một dòng; cỡ chữ lg vừa đủ để câu 2 nằm trọn một hàng (không rớt chữ "nghe.") */}
+          <h2 id="about-title" className="mt-5 font-serif text-3xl font-bold leading-tight text-cream sm:text-[2.6rem] lg:text-[2.2rem]">
+            <span className="block">Cho người trẻ một điểm hẹn.</span>{' '}
+            <span className="block italic text-amber">Cho nghệ sĩ trẻ một cơ hội được nghe.</span>
           </h2>
           <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted">
             Tán Đa Show là không gian âm nhạc cộng đồng do Báo Nhân Dân và BEAT Network cùng xây dựng, hướng tới một điểm hẹn văn hóa dành cho người trẻ giữa phố đi bộ.

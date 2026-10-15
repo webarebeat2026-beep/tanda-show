@@ -35,6 +35,9 @@
     outline-offset: 3px;
     border-radius: 6px;
   }
+  /* chống rớt 1 chữ đơn lẻ xuống dòng cuối: tiêu đề chia dòng cân, đoạn văn tránh chữ mồ côi */
+  h1, h2, h3, h4 { text-wrap: balance; }
+  p, li, dd { text-wrap: pretty; }
   button, a, [role="button"], label[for], select { cursor: pointer; }
   button:disabled { cursor: not-allowed; }
 }
@@ -100,9 +103,24 @@
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .marquee-track { animation: marquee 38s linear infinite; }
 
+/* Khuông nhạc trong ô "Thanh âm tiếp theo" (MusicStaff.jsx) */
+@keyframes staff-drift { to { transform: translateX(-600px); } }
+.staff-drift { animation: staff-drift 26s linear infinite; }
+@keyframes note-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.note-bob { animation: note-bob 3.2s ease-in-out infinite; }
+@keyframes note-rise {
+  0% { opacity: 0; transform: translate(0, 14px) rotate(-10deg) scale(0.85); }
+  18% { opacity: 0.85; }
+  70% { opacity: 0.55; }
+  100% { opacity: 0; transform: translate(18px, -70px) rotate(12deg) scale(1.05); }
+}
+.note-rise { opacity: 0; animation: note-rise 7s ease-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .marquee-track { animation: none; }
+  .staff-drift, .note-bob { animation: none; }
+  .note-rise { animation: none; opacity: 0.5; }
   .reveal { opacity: 1; transform: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

@@ -4,6 +4,7 @@ import { ArrowRight, ChevronDown, Heart, MessageCircle, Pause, Play, CirclePlay,
 import { ARTISTS, SHOWS, lineupOf, showEnd } from '../data'
 import { submitForm, useAudioPreview, useStoredState } from '../lib'
 import { Button, Eyebrow, Field, Modal, Reveal, useToast } from './ui'
+import MusicStaff from './MusicStaff'
 
 const TONES = {
   amber: { wash: '#F2B544', chip: 'bg-amber text-ink', glow: 'rgba(242,181,68,0.55)' },
@@ -413,14 +414,16 @@ export default function Artists() {
           <Reveal delay={0.2} className="h-full">
             <a
               href="#de-cu"
-              className="organic-b group relative flex h-full min-h-[200px] flex-col justify-between gap-6 overflow-hidden sm:flex-row sm:items-end border border-amber/30 bg-[radial-gradient(circle_at_80%_20%,rgba(242,181,68,0.22),transparent_60%)] p-7 transition-colors hover:border-amber sm:p-9"
+              className="organic-b group relative flex min-h-[280px] items-center justify-center overflow-hidden border border-amber/30 bg-card px-6 py-12 text-center transition-colors hover:border-amber sm:min-h-[300px] sm:px-10"
             >
-              <span aria-hidden="true" className="font-serif text-7xl leading-none text-amber/80">♫</span>
-              <span>
-                <span className="block font-serif text-3xl font-bold leading-tight text-cream">
+              <MusicStaff />
+              {/* quầng tối sau chữ để chữ luôn nổi trên khuông nhạc */}
+              <span aria-hidden="true" className="absolute left-1/2 top-1/2 h-[78%] w-[min(92%,680px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(27,21,17,0.92),rgba(27,21,17,0.75)_60%,transparent)]" />
+              <span className="relative flex flex-col items-center">
+                <span className="block font-serif text-3xl font-bold leading-tight text-cream [text-wrap:balance] sm:text-4xl">
                   Thanh âm tiếp theo <span className="italic text-amber">có thể do bạn chọn.</span>
                 </span>
-                <span className="mt-4 inline-flex items-center gap-2 font-semibold text-amber">
+                <span className="mt-5 inline-flex min-h-11 items-center gap-2 whitespace-nowrap rounded-full border border-amber/60 bg-night/60 px-5 text-sm font-semibold text-amber sm:px-6 sm:text-base transition-colors group-hover:bg-amber group-hover:text-ink">
                   Đề cử nghệ sĩ bạn muốn nghe
                   <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </span>

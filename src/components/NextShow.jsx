@@ -85,7 +85,7 @@ function Ticket({ show, past }) {
           </div>
           <div className={`relative flex-1 p-6 sm:p-9 ${past ? 'pb-20 sm:pb-20' : ''}`}>
             <p className="font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-brick">Cuộc hẹn sắp tới</p>
-            <h3 className="mt-3 font-serif text-4xl font-black italic leading-none sm:text-6xl">{show.title}</h3>
+            <h3 className="mt-3 font-serif text-4xl font-black italic leading-none sm:text-5xl lg:text-6xl">{show.title}</h3>
             <p className="mt-3 font-serif text-lg italic text-ink/75">{show.theme}</p>
 
             <dl className="mt-8 grid gap-5 sm:grid-cols-2">
@@ -173,7 +173,7 @@ function Schedule({ nextId }) {
         <h3 className="font-serif text-3xl font-bold text-cream sm:text-4xl">
           Lịch Tán Đa <span className="italic text-amber">tháng {Number(month.slice(5))}</span>
         </h3>
-        <p className="mt-3 text-muted">{COUNT[shows.length] || shows.length} cuộc hẹn dưới gốc đa 305 tuổi trong khuôn viên Báo Nhân Dân, mỗi đêm khoảng 75–90 phút.</p>
+        <p className="mt-3 text-muted">{COUNT[shows.length] || shows.length} cuộc hẹn dưới gốc đa 305 tuổi trong khuôn viên Báo Nhân Dân, mỗi đêm khoảng 75–90 phút.</p>
       </Reveal>
       <ol className="mt-10 grid gap-5 md:grid-cols-2">
         {shows.map((s, i) => {

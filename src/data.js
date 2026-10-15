@@ -3,12 +3,6 @@
    ⚠ Các mục đánh dấu [CẦN ĐIỀN] là chỗ trống chờ thông tin thật từ BTC
      (tên nghệ sĩ, link tiết mục, bản nghe thử, chủ đề đêm diễn...).
    ───────────────────────────────────────────────────────────────────────── */
-import rapper from './assets/kv/rapper.webp'
-import tyBa from './assets/kv/ty-ba.webp'
-import aoDaiGuitar from './assets/kv/aodai-guitar.webp'
-import guitarLua from './assets/kv/guitar-lua.webp'
-import nonLaMay from './assets/kv/non-la-may.webp'
-import phoHangMam from './assets/kv/pho-hang-mam.webp'
 import lynkLee from './assets/artists/lynk-lee.webp'
 import pinkFrog from './assets/artists/pink-frog.webp'
 import theMagma from './assets/artists/the-magma.webp'
@@ -28,7 +22,7 @@ export const SLOGAN = 'Một tán đa. Nhiều thanh âm. Những cuộc gặp m
 export const NAV = [
   { href: '#ve-tan-da', label: 'Về Tán Đa' },
   { href: '#nghe-si', label: 'Nghệ sĩ' },
-  { href: '#de-cu', label: 'Đề cử & Bình chọn' },
+  { href: '#de-cu', label: 'Đề cử nghệ sĩ' },
   { href: '#dem-dien', label: 'Đêm diễn' },
   { href: '#bao-chi', label: 'Báo chí' },
 ]
@@ -193,16 +187,6 @@ export const ARTISTS = [
   },
 ]
 
-/* Section 4 — Danh sách gương mặt để bình chọn (luân phiên hiển thị). */
-export const CANDIDATES = [
-  { id: 'c1', name: 'Gương mặt 01', genre: 'Rap · Hip-hop', image: rapper, preview: '' },
-  { id: 'c2', name: 'Gương mặt 02', genre: 'Dân gian đương đại', image: tyBa, preview: '' },
-  { id: 'c3', name: 'Gương mặt 03', genre: 'Rock · Áo dài điện', image: aoDaiGuitar, preview: '' },
-  { id: 'c4', name: 'Gương mặt 04', genre: 'Indie rock', image: guitarLua, preview: '' },
-  { id: 'c5', name: 'Gương mặt 05', genre: 'Indie folk', image: nonLaMay, preview: '' },
-  { id: 'c6', name: 'Gương mặt 06', genre: 'City pop', image: phoHangMam, preview: '' },
-]
-
 /* Section 5 — Lịch diễn. Thêm đêm mới vào SHOWS theo thứ tự thời gian.
    Vé "Cuộc hẹn sắp tới" tự chọn đêm gần nhất chưa diễn ra; hết lịch → hiện đêm cuối với dấu "Đã diễn ra".
    timeLabel: null → giờ chưa công bố (vé ghi "Đang cập nhật", file lịch tạo sự kiện cả ngày). */
@@ -220,7 +204,7 @@ export const SHOWS = [
     shortTheme: 'Chủ đề Trung thu',
     start: '2026-09-19T20:00:00+07:00',
     durationHours: 1.5,
-    durationLabel: 'Khoảng 75–90 phút',
+    durationLabel: 'Khoảng 75–90 phút',
     timeLabel: '20H',
     dateLabel: '19.09.2026',
     dayLabel: '19.09',
@@ -238,7 +222,7 @@ export const SHOWS = [
     shortTheme: 'Chủ đề Hà Nội',
     start: '2026-10-10T20:00:00+07:00',
     durationHours: 1.5,
-    durationLabel: 'Khoảng 75–90 phút',
+    durationLabel: 'Khoảng 75–90 phút',
     timeLabel: '20H',
     dateLabel: '10.10.2026',
     dayLabel: '10.10',
@@ -255,7 +239,7 @@ export const SHOWS = [
     shortTheme: 'Chủ đề Phụ nữ Việt Nam',
     start: '2026-10-24T00:00:00+07:00',
     durationHours: 1.5,
-    durationLabel: 'Khoảng 75–90 phút',
+    durationLabel: 'Khoảng 75–90 phút',
     timeLabel: null, // [CẦN ĐIỀN] giờ diễn khi BTC chốt — nhớ sửa luôn giờ trong `start`
     dateLabel: '24.10.2026',
     dayLabel: '24.10',

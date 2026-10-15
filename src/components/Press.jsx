@@ -118,7 +118,7 @@ export default function Press() {
                 <dd className="mt-1 font-serif text-4xl font-bold text-amber">{PRESS.length}</dd>
               </div>
               <div className="organic-c border border-line bg-card/80 p-5">
-                <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">Cơ quan báo chí</dt>
+                <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted [text-wrap:balance]">Cơ quan báo chí</dt>
                 <dd className="mt-1 font-serif text-4xl font-bold text-amber">{outlets.length}</dd>
               </div>
             </dl>

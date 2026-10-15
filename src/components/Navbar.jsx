@@ -53,7 +53,7 @@ export default function Navbar() {
             href="#de-cu"
             className="hidden min-h-11 items-center rounded-full bg-amber px-5 text-sm font-semibold text-ink transition-colors hover:bg-[#F7C766] sm:inline-flex"
           >
-            Bình chọn
+            Đề cử
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
@@ -89,7 +89,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="flex min-h-12 items-center justify-center rounded-full bg-amber font-semibold text-ink"
               >
-                Bình chọn nghệ sĩ
+                Đề cử nghệ sĩ
               </a>
             </li>
           </motion.ul>
