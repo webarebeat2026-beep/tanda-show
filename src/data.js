@@ -31,7 +31,9 @@ export const NAV = [
    showId: khớp với SHOWS bên dưới — thẻ được nhóm theo đêm diễn, thẻ đầu mỗi nhóm là thẻ dọc lớn.
    Trên trang: đêm sắp tới (hoặc mới nhất) hiện đầy đủ, các đêm trước thu gọn — rê chuột / bấm để mở.
    tone: màu duotone khi hover (amber | brick | moss).
-   setlist: tiết mục chính (không đưa tiết mục dự phòng lên trang).
+   setlist: tiết mục chính (không đưa tiết mục dự phòng lên trang). Đêm đã diễn: theo tiết mục THỰC TẾ báo chí đưa tin
+            (Báo Nhân Dân 19.09 & 10–11.10), có thể khác danh sách dự kiến trong hồ sơ chương trình.
+   Hồ sơ chi tiết (bio, thành viên, mạng xã hội, bài hát, ảnh, báo chí) nằm ở src/artistProfiles.js.
    tentative: true → hiện nhãn "Dự kiến".
    videoUrl / preview: để '' thì ẩn nút xem lại / nghe thử. */
 export const ARTISTS = [
@@ -41,7 +43,7 @@ export const ARTISTS = [
     name: 'Lynk Lee',
     role: 'Nghệ sĩ khách mời',
     blurb: 'Sinh năm 1988 tại Bắc Ninh. Giải nhất cuộc thi Tiếng hát sinh viên Trường Đại học Mở Hà Nội (2009–2010), bán kết Vietnam’s Got Talent 2013, Top 6 Miss International Queen Vietnam 2025.',
-    setlist: ['Buồn Thì Cứ Khóc Đi', 'Tát nước đầu đình', 'Cho tôi xin một vé đi tuổi thơ'],
+    setlist: ['Thì quá khứ', 'Buồn thì cứ khóc đi', 'Tát nước đầu đình'],
     image: lynkLee,
     w: 533, h: 800,
     pos: 'center 20%',
@@ -55,8 +57,8 @@ export const ARTISTS = [
     showId: 'ha-noi',
     name: 'Pink Frog',
     role: 'Nghệ sĩ indie',
-    blurb: '',
-    setlist: ['Lần đầu', 'Người ơi', 'Ngày nào', 'Mong em', 'Ô cửa'],
+    blurb: 'Tên thật Vũ Thành Lộc, nghệ sĩ indie viết nhạc từ năm 2014 — tác giả “Tôi và em”, “Ô cửa”, “Câu chuyện”.',
+    setlist: ['Xa khỏi nơi bắt đầu', 'Người ơi', 'Ngày nào', 'Mong em', 'Ô cửa'],
     image: pinkFrog,
     w: 576, h: 576,
     pos: 'center 30%',
@@ -70,8 +72,8 @@ export const ARTISTS = [
     showId: 'ha-noi',
     name: 'The Magma',
     role: 'Band indie',
-    blurb: '',
-    setlist: ['Manifest', 'A song for you', 'Chẳng thể níu đôi tay', 'Be mine', 'Trái tim tự do'],
+    blurb: 'Ban nhạc pop rock trẻ chơi sáng tác của chính mình, giọng ca chính Thanh Hiền (Bí Đỏ); EP đầu tay “Khong Mot...” (2026).',
+    setlist: ['Manifest', 'A Song For You', 'Be Mine', 'Hơi men đầu môi', 'Trái tim tự do'],
     image: theMagma,
     w: 800, h: 533,
     pos: 'center 35%',
@@ -100,7 +102,7 @@ export const ARTISTS = [
     showId: 'phu-nu',
     name: 'Sloth',
     role: 'Band indie',
-    blurb: '',
+    blurb: 'Ban nhạc trẻ đến từ Hà Đông, album đầu tay “Khi mà” phát hành cùng Sony Music Entertainment Vietnam.',
     setlist: ['Vẫn Vậy', 'Khi mà', 'Tan Biến'],
     image: sloth,
     w: 800, h: 533,
@@ -115,7 +117,7 @@ export const ARTISTS = [
     showId: 'phu-nu',
     name: 'Nghịch',
     role: 'Band indie',
-    blurb: '',
+    blurb: 'Ban nhạc pop punk / alternative rock Hà Nội; album “Zòn Zã” (2024), lưu diễn Bangkok, Hong Kong, Đài Loan năm 2025.',
     setlist: ['Chớp', 'Xinh', 'Ánh Đèn Đại Lộ'],
     image: nghich,
     w: 800, h: 533,
@@ -145,8 +147,8 @@ export const ARTISTS = [
     showId: 'trung-thu',
     name: 'Mạc Mai Sương',
     role: 'Nghệ sĩ',
-    blurb: '',
-    setlist: ['Đá tan', 'Thu gọi'],
+    blurb: 'Nghệ sĩ indie hoạt động độc lập tại Hà Nội, viết nhạc từ năm 15 tuổi — “Mơ”, “Vườn mây”, “Thu gọi”.',
+    setlist: ['Thu gọi', 'Tự do như cách em là', 'Lời của cây'],
     image: macMaiSuong,
     w: 660, h: 439,
     pos: 'center 30%',
@@ -160,8 +162,8 @@ export const ARTISTS = [
     showId: 'trung-thu',
     name: '502 Ocean',
     role: 'Band',
-    blurb: '',
-    setlist: ['Chờ em', 'Chúng ta giữa đêm'],
+    blurb: 'Ban nhạc pop-rock “Fifty to Ocean” — hành trình hướng ra biển lớn; album đầu tay “Quanh” (2025).',
+    setlist: ['Chờ em', 'Vội vàng'],
     image: ocean502,
     w: 800, h: 778,
     pos: 'center 25%',

@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, ChevronDown, Heart, MessageCircle, Pause, Play, CirclePlay, Volume2, VolumeX } from 'lucide-react'
+import { ArrowRight, ChevronDown, Heart, MessageCircle, Pause, Play, CirclePlay, UserRound, Volume2, VolumeX } from 'lucide-react'
 import { ARTISTS, SHOWS, lineupOf, showEnd } from '../data'
 import { submitForm, useAudioPreview, useStoredState } from '../lib'
 import { Button, Eyebrow, Field, Modal, Reveal, useToast } from './ui'
 import MusicStaff from './MusicStaff'
+import ArtistProfile, { hasProfile, useProfileRoute } from './ArtistProfile'
 
 const TONES = {
   amber: { wash: '#F2B544', chip: 'bg-amber text-ink', glow: 'rgba(242,181,68,0.55)' },
@@ -101,7 +102,7 @@ function GlitchImage({ artist, tone, horizontal }) {
   )
 }
 
-function ArtistCard({ artist, show, index, audio, soundOn, onMessage, wanted, onWant, reveal = true }) {
+function ArtistCard({ artist, show, index, audio, soundOn, onMessage, onProfile, wanted, onWant, reveal = true }) {
   const tone = TONES[artist.tone]
   const toast = useToast()
   const playing = audio.playingId === artist.id
@@ -168,6 +169,15 @@ function ArtistCard({ artist, show, index, audio, soundOn, onMessage, wanted, on
             </p>
           )}
           <div className="mt-5 flex flex-wrap gap-2">
+            {hasProfile(artist.id) && (
+              <button
+                onClick={() => onProfile(artist.id)}
+                aria-haspopup="dialog"
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-amber/60 bg-amber/5 px-4 text-sm font-semibold text-amber transition-colors hover:bg-amber hover:text-ink"
+              >
+                <UserRound size={16} aria-hidden="true" /> Hồ sơ nghệ sĩ
+              </button>
+            )}
             {artist.videoUrl && (
               <a
                 href={artist.videoUrl}
@@ -327,6 +337,7 @@ export default function Artists() {
   const [soundOn, setSoundOn] = useStoredState('tanda:hoverSound', false)
   const [wanted, setWanted] = useStoredState('tanda:wantAgain', {})
   const [messaging, setMessaging] = useState(null)
+  const profile = useProfileRoute()
 
   const onWant = (a) => {
     const next = !wanted[a.id]
@@ -356,7 +367,7 @@ export default function Artists() {
               Những thanh âm <span className="italic text-amber">ghé Tán Đa</span>
             </h2>
             <p className="mt-5 text-[17px] leading-relaxed text-muted">
-              Mỗi đêm diễn có một nghệ sĩ khách mời cùng những band nhạc, nghệ sĩ indie trẻ mang ca khúc của chính mình đến gốc đa. Đêm gần nhất ở ngay dưới đây; các đêm trước được thu gọn, mở ra để xem lại gương mặt và tiết mục.
+              Mỗi đêm diễn có một nghệ sĩ khách mời cùng những band nhạc, nghệ sĩ indie trẻ mang ca khúc của chính mình đến gốc đa. Đêm gần nhất ở ngay dưới đây; các đêm trước được thu gọn, mở ra để xem lại gương mặt và tiết mục. Bấm <span className="font-semibold text-amber">Hồ sơ nghệ sĩ</span> để xem giới thiệu, bài hát, ảnh biểu diễn và báo chí.
             </p>
           </Reveal>
           {hasPreview && (
@@ -386,6 +397,7 @@ export default function Artists() {
                   audio={audio}
                   soundOn={soundOn}
                   onMessage={setMessaging}
+                  onProfile={profile.open}
                   wanted={!!wanted[a.id]}
                   onWant={onWant}
                   reveal={idx === 0}
@@ -432,6 +444,8 @@ export default function Artists() {
           </Reveal>
         </div>
       </div>
+
+      <ArtistProfile id={profile.openId} onClose={profile.close} />
 
       <Modal open={!!messaging} onClose={() => setMessaging(null)} title={messaging ? `Gửi lời nhắn tới ${messaging.name}` : ''}>
         {messaging && <MessageForm artist={messaging} onDone={() => setMessaging(null)} />}

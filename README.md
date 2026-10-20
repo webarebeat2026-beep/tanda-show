@@ -5,7 +5,7 @@ Trang giới thiệu **Tán Đa Show** — không gian âm nhạc cộng đồng
 
 **Trang đang chạy:** https://tanda-show.pages.dev
 
-Công nghệ: React 18 + Tailwind CSS 4 + Framer Motion 11 (Vite). Bản build ra file `index.html` (ảnh, CSS, JS nhúng sẵn) + thư mục `press/` (ảnh đại diện các bài báo, tải lười khi cuộn tới).
+Công nghệ: React 18 + Tailwind CSS 4 + Framer Motion 11 (Vite). Bản build ra file `index.html` (ảnh, CSS, JS nhúng sẵn) + thư mục `press/` (ảnh đại diện các bài báo) + thư mục `artists/` (ảnh biểu diễn trong hồ sơ nghệ sĩ) — hai thư mục ảnh này tải lười, chỉ tải khi người xem cần.
 
 ---
 
@@ -22,6 +22,15 @@ Có thể sửa ngay trên GitHub: mở file → bấm biểu tượng ✏️ (E
 | Nơi nhận form đề cử / liên hệ | `SUBMIT_ENDPOINT` | Để trống = chỉ lưu tạm trên trình duyệt người xem. Điền URL nhận POST JSON (Google Apps Script, Formspree, Supabase…) để thu dữ liệu thật |
 
 Chỗ nào còn ghi `[CẦN ĐIỀN]` là thông tin BTC chưa cung cấp.
+
+### Hồ sơ nghệ sĩ — `src/artistProfiles.js`
+Mỗi thẻ nghệ sĩ có nút **Hồ sơ nghệ sĩ** mở ngăn bên phải gồm 4 tab: *Giới thiệu* (bio + thành viên ban nhạc), *Bài hát* (link YouTube/Spotify, nhãn "Tại Tán Đa" cho tiết mục đã hát), *Ảnh* (ảnh biểu diễn tại Tán Đa) và *Báo chí*. Hàng biểu tượng dưới tên là các kênh chính thức (Facebook, Instagram, TikTok, YouTube, Spotify, SoundCloud).
+
+- Khoá của mỗi hồ sơ = `id` của nghệ sĩ trong `ARTISTS` (`src/data.js`). Nghệ sĩ mới chưa có hồ sơ thì thẻ không hiện nút.
+- Mục nào để trống thì tab đó tự ẩn (VD chưa có ảnh → không có tab Ảnh).
+- Ảnh biểu diễn: thêm file WebP (cạnh dài ~1280px) vào `public/artists/`, khai báo trong `photos` kèm chú thích, tác giả ảnh (`credit`) và link bài gốc (`source`).
+- Link chia sẻ thẳng một hồ sơ: `https://…/#nghe-si/<id>` (VD `#nghe-si/lynk-lee`).
+- Chỉ ghi thông tin có nguồn — mỗi hồ sơ có dòng `// NGUỒN:` ghi rõ lấy từ đâu.
 
 ### Mục "Báo chí nói về Tán Đa"
 Danh sách bài báo nằm ở `tools/press/sources.txt` (mỗi dòng 1 link bài gốc). Khi có bài mới:
@@ -55,7 +64,7 @@ npm install        # lần đầu
 npm run dev        # xem trực tiếp tại http://localhost:5173, sửa code tự tải lại
 npm run build      # → dist/index.html
 ```
-Sau đó nén **toàn bộ nội dung thư mục `dist/`** (`index.html` + thư mục `press/`) thành file `.zip` (index.html nằm ở gốc zip) → Cloudflare Pages → project `tanda-show` → **Create deployment** → tải file zip lên.
+Sau đó nén **toàn bộ nội dung thư mục `dist/`** (`index.html` + thư mục `press/` + `artists/`) thành file `.zip` (index.html nằm ở gốc zip) → Cloudflare Pages → project `tanda-show` → **Create deployment** → tải file zip lên.
 `dist/` cũng có thể mở trực tiếp bằng trình duyệt hoặc đưa lên bất kỳ hosting tĩnh nào.
 
 ---
@@ -65,7 +74,8 @@ Sau đó nén **toàn bộ nội dung thư mục `dist/`** (`index.html` + thư 
 ```
 src/
 ├── data.js            ← TOÀN BỘ nội dung (lịch diễn, nghệ sĩ, đơn vị, menu…)
-├── components/        ← Navbar, Hero, About, Artists, Vote, NextShow, Footer, ui.jsx
+├── artistProfiles.js  ← hồ sơ chi tiết từng nghệ sĩ (bio, thành viên, MXH, bài hát, ảnh, báo chí)
+├── components/        ← Navbar, Hero, About, Artists, ArtistProfile, Vote, NextShow, Press, Footer, ui.jsx
 ├── assets/            ← ảnh, logo
 ├── index.css          ← màu sắc, font, hiệu ứng (design tokens)
 └── lib.js             ← gửi form, tạo file lịch .ics
@@ -81,3 +91,5 @@ src/
 ## 5. Lưu ý bản quyền
 
 Một số tranh minh hoạ trong `src/assets/` có chữ ký tác giả — cần có sự đồng ý của tác giả hoặc thay bằng ảnh thuộc quyền sử dụng của BTC.
+
+Ảnh biểu diễn trong `public/artists/` lấy từ các bài ảnh của **Báo Nhân Dân** (đơn vị chỉ đạo), luôn ghi tên tác giả/nguồn và link bài gốc ngay dưới ảnh. Biểu tượng mạng xã hội dùng bộ Simple Icons (giấy phép CC0).
