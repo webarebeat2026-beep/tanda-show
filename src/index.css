@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
-/* ───────── Design tokens — lấy từ KV Tán Đa (đã kiểm tra tương phản WCAG trên nền night) ───────── */
+/* ───────── Design tokens — tông nâu ấm lấy từ KV Tán Đa (đã kiểm tra tương phản WCAG; số đo là chữ trên nền night / card) ───────── */
 @theme {
-  --color-night: #0E0B09;      /* đêm sâu phố cổ / nhựa đường */
-  --color-night-2: #15100C;
-  --color-card: #1B1511;
-  --color-line: #3A2E24;
-  --color-cream: #F4E9D8;      /* 16.3:1 trên night */
-  --color-muted: #B9A993;      /* 8.6:1 */
-  --color-amber: #F2B544;      /* ánh đèn đường / cây đa phát sáng — 10.7:1 */
+  --color-night: #2B1A12;      /* nâu sô-cô-la trầm — nền KV dưới ánh đèn */
+  --color-night-2: #33201A;
+  --color-card: #3E2A1F;
+  --color-line: #64462F;
+  --color-cream: #F4E9D8;      /* 13.9 / 11.2:1 */
+  --color-muted: #D2BFA5;      /* 9.3 / 7.5:1 */
+  --color-amber: #F2B544;      /* ánh đèn đường / cây đa phát sáng — 9.1 / 7.4:1 */
   --color-amber-deep: #C9862A;
   --color-brick: #A63A28;      /* đỏ gạch phố cổ (nền, chữ cream 5.4:1) */
-  --color-brick-text: #E8735A; /* đỏ gạch dùng làm chữ — 6.6:1 */
+  --color-brick-text: #EE8064; /* đỏ gạch dùng làm chữ — 6.3 / 5.1:1 */
   --color-moss: #3F5634;       /* xanh rêu (nền, chữ cream 6.8:1) */
-  --color-moss-text: #A3BE8C;  /* xanh rêu dùng làm chữ — 9.6:1 */
+  --color-moss-text: #B3CC9C;  /* xanh rêu dùng làm chữ — 9.6 / 7.7:1 */
   --color-ink: #1A120A;        /* chữ trên nền amber — 10.1:1 */
 
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
@@ -22,7 +22,8 @@
 }
 
 @layer base {
-  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  /* overflow-x: clip — cắt các vầng sáng trang trí tràn mép mà không làm hỏng position: sticky */
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; overflow-x: clip; }
   body {
     @apply bg-night text-cream font-sans antialiased;
     font-size: 16px;

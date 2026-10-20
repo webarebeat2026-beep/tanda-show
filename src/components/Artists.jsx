@@ -94,7 +94,7 @@ function GlitchImage({ artist, tone, horizontal }) {
       {/* scanline */}
       <motion.div
         aria-hidden="true"
-        className="absolute inset-0 bg-[repeating-linear-gradient(0deg,rgba(14,11,9,0.25)_0_1px,transparent_1px_4px)]"
+        className="absolute inset-0 bg-[repeating-linear-gradient(0deg,rgba(43,26,18,0.25)_0_1px,transparent_1px_4px)]"
         variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
       />
       <div aria-hidden="true" className={`absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-card via-card/40 to-transparent ${horizontal ? 'lg:hidden' : ''}`} />
@@ -430,7 +430,7 @@ export default function Artists() {
             >
               <MusicStaff />
               {/* quầng tối sau chữ để chữ luôn nổi trên khuông nhạc */}
-              <span aria-hidden="true" className="absolute left-1/2 top-1/2 h-[78%] w-[min(92%,680px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(27,21,17,0.92),rgba(27,21,17,0.75)_60%,transparent)]" />
+              <span aria-hidden="true" className="absolute left-1/2 top-1/2 h-[78%] w-[min(92%,680px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(62,42,31,0.92),rgba(62,42,31,0.75)_60%,transparent)]" />
               <span className="relative flex flex-col items-center">
                 <span className="block font-serif text-3xl font-bold leading-tight text-cream [text-wrap:balance] sm:text-4xl">
                   Thanh âm tiếp theo <span className="italic text-amber">có thể do bạn chọn.</span>

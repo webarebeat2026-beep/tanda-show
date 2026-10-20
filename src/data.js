@@ -22,8 +22,6 @@ export const SLOGAN = 'Một tán đa. Nhiều thanh âm. Những cuộc gặp m
 export const NAV = [
   { href: '#ve-tan-da', label: 'Về Tán Đa' },
   { href: '#nghe-si', label: 'Nghệ sĩ' },
-  { href: '#de-cu', label: 'Đề cử' },
-  { href: '#dang-ky', label: 'Đăng ký biểu diễn' },
   { href: '#dem-dien', label: 'Đêm diễn' },
   { href: '#bao-chi', label: 'Báo chí' },
 ]
@@ -240,10 +238,10 @@ export const SHOWS = [
     title: 'Tán Đa Show',
     theme: 'Chủ đề Phụ nữ Việt Nam · Mừng ngày 20.10',
     shortTheme: 'Chủ đề Phụ nữ Việt Nam',
-    start: '2026-10-24T00:00:00+07:00',
+    start: '2026-10-24T19:00:00+07:00',
     durationHours: 1.5,
     durationLabel: 'Khoảng 75–90 phút',
-    timeLabel: null, // [CẦN ĐIỀN] giờ diễn khi BTC chốt — nhớ sửa luôn giờ trong `start`
+    timeLabel: '19H',
     dateLabel: '24.10.2026',
     dayLabel: '24.10',
     ...VENUE,

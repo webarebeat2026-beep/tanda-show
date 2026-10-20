@@ -112,7 +112,7 @@ export default function Hero() {
       <DappledLight />
 
       {/* gradient đè để chữ luôn đọc rõ */}
-      <div aria-hidden="true" className="absolute inset-0 -z-[5] bg-[linear-gradient(90deg,rgba(14,11,9,0.92)_0%,rgba(14,11,9,0.65)_45%,rgba(14,11,9,0)_75%)] max-lg:bg-[linear-gradient(180deg,rgba(14,11,9,0.35)_0%,rgba(14,11,9,0.78)_40%,rgba(14,11,9,0.78)_75%,rgba(14,11,9,0.4)_100%)]" />
+      <div aria-hidden="true" className="absolute inset-0 -z-[5] bg-[linear-gradient(90deg,rgba(43,26,18,0.92)_0%,rgba(43,26,18,0.65)_45%,rgba(43,26,18,0)_75%)] max-lg:bg-[linear-gradient(180deg,rgba(43,26,18,0.35)_0%,rgba(43,26,18,0.78)_40%,rgba(43,26,18,0.78)_75%,rgba(43,26,18,0.4)_100%)]" />
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" />
 
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">

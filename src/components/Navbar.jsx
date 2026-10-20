@@ -4,6 +4,12 @@ import { Menu, X } from 'lucide-react'
 import { NAV } from '../data'
 import logoBND from '../assets/logo/bnd-chuyen-trang.svg'
 
+/* 2 nút vàng bên phải thanh đầu trang (menu chữ không lặp lại 2 mục này) */
+const CTAS = [
+  { href: '#de-cu', label: 'Đề cử', long: 'Đề cử nghệ sĩ' },
+  { href: '#dang-ky', label: 'Đăng ký biểu diễn', long: 'Đăng ký biểu diễn' },
+]
+
 /* Thanh đầu trang: logo Báo Nhân Dân + "Chuyên trang của Báo Nhân Dân" (thiết kế gốc logo-header.svg) */
 export function Logo({ className = '' }) {
   return (
@@ -49,12 +55,15 @@ export default function Navbar() {
           ))}
         </ul>
         <div className="flex items-center gap-2">
-          <a
-            href="#de-cu"
-            className="hidden min-h-11 items-center rounded-full bg-amber px-5 text-sm font-semibold text-ink transition-colors hover:bg-[#F7C766] sm:inline-flex"
-          >
-            Đề cử
-          </a>
+          {CTAS.map((c) => (
+            <a
+              key={c.href}
+              href={c.href}
+              className="hidden min-h-11 items-center whitespace-nowrap rounded-full bg-amber px-5 text-sm font-semibold text-ink transition-colors hover:bg-[#F7C766] sm:inline-flex"
+            >
+              {c.label}
+            </a>
+          ))}
           <button
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
@@ -83,14 +92,17 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
-            <li className="pb-5 pt-2">
-              <a
-                href="#de-cu"
-                onClick={() => setOpen(false)}
-                className="flex min-h-12 items-center justify-center rounded-full bg-amber font-semibold text-ink"
-              >
-                Đề cử nghệ sĩ
-              </a>
+            <li className="grid gap-2.5 pb-5 pt-2">
+              {CTAS.map((c) => (
+                <a
+                  key={c.href}
+                  href={c.href}
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-12 items-center justify-center rounded-full bg-amber font-semibold text-ink"
+                >
+                  {c.long}
+                </a>
+              ))}
             </li>
           </motion.ul>
         )}

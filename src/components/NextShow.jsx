@@ -265,7 +265,7 @@ export default function NextShow() {
     <section id="dem-dien" aria-labelledby="show-title" className="relative isolate overflow-hidden py-24 sm:py-32">
       {/* nền phố đêm — tranh phố Hàng Mâm phủ tối + duotone amber */}
       <img src={pho} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-20 h-full w-full object-cover opacity-30 grayscale" />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#0E0B09_0%,rgba(14,11,9,0.82)_30%,rgba(14,11,9,0.88)_70%,#0E0B09_100%)]" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#2B1A12_0%,rgba(43,26,18,0.82)_30%,rgba(43,26,18,0.88)_70%,#2B1A12_100%)]" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-amber/10 mix-blend-color" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
