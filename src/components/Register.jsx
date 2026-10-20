@@ -259,7 +259,7 @@ function RegisterForm() {
 
 export default function Register() {
   return (
-    <section id="dang-ky" aria-labelledby="register-title" className="relative overflow-hidden bg-night-2 py-24 sm:py-32">
+    <section id="dang-ky" aria-labelledby="register-title" className="relative overflow-hidden bg-night-2/70 py-24 sm:py-32">
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber/40 to-transparent" />
       <div aria-hidden="true" className="absolute -right-48 top-10 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(242,181,68,0.14),transparent_70%)]" />
 

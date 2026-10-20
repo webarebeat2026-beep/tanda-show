@@ -5,6 +5,7 @@ import pho from '../assets/kv/pho-hang-mam.webp'
 import { SHOWS, lineupOf, showEnd } from '../data'
 import { calendarLinks, isEmail, isPhone, submitForm } from '../lib'
 import { Button, Eyebrow, Field, Reveal, useToast } from './ui'
+import FloatingNotes from './FloatingNotes'
 
 function ReminderForm({ id = 'reminder', upcoming }) {
   const [contact, setContact] = useState('')
@@ -267,6 +268,7 @@ export default function NextShow() {
       <img src={pho} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-20 h-full w-full object-cover opacity-30 grayscale" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#2B1A12_0%,rgba(43,26,18,0.82)_30%,rgba(43,26,18,0.88)_70%,#2B1A12_100%)]" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-amber/10 mix-blend-color" />
+      <FloatingNotes className="-z-[5]" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">

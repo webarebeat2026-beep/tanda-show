@@ -8,6 +8,7 @@ import Register from './components/Register'
 import NextShow from './components/NextShow'
 import Press from './components/Press'
 import Footer from './components/Footer'
+import FloatingNotes from './components/FloatingNotes'
 import { ToastProvider } from './components/ui'
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
           <a href="#main" className="sr-only z-[80] rounded-full bg-amber px-5 py-3 font-semibold text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
             Bỏ qua tới nội dung chính
           </a>
+          <FloatingNotes fixed />
           <Navbar />
           <main id="main">
             <Hero />

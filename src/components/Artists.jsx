@@ -357,7 +357,7 @@ export default function Artists() {
     : []
 
   return (
-    <section id="nghe-si" aria-labelledby="artists-title" className="relative bg-night-2 py-24 sm:py-32">
+    <section id="nghe-si" aria-labelledby="artists-title" className="relative bg-night-2/70 py-24 sm:py-32">
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber/40 to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">

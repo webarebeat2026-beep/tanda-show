@@ -4,7 +4,7 @@ import logoTanDa from '../assets/logo/tan-da.webp'
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-line bg-night-2 pb-10 pt-16">
+    <footer className="relative border-t border-line bg-night-2/70 pb-10 pt-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">

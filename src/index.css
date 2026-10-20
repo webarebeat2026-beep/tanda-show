@@ -117,11 +117,27 @@
 }
 .note-rise { opacity: 0; animation: note-rise 7s ease-out infinite; }
 
+/* Nốt nhạc trôi lơ lửng phía sau nội dung (FloatingNotes.jsx) — chỉ dùng transform/opacity cho nhẹ máy */
+@keyframes float-note {
+  0% { opacity: 0; transform: translate3d(0, 12vh, 0) rotate(-10deg); }
+  12% { opacity: var(--o, 0.25); }
+  50% { transform: translate3d(var(--sway, 30px), -50vh, 0) rotate(10deg); }
+  85% { opacity: var(--o, 0.25); }
+  100% { opacity: 0; transform: translate3d(0, -112vh, 0) rotate(-8deg); }
+}
+.float-note {
+  opacity: 0;
+  animation: float-note 30s ease-in-out infinite;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 6px rgba(242, 181, 68, 0.35));
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .marquee-track { animation: none; }
   .staff-drift, .note-bob { animation: none; }
   .note-rise { animation: none; opacity: 0.5; }
+  .float-note { display: none; }
   .reveal { opacity: 1; transform: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

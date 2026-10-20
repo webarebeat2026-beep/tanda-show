@@ -46,7 +46,7 @@ const FILL = {
 }
 
 /* Hình nốt nhạc, gốc toạ độ = tâm đầu nốt */
-function Note({ type, fill }) {
+export function Note({ type, fill }) {
   const head = <ellipse rx="8" ry="5.6" transform="rotate(-22)" fill={fill} />
   if (type === 'beam')
     return (
