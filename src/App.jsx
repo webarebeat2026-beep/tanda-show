@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import About, { SloganMarquee } from './components/About'
 import Artists from './components/Artists'
 import Vote from './components/Vote'
+import Register from './components/Register'
 import NextShow from './components/NextShow'
 import Press from './components/Press'
 import Footer from './components/Footer'
@@ -24,6 +25,7 @@ export default function App() {
             <About />
             <Artists />
             <Vote />
+            <Register />
             <NextShow />
             <Press />
           </main>

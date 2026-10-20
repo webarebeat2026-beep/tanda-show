@@ -29,12 +29,14 @@ export function useStoredState(key, initial) {
 export async function submitForm(type, payload) {
   const record = { type, ...payload, at: new Date().toISOString() }
   if (SUBMIT_ENDPOINT) {
+    // text/plain để trình duyệt gửi thẳng (không preflight CORS) — Google Apps Script chỉ nhận kiểu này
     const res = await fetch(SUBMIT_ENDPOINT, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(record),
     })
-    if (!res.ok) throw new Error('Gửi không thành công')
+    const out = await res.json().catch(() => null)
+    if (!res.ok || !out?.ok) throw new Error('Gửi không thành công')
     return
   }
   await new Promise((r) => setTimeout(r, 600))

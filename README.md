@@ -19,7 +19,7 @@ Có thể sửa ngay trên GitHub: mở file → bấm biểu tượng ✏️ (E
 | Nghệ sĩ / line-up | `ARTISTS` | `showId` phải khớp `id` của đêm trong `SHOWS`. Trên trang: đêm sắp tới (hoặc mới nhất) hiện đầy đủ, các đêm trước tự thu gọn (rê chuột / bấm để mở). `tentative: true` = hiện chữ "dự kiến" |
 | Menu đầu trang | `NAV` | |
 | Đơn vị tổ chức (chân trang) | `ORGANIZERS` | Có logo thì hiện logo, chưa có thì hiện chữ |
-| Nơi nhận form đề cử / liên hệ | `SUBMIT_ENDPOINT` | Để trống = chỉ lưu tạm trên trình duyệt người xem. Điền URL nhận POST JSON (Google Apps Script, Formspree, Supabase…) để thu dữ liệu thật |
+| Nơi nhận dữ liệu form | `SUBMIT_ENDPOINT` | Đang trỏ tới Google Apps Script → Google Sheet "Tán Đa Show — Hồ sơ đăng ký & form trên landing" (tài khoản thaiph@beatnetwork.vn). Xem mục *Form & Google Sheet* bên dưới |
 
 Chỗ nào còn ghi `[CẦN ĐIỀN]` là thông tin BTC chưa cung cấp.
 
@@ -31,6 +31,11 @@ Mỗi thẻ nghệ sĩ có nút **Hồ sơ nghệ sĩ** mở ngăn bên phải g
 - Ảnh biểu diễn: thêm file WebP (cạnh dài ~1280px) vào `public/artists/`, khai báo trong `photos` kèm chú thích, tác giả ảnh (`credit`) và link bài gốc (`source`).
 - Link chia sẻ thẳng một hồ sơ: `https://…/#nghe-si/<id>` (VD `#nghe-si/lynk-lee`).
 - Chỉ ghi thông tin có nguồn — mỗi hồ sơ có dòng `// NGUỒN:` ghi rõ lấy từ đâu.
+
+### Form & Google Sheet
+Mọi form trên trang (Đăng ký biểu diễn, Đề cử, Gửi lời nhắn, Mong chờ, Nhắc lịch) gửi về **một** Google Sheet, mỗi loại một trang tính riêng (tự tạo khi có dữ liệu đầu tiên). Mã nhận dữ liệu: `tools/google-sheet/Code.gs` (Apps Script gắn với Sheet, hướng dẫn cài đặt ở đầu file).
+- Muốn thêm/bớt cột: sửa `FORMS` trong Apps Script → **Triển khai → Quản lý triển khai → ✏️ → Phiên bản mới** (giữ nguyên URL), đồng thời sửa form tương ứng trong `src/components/`.
+- Form **Đăng ký biểu diễn** (`src/components/Register.jsx`, mục `#dang-ky`) gồm 3 bước: Nghệ sĩ → Âm nhạc → Liên hệ.
 
 ### Mục "Báo chí nói về Tán Đa"
 Danh sách bài báo nằm ở `tools/press/sources.txt` (mỗi dòng 1 link bài gốc). Khi có bài mới:
@@ -75,7 +80,7 @@ Sau đó nén **toàn bộ nội dung thư mục `dist/`** (`index.html` + thư 
 src/
 ├── data.js            ← TOÀN BỘ nội dung (lịch diễn, nghệ sĩ, đơn vị, menu…)
 ├── artistProfiles.js  ← hồ sơ chi tiết từng nghệ sĩ (bio, thành viên, MXH, bài hát, ảnh, báo chí)
-├── components/        ← Navbar, Hero, About, Artists, ArtistProfile, Vote, NextShow, Press, Footer, ui.jsx
+├── components/        ← Navbar, Hero, About, Artists, ArtistProfile, Vote (Đề cử), Register (Đăng ký biểu diễn), NextShow, Press, Footer, ui.jsx
 ├── assets/            ← ảnh, logo
 ├── index.css          ← màu sắc, font, hiệu ứng (design tokens)
 └── lib.js             ← gửi form, tạo file lịch .ics

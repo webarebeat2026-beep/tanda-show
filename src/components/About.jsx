@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import poster from '../assets/artists/kv-thang10.webp'
+import poster from '../assets/kv/kv-tan-da.webp'
 import congDong from '../assets/kv/cong-dong.webp'
 import sanKhau from '../assets/kv/san-khau.webp'
 import space from '../assets/kv/space.webp'
@@ -87,14 +87,14 @@ export default function About() {
             <span className="tape -top-3 right-8 rotate-6" aria-hidden="true" />
             <img
               src={poster}
-              alt="Key visual Tán Đa Show tháng 10: cây đa phát sáng, nốt nhạc bay; 20H 10.10.2026 tại 71 Hàng Trống, Hoàn Kiếm, Hà Nội"
-              width="640"
-              height="800"
+              alt="Key visual Tán Đa Show: cây đa phát sáng giữa những dòng nốt nhạc; 71 Hàng Trống, Hoàn Kiếm, Hà Nội. Đơn vị chỉ đạo Báo Nhân Dân, phối hợp tổ chức BEAT Network, thực hiện Nhà Văn Hóa"
+              width="720"
+              height="900"
               loading="lazy"
               className="organic-d w-full border border-amber/20 shadow-[0_30px_80px_-30px_rgba(242,181,68,0.45)]"
             />
             <figcaption className="mt-4 text-center font-mono text-xs uppercase tracking-[0.2em] text-muted">
-              Key visual · Tán Đa Show tháng 10
+              Key visual · Tán Đa Show
             </figcaption>
           </motion.figure>
         </Reveal>

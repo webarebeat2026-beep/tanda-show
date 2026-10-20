@@ -22,7 +22,8 @@ export const SLOGAN = 'Một tán đa. Nhiều thanh âm. Những cuộc gặp m
 export const NAV = [
   { href: '#ve-tan-da', label: 'Về Tán Đa' },
   { href: '#nghe-si', label: 'Nghệ sĩ' },
-  { href: '#de-cu', label: 'Đề cử nghệ sĩ' },
+  { href: '#de-cu', label: 'Đề cử' },
+  { href: '#dang-ky', label: 'Đăng ký biểu diễn' },
   { href: '#dem-dien', label: 'Đêm diễn' },
   { href: '#bao-chi', label: 'Báo chí' },
 ]
@@ -269,6 +270,7 @@ export const ORGANIZERS = [
   { role: 'Đơn vị thực hiện', names: [{ name: 'Nhà Văn Hóa', logo: logoNVH, w: 440, h: 131 }] },
 ]
 
-/* Gửi form về đâu — để '' thì chỉ lưu tạm trên trình duyệt (bản demo).
-   Khi có backend (Supabase / Google Apps Script / Formspree...), điền URL nhận POST JSON. */
-export const SUBMIT_ENDPOINT = ''
+/* Nơi nhận dữ liệu mọi form trên trang (đăng ký biểu diễn, đề cử, lời nhắn, nhắc lịch...).
+   Google Apps Script gắn với Google Sheet "Tán Đa Show — Hồ sơ đăng ký & form trên landing"
+   (tài khoản thaiph@beatnetwork.vn) — mã script: tools/google-sheet/Code.gs. Để '' = chỉ lưu tạm trên trình duyệt. */
+export const SUBMIT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwpNeuruIkGE0C0kLfI6JcBPAsgeyN_q3iULc9AT2xnpEZ8Gjum9o2oUpnuYPXwJbuxIA/exec'
