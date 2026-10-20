@@ -11,22 +11,16 @@ const FILL = {
 }
 
 const NOTES = [
-  { left: '4%', size: 40, dur: 26, delay: -3, type: 'eighth', tone: 'amber', o: 0.54, sway: 40, mobile: true },
-  { left: '13%', size: 30, dur: 34, delay: -20, type: 'quarter', tone: 'cream', o: 0.34, sway: -30 },
-  { left: '21%', size: 51, dur: 30, delay: -11, type: 'beam', tone: 'amber', o: 0.44, sway: 55, mobile: true },
-  { left: '30%', size: 27, dur: 24, delay: -17, type: 'eighth', tone: 'brick', o: 0.48, sway: -45 },
-  { left: '39%', size: 35, dur: 36, delay: -5, type: 'quarter', tone: 'amber', o: 0.37, sway: 35 },
-  { left: '47%', size: 46, dur: 28, delay: -24, type: 'eighth', tone: 'cream', o: 0.31, sway: -50, mobile: true },
-  { left: '56%', size: 32, dur: 32, delay: -9, type: 'beam', tone: 'moss', o: 0.44, sway: 40 },
-  { left: '64%', size: 40, dur: 25, delay: -15, type: 'quarter', tone: 'amber', o: 0.48, sway: -35, mobile: true },
-  { left: '72%', size: 27, dur: 33, delay: -28, type: 'eighth', tone: 'amber', o: 0.51, sway: 30 },
-  { left: '80%', size: 49, dur: 29, delay: -2, type: 'beam', tone: 'cream', o: 0.31, sway: -55 },
-  { left: '88%', size: 35, dur: 27, delay: -19, type: 'eighth', tone: 'brick', o: 0.44, sway: 45, mobile: true },
-  { left: '95%', size: 30, dur: 35, delay: -8, type: 'quarter', tone: 'amber', o: 0.41, sway: -30 },
-  { left: '9%', size: 24, dur: 38, delay: -31, type: 'quarter', tone: 'moss', o: 0.41, sway: 30 },
-  { left: '34%', size: 38, dur: 31, delay: -34, type: 'beam', tone: 'amber', o: 0.34, sway: -40 },
-  { left: '61%', size: 24, dur: 37, delay: -26, type: 'eighth', tone: 'cream', o: 0.37, sway: 35 },
-  { left: '84%', size: 43, dur: 30, delay: -36, type: 'quarter', tone: 'amber', o: 0.44, sway: -45, mobile: true },
+  { left: '4%', size: 40, dur: 34, delay: -4, type: 'eighth', tone: 'amber', o: 0.54, sway: 40, mobile: true },
+  { left: '21%', size: 51, dur: 39, delay: -14, type: 'beam', tone: 'amber', o: 0.44, sway: 55, mobile: true },
+  { left: '39%', size: 35, dur: 47, delay: -6, type: 'quarter', tone: 'amber', o: 0.37, sway: 35 },
+  { left: '47%', size: 46, dur: 36, delay: -31, type: 'eighth', tone: 'cream', o: 0.31, sway: -50, mobile: true },
+  { left: '64%', size: 40, dur: 32, delay: -20, type: 'quarter', tone: 'amber', o: 0.48, sway: -35, mobile: true },
+  { left: '80%', size: 49, dur: 38, delay: -3, type: 'beam', tone: 'cream', o: 0.31, sway: -55 },
+  { left: '88%', size: 35, dur: 35, delay: -25, type: 'eighth', tone: 'brick', o: 0.44, sway: 45, mobile: true },
+  { left: '95%', size: 30, dur: 46, delay: -10, type: 'quarter', tone: 'amber', o: 0.41, sway: -30 },
+  { left: '34%', size: 38, dur: 40, delay: -44, type: 'beam', tone: 'amber', o: 0.34, sway: -40 },
+  { left: '71%', size: 43, dur: 39, delay: -47, type: 'quarter', tone: 'amber', o: 0.44, sway: -45 },
 ]
 
 /* fixed = lớp nền cố định toàn trang; không fixed = phủ trong một section (dùng cho section có ảnh nền riêng) */
