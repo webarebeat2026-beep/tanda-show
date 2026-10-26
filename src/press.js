@@ -1,6 +1,6 @@
 /* TỰ SINH bởi tools/press/crawl_press.py — đừng sửa tay.
    Thêm bài: dán link vào tools/press/sources.txt rồi chạy  python tools/press/crawl_press.py */
-export const PRESS_UPDATED = "2026-10-15"
+export const PRESS_UPDATED = "2026-10-26"
 
 export const PRESS_SHOWS = [
   {
@@ -10,10 +10,184 @@ export const PRESS_SHOWS = [
   {
     "id": "so-02",
     "label": "Số 02 · 10.10"
+  },
+  {
+    "id": "so-03",
+    "label": "Số 03 · 24.10"
   }
 ]
 
 export const PRESS = [
+  {
+    "url": "https://thethaovanhoa.vn/thanh-am-tan-da-show-thang-10-ton-vinh-nguoi-phu-nu-viet-nam-20261026152302515.htm",
+    "outlet": "Thể thao & Văn hóa",
+    "title": "Thanh âm 'Tán Đa Show' tháng 10 tôn vinh người phụ nữ Việt Nam",
+    "excerpt": "Không gian mở, khoảng cách giữa sân khấu và người xem dường như bị xóa bỏ. Đó là không khí quen thuộc tại Tán Đa Show - điểm hẹn văn hóa cộng đồng đang dần khẳng định sức hút riêng giữa lòng Thủ đô Hà Nội.",
+    "date": "2026-10-26",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/hang-10-ton-vinh-nguoi-phu-nu-viet-nam-20261026152302515-htm.webp"
+  },
+  {
+    "url": "https://www.vietnamplus.vn/khan-gia-tan-da-show-cung-tim-kiem-nghe-sy-cho-concert-to-quoc-trong-tim-post1144101.vnp",
+    "outlet": "VietnamPlus",
+    "title": "Khán giả 'Tán Đa Show' cùng tìm kiếm nghệ sỹ cho concert 'Tổ quốc trong tim’",
+    "excerpt": "Đêm diễn thứ 3 của Tán Đa Show gồm những ca khúc không chỉ ngợi ca vẻ đẹp của người phụ nữ mà còn khắc họa nội tâm phong phú, cá tính và sự độc lập của một nửa thế giới.",
+    "date": "2026-10-25",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/m-kiem-nghe-sy-cho-concert-to-quoc-trong-tim-post1144101-vnp.webp"
+  },
+  {
+    "url": "https://vtv.vn/tan-da-show-mo-rong-san-khau-cho-cac-cau-lac-bo-nghe-thuat-tre-100261025065651371.htm",
+    "outlet": "VTV",
+    "title": "Tán Đa Show mở rộng sân khấu cho các câu lạc bộ nghệ thuật trẻ",
+    "excerpt": "Ban tổ chức Tán Đa Show dự kiến phối hợp với các trường, đưa các câu lạc bộ âm nhạc sinh viên lên sân khấu, tạo môi trường biểu diễn và giao lưu cho các tài năng trẻ.",
+    "date": "2026-10-25",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/hau-cho-cac-cau-lac-bo-nghe-thuat-tre-100261025065651371-htm.webp"
+  },
+  {
+    "url": "https://vntravel.org.vn/tan-da-show-03-nhung-thanh-am-thang-10-ton-vinh-phu-nu-a10177.html",
+    "outlet": "Tạp chí Du lịch Việt Nam",
+    "title": "Tán Đa Show #03: Những thanh âm tháng 10 tôn vinh phụ nữ",
+    "excerpt": "Tối 24/10, dưới tán đa hơn 300 năm tuổi trong khuôn viên Báo Nhân Dân, Tán Đa Show #03 mang đến cho khán giả Hà Nội một đêm nhạc giàu màu sắc, từ những giai điệu trữ tình của nhóm hợp xướng GOMO, chất tự sự của ban nhạc Sloth đến âm hưởng rock cá tính của Nghịch và màn trình diễn bùng nổ của nghệ sĩ Vinh Khuất. Qua âm nhạc, chương trình gửi gắm lời tri ân phụ nữ Việt Nam, đồng thời góp phần tạo nên một điểm hẹn văn hóa giữa lòng Thủ đô.",
+    "date": "2026-10-25",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/show-03-nhung-thanh-am-thang-10-ton-vinh-phu-nu-a10177-html.webp"
+  },
+  {
+    "url": "https://nhandan.vn/tan-da-show-san-khau-nho-nhung-dam-me-lon-uoc-mo-lon-va-y-nghia-lon-post997947.html",
+    "outlet": "Báo Nhân Dân",
+    "title": "Tán Đa show: Sân khấu nhỏ nhưng đam mê lớn, ước mơ lớn và ý nghĩa lớn",
+    "excerpt": "“Tán Đa Show by Báo Nhân Dân & BeatNetwork” chính là mô hình cần có thêm ở nhiều loại hình nghệ thuật, ở nhiều góc phố và tỉnh, thành phố khác trên cả nước Việt Nam.",
+    "date": "2026-10-25",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/o-nhung-dam-me-lon-uoc-mo-lon-va-y-nghia-lon-post997947-html.webp"
+  },
+  {
+    "url": "https://nguoihanoi.vn/tan-da-show-3-lan-toa-thong-diep-tri-an-phu-nu-giua-long-ha-noi-103059.html",
+    "outlet": "Tạp chí Người Hà Nội",
+    "title": "Tán Đa Show #3: Lan tỏa thông điệp tri ân phụ nữ giữa lòng Hà Nội",
+    "excerpt": "Với sự góp mặt của nghệ sĩ Vinh Khuất cùng hai ban nhạc trẻ Sloth và Nghịch, “Tán Đa Show” số 3 mang đến không gian âm nhạc đa sắc màu tại khu vực phố đi bộ Hồ Gươm (Hà Nội). Không chỉ tạo điểm hẹn giải trí cho công chúng, chương trình còn gửi gắm thông điệp tôn vinh vẻ đẹp, cá tính và những đóng góp của phụ nữ Việt Nam.",
+    "date": "2026-10-25",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/an-toa-thong-diep-tri-an-phu-nu-giua-long-ha-noi-103059-html.webp"
+  },
+  {
+    "url": "https://hanoimoi.vn/tan-da-show-03-ben-ho-hoan-kiem-nhung-thanh-am-thang-10-ton-vinh-phu-nu-1762683.html",
+    "outlet": "Báo Hànộimới",
+    "title": "Tán Đa Show #03 bên hồ Hoàn Kiếm: Những thanh âm tháng 10 tôn vinh phụ nữ",
+    "excerpt": "Tối 24-10, Tán Đa Show #03 diễn ra tại Báo Nhân Dân phía hướng ra không gian đi bộ khu vực hồ Hoàn Kiếm (Hà Nội) mang đến không gian âm nhạc đa sắc màu tôn vinh phụ nữ Việt Nam. Những màn trình diễn cuốn hút của nhóm hợp xướng GOMO, hai ban nhạc Sloth, Nghịch và nghệ sĩ Vinh Khuất đã tạo nên đêm nhạc giàu cảm xúc.",
+    "date": "2026-10-25",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/an-kiem-nhung-thanh-am-thang-10-ton-vinh-phu-nu-1762683-html.webp"
+  },
+  {
+    "url": "https://congly.vn/tan-da-show-ton-vinh-phu-nu-qua-am-nhac-tre-544654.html",
+    "outlet": "Báo Công Lý",
+    "title": "Tán Đa Show tôn vinh phụ nữ qua âm nhạc trẻ",
+    "excerpt": "Tán Đa Show số 3 kết nối khán giả với những giai điệu giàu cảm xúc, tôn vinh vẻ đẹp, cá tính và sự độc lập của phụ nữ Việt Nam.",
+    "date": "2026-10-25",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/ngly-tan-da-show-ton-vinh-phu-nu-qua-am-nhac-tre-544654-html.webp"
+  },
+  {
+    "url": "https://congluan.vn/tan-da-show-so-3-ton-vinh-ve-dep-phu-nu-viet-nam-post365143.html",
+    "outlet": "Báo Công Luận",
+    "title": "'Tán Đa show' số 3 tôn vinh vẻ đẹp phụ nữ Việt Nam",
+    "excerpt": "Tối 24/10, tại khuôn viên Báo Nhân Dân (71 Hàng Trống, Hà Nội), chương trình “Tán Đa show” số 3 mang đến không gian âm nhạc giàu cảm xúc, tôn vinh vẻ đẹp và những đóng góp của phụ nữ Việt Nam, thu hút đông đảo khán giả Thủ đô và du khách.",
+    "date": "2026-10-25",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/da-show-so-3-ton-vinh-ve-dep-phu-nu-viet-nam-post365143-html.webp"
+  },
+  {
+    "url": "https://baoxaydung.vn/vinh-khuat-dot-chay-san-khau-tan-da-ban-nhac-nghich-khuay-dong-pho-di-bo-ho-guom-19226102501465321.htm",
+    "outlet": "Báo Xây dựng",
+    "title": "Vinh Khuất đốt cháy sân khấu Tán Đa, ban nhạc Nghịch khuấy động phố đi bộ Hồ Gươm",
+    "excerpt": "Nghệ sĩ Vinh Khuất bùng nổ với những ca khúc tự sáng tác, khiến khán giả liên tục gọi tên, hò reo yêu cầu hát thêm. Trong khi đó, ban nhạc Indie Nghịch gây chú ý với chất rock sôi động tại Tán Đa show số 3 tối 24/10 ở Hà Nội.",
+    "date": "2026-10-25",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/ac-nghich-khuay-dong-pho-di-bo-ho-guom-19226102501465321-htm.webp"
+  },
+  {
+    "url": "https://www.qdnd.vn/van-hoa/doi-song/am-nhac-ton-vinh-phu-nu-viet-nam-duoi-tan-da-show-so-3-1061903",
+    "outlet": "Báo Quân đội Nhân dân",
+    "title": "Âm nhạc tôn vinh phụ nữ Việt Nam dưới “Tán Đa show” số 3",
+    "excerpt": "Đêm nhạc “Tán Đa show” số 3 diễn ra trong sự đón nhận và cổ vũ nồng nhiệt của đông đảo khán giả tại không gian Phố đi bộ Hồ Gươm tối 24-10.",
+    "date": "2026-10-24",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/nhac-ton-vinh-phu-nu-viet-nam-duoi-tan-da-show-so-3-1061903.webp"
+  },
+  {
+    "url": "https://phunuvietnam.vn/nhung-thanh-am-thang-10-ton-vinh-phu-nu-viet-nam-238261024235041715.htm",
+    "outlet": "Báo Phụ nữ Việt Nam",
+    "title": "\"Tán đa\" show số 3: Những thanh âm tháng 10 tôn vinh phụ nữ Việt Nam",
+    "excerpt": "Tối 24/10, đêm nhạc \"Tán Đa show\" số 3 diễn ra dưới tán cây đa hơn 300 năm tuổi trong khuôn viên Báo Nhân Dân (71 Hàng Trống, Hà Nội), thu hút đông đảo khán giả Thủ đô và du khách tại không gian phố đi bộ Hồ Gươm",
+    "date": "2026-10-24",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/am-thang-10-ton-vinh-phu-nu-viet-nam-238261024235041715-htm.webp"
+  },
+  {
+    "url": "https://nhandan.vn/video-tan-da-show-so-3-diem-hen-nghe-thuat-cuoi-tuan-mang-dau-an-bao-nhan-dan-post997868.html",
+    "outlet": "Báo Nhân Dân",
+    "title": "\"Tán Đa Show\" số 3 - Điểm hẹn nghệ thuật cuối tuần mang dấu ấn Báo Nhân Dân",
+    "excerpt": "Cuối tuần bên không gian thơ mộng của Hồ Gươm, góc phố 71 Hàng Trống lại trở thành điểm hẹn quen thuộc của những người yêu âm nhạc.",
+    "date": "2026-10-24",
+    "showId": "so-03",
+    "kind": "video",
+    "image": "press/ghe-thuat-cuoi-tuan-mang-dau-an-bao-nhan-dan-post997868-html.webp"
+  },
+  {
+    "url": "https://nhandan.vn/ton-vinh-va-tri-an-phu-nu-qua-tan-da-show-so-3-post997851.html",
+    "outlet": "Báo Nhân Dân",
+    "title": "Tôn vinh và tri ân phụ nữ qua \"Tán Đa Show\" số 3",
+    "excerpt": "Tối 24/10, \"Tán Đa Show\" số 3 với không gian âm nhạc đa sắc màu từ những nghệ sĩ trẻ đã đem đến những tiết mục tri ân và ca ngợi phụ nữ, nhân dịp kỷ niệm Ngày Phụ nữ Việt Nam trong tháng 10.",
+    "date": "2026-10-24",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/n-vinh-va-tri-an-phu-nu-qua-tan-da-show-so-3-post997851-html.webp"
+  },
+  {
+    "url": "https://nhandan.vn/anh-vinh-khuat-cung-nghich-va-sloth-chay-het-minh-tai-tan-da-show-post997855.html",
+    "outlet": "Báo Nhân Dân",
+    "title": "Vinh Khuất cùng Nghịch và Sloth \"cháy\" hết mình tại \"Tán Đa\" show",
+    "excerpt": "Chương trình \"Tán Đa\" số 3 diễn ra vào tối 24/10, mang đến một không gian âm nhạc đa sắc màu qua những tiết mục tri ân và ca ngợi phụ nữ, nhân dịp kỷ niệm Ngày Phụ nữ Việt Nam trong tháng 10. Ca sĩ Vinh Khuất cùng hai nhóm nhạc trẻ Nghịch và Sloth đã để lại những màn trình diễn đầy ấn tượng trong lòng công chúng.",
+    "date": "2026-10-24",
+    "showId": "so-03",
+    "kind": "photo",
+    "image": "press/ghich-va-sloth-chay-het-minh-tai-tan-da-show-post997855-html.webp"
+  },
+  {
+    "url": "https://nhandan.vn/tan-da-tro-lai-voi-chu-de-ton-vinh-phu-nu-viet-nam-post997437.html",
+    "outlet": "Báo Nhân Dân",
+    "title": "“Tán Đa” trở lại với chủ đề tôn vinh Phụ nữ Việt Nam",
+    "excerpt": "Theo thông tin từ Ban tổ chức, tối 24/10, tại khuôn viên phía hồ Hoàn Kiếm của Báo Nhân Dân, số 71 Hàng Trống, Hà Nội, chương trình “Tán Đa” sẽ trở lại với chủ đề tôn vinh phụ nữ Việt Nam.",
+    "date": "2026-10-23",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/tro-lai-voi-chu-de-ton-vinh-phu-nu-viet-nam-post997437-html.webp"
+  },
+  {
+    "url": "https://nhandan.vn/diem-hen-nghe-thuat-moi-ben-ho-hoan-kiem-post997241.html",
+    "outlet": "Báo Nhân Dân",
+    "title": "Điểm hẹn nghệ thuật mới bên Hồ Hoàn Kiếm",
+    "excerpt": "Nghệ sĩ Vinh Khuất cùng hai ban nhạc Sloth và Nghịch trong Tán Đa Show #3, và trước đó, các ban nhạc Magma, Pink Frog bên cạnh ca sĩ Lynk Lee trong Tán Đa Show #2 đem tới bầu khí quyển âm nhạc tươi mới trong hai đêm diễn giữa mùa thu Hà Nội, 10/10 và 24/10. Tán Đa Show dần trở thành điểm hẹn nghệ thuật bên Hồ Hoàn Kiếm với định hướng kết nối âm nhạc, văn hóa và cộng đồng, do Báo Nhân Dân chỉ đạo, Công ty cổ phần BEAT Việt Nam phối hợp tổ chức.",
+    "date": "2026-10-22",
+    "showId": "so-03",
+    "kind": "article",
+    "image": "press/dan-diem-hen-nghe-thuat-moi-ben-ho-hoan-kiem-post997241-html.webp"
+  },
   {
     "url": "https://svvn.tienphong.vn/tu-san-khau-duoi-tan-da-den-co-hoi-cho-nhung-tai-nang-am-nhac-tre-post1884929.tpo",
     "outlet": "Báo Tiền Phong",

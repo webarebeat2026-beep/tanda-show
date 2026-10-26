@@ -7,11 +7,13 @@
    links    : kênh chính thức       [{ type: facebook|instagram|tiktok|youtube|spotify|soundcloud, url }]
    songs    : bài hát               [{ title, url, note, live }]  — live: true = đã hát tại Tán Đa
    photos   : ảnh biểu diễn tại Tán Đa, file trong public/artists/  [{ src, w, h, caption, credit, source }]
+   (ảnh chân dung ở đầu tab Giới thiệu = ảnh thẻ nghệ sĩ `image` trong data.js)
    press    : báo chí nói về nghệ sĩ [{ outlet, title, date (YYYY-MM-DD), url }]
    ───────────────────────────────────────────────────────────────────────── */
 
 const ND_TANDA_1 = 'https://nhandan.vn/nhung-sac-mau-am-nhac-duoi-tan-da-post989669.html'
 const ND_TANDA_2 = 'https://nhandan.vn/anh-tan-da-so-thu-2-hen-nhau-giua-thu-do-thang-muoi-post994393.html'
+const ND_TANDA_3 = 'https://nhandan.vn/anh-vinh-khuat-cung-nghich-va-sloth-chay-het-minh-tai-tan-da-show-post997855.html'
 
 const yt = (id) => `https://www.youtube.com/watch?v=${id}`
 
@@ -30,6 +32,13 @@ const P = {
     title: '“Tán Đa Show #02”: Hà Nội tháng Mười ngân vang dưới tán cây trăm tuổi',
     date: '2026-10-11',
     url: 'https://nguoihanoi.vn/tan-da-show-02-ha-noi-thang-muoi-ngan-vang-duoi-tan-cay-tram-tuoi-102874.html',
+  },
+  ndChay: { outlet: 'Báo Nhân Dân', title: 'Vinh Khuất cùng Nghịch và Sloth “cháy” hết mình tại “Tán Đa” show', date: '2026-10-24', url: ND_TANDA_3 },
+  xayDung: {
+    outlet: 'Báo Xây dựng',
+    title: 'Vinh Khuất đốt cháy sân khấu Tán Đa, ban nhạc Nghịch khuấy động phố đi bộ Hồ Gươm',
+    date: '2026-10-25',
+    url: 'https://baoxaydung.vn/vinh-khuat-dot-chay-san-khau-tan-da-ban-nhac-nghich-khuay-dong-pho-di-bo-ho-guom-19226102501465321.htm',
   },
   tienPhong: {
     outlet: 'Báo Tiền Phong',
@@ -240,12 +249,20 @@ export const PROFILES = {
       { title: 'Em là ai', url: yt('paaQhrCaHC8'), note: 'Vinh Khuất x Sèn Hoàng Mỹ Lam x Benjamin' },
       { title: 'Em không thể đẹp hơn', url: yt('ZI-q1nUiaLk') },
     ],
+    photos: [
+      ndPhoto('artists/vinh-khuat-1.webp', 1280, 853, 'Ca sĩ Vinh Khuất trình diễn ca khúc “Quá lâu”.', ND_TANDA_3),
+      ndPhoto('artists/vinh-khuat-2.webp', 1280, 853, 'Tác phẩm “Như bài tình ca” được Vinh Khuất thể hiện đầy cảm xúc.', ND_TANDA_3),
+      ndPhoto('artists/vinh-khuat-3.webp', 1280, 853, 'Đan xen các ca khúc, ca sĩ Vinh Khuất nhiệt tình giao lưu với khán giả.', ND_TANDA_3),
+      ndPhoto('artists/vinh-khuat-4.webp', 1280, 853, 'Ca khúc “Việt Nam” khuấy động sân khấu Tán Đa.', ND_TANDA_3),
+    ],
     press: [
+      P.ndChay,
+      P.xayDung,
       { outlet: 'Báo Tuổi Trẻ', title: 'Vinh Khuất: Bị khán giả Việt chê xấu trai nhưng lại khen nhạc hay', date: '2019-11-01', url: 'https://tuoitre.vn/vinh-khuat-bi-khan-gia-viet-che-xau-trai-nhung-lai-khen-nhac-hay-20191031163747141.htm' },
       { outlet: 'VTV', title: 'Chàng trai gốc Việt “gây sốt” trên mạng xã hội khi mang cả “phòng thu” lên sân khấu Gala Sao Mai 2019', date: '2019-04-09', url: 'https://vtv.vn/truyen-hinh/chang-trai-goc-viet-gay-sot-tren-mang-xa-hoi-khi-mang-ca-phong-thu-len-san-khau-gala-sao-mai-2019-20190409154159477.htm' },
       { outlet: 'Báo Công an Nhân dân', title: 'Nghệ sĩ Vinh Khuất: Tôi có thể “chết” sau mỗi lần biểu diễn', date: '2019-11-14', url: 'https://cand.com.vn/Nhan-vat-hot/Nghe-si-Vinh-Khuat-Toi-co-the-chet-sau-moi-lan-bieu-dien-i543321/' },
     ],
-    // NGUỒN: Tuổi Trẻ 01/11/2019, VTV 09/04/2019 · link bài hát theo hồ sơ "Chính.pdf".
+    // NGUỒN: Tuổi Trẻ 01/11/2019, VTV 09/04/2019 · link bài hát theo hồ sơ "Chính.pdf" · ảnh tại Tán Đa theo Báo Nhân Dân 24/10/2026.
   },
 
   sloth: {
@@ -268,7 +285,12 @@ export const PROFILES = {
       { title: 'Khi mà', url: yt('lF2B2jBz5Yg'), note: 'Official MV' },
       { title: 'Tan biến', url: yt('XWzTOC-FIFk'), note: 'Official MV' },
     ],
-    // NGUỒN: mô tả kênh + credit album "Khi mà" trên kênh YouTube chính thức Sloth. Chưa tìm thấy bài báo chính thống riêng về nhóm → tab Báo chí ẩn.
+    photos: [
+      ndPhoto('artists/sloth-1.webp', 1280, 852, 'Nhóm nhạc Sloth trình diễn 5 bài hát: “Phất phơ”, “Ngủ quên”, “Về với tôi”, “Thuở mới tấm bé” và “Khi mà”.', ND_TANDA_3),
+      ndPhoto('artists/sloth-2.webp', 1280, 862, 'Ca sĩ trẻ Minh Thu chìm đắm trong màn trình diễn.', ND_TANDA_3),
+    ],
+    press: [P.ndChay],
+    // NGUỒN: mô tả kênh + credit album "Khi mà" trên kênh YouTube chính thức Sloth · ảnh + tiết mục tại Tán Đa theo Báo Nhân Dân 24/10/2026.
   },
 
   nghich: {
@@ -293,7 +315,10 @@ export const PROFILES = {
       { title: 'Xinh', url: yt('xyqoQiDCAFA'), note: 'Official MV' },
       { title: 'Ánh đèn đại lộ', url: yt('hM-vVlKJjBI'), note: 'EP “Nghịch ngợm”' },
     ],
+    photos: [ndPhoto('artists/nghich-1.webp', 1280, 846, 'Huyền Anh, giọng ca chính của ban nhạc Nghịch.', ND_TANDA_3)],
     press: [
+      P.ndChay,
+      P.xayDung,
       { outlet: 'Báo Tuổi Trẻ', title: 'Các ban nhạc rock gen Z siêu hòa nhập', date: '2024-06-16', url: 'https://tuoitre.vn/cac-ban-nhac-rock-gen-z-sieu-hoa-nhap-20240616103428414.htm' },
     ],
     // NGUỒN: mục giới thiệu kênh YouTube chính thức Nghịch (thành viên, EP/album, lưu diễn 2025) · Tuổi Trẻ 16/06/2024.

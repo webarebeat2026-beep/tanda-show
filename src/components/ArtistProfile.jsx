@@ -69,10 +69,18 @@ export function useProfileRoute() {
 export const hasProfile = (id) => !!PROFILES[id]
 
 /* ───────── Các tab ───────── */
-function AboutTab({ p }) {
+function AboutTab({ p, artist }) {
   return (
     <div className="space-y-7">
-      {p.intro && <p className="text-[16px] leading-relaxed text-cream/90">{p.intro}</p>}
+      {/* ảnh nghệ sĩ: giữ nguyên khổ ảnh (dọc/ngang), phần trống lấp bằng chính ảnh làm mờ */}
+      <figure>
+        <div className="relative overflow-hidden rounded-2xl border border-line bg-night">
+          <img src={artist.image} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-110 object-cover opacity-40 blur-2xl" />
+          <img src={artist.image} alt={`Ảnh nghệ sĩ ${artist.name}`} className="relative mx-auto max-h-[420px] w-auto max-w-full object-contain" />
+        </div>
+        <figcaption className="mt-2 text-sm text-muted">{artist.name} · ảnh từ hồ sơ chương trình Tán Đa</figcaption>
+      </figure>
+      {p.intro &&<p className="text-[16px] leading-relaxed text-cream/90">{p.intro}</p>}
       {p.facts?.map((f) => (
         <div key={f.label}>
           <p className="font-mono text-[11px] uppercase tracking-wider text-muted">{f.label}</p>
@@ -408,7 +416,7 @@ export default function ArtistProfile({ id, onClose }) {
               tabIndex={0}
               className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-6 sm:px-8"
             >
-              {tab === 'about' && <AboutTab p={p} />}
+              {tab === 'about' && <AboutTab p={p} artist={artist} />}
               {tab === 'songs' && <SongsTab p={p} />}
               {tab === 'photos' && <PhotosTab p={p} name={artist.name} />}
               {tab === 'press' && <PressTab p={p} />}
