@@ -98,7 +98,7 @@ export function ToastProvider({ children }) {
 }
 
 /* ───────── Modal ───────── */
-export function Modal({ open, onClose, title, children }) {
+export function Modal({ open, onClose, title, children, wide = false }) {
   const panelRef = useRef(null)
   const lastFocus = useRef(null)
 
@@ -146,7 +146,7 @@ export function Modal({ open, onClose, title, children }) {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 20, opacity: 0 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="organic-a relative w-full max-w-lg border border-line bg-card p-6 shadow-2xl sm:p-8"
+            className={`organic-a relative w-full border border-line bg-card p-6 shadow-2xl sm:p-8 ${wide ? 'max-h-[88vh] max-w-2xl overflow-y-auto overscroll-contain' : 'max-w-lg'}`}
           >
             <div className="mb-5 flex items-start justify-between gap-4">
               <h3 id="modal-title" className="font-serif text-2xl font-bold text-cream">{title}</h3>

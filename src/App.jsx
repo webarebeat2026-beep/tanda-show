@@ -6,6 +6,7 @@ import Artists from './components/Artists'
 import Vote from './components/Vote'
 import Register from './components/Register'
 import NextShow from './components/NextShow'
+import News from './components/News'
 import Press from './components/Press'
 import Footer from './components/Footer'
 import FloatingNotes from './components/FloatingNotes'
@@ -29,6 +30,7 @@ export default function App() {
             <Vote />
             <Register />
             <NextShow />
+            <News />
             <Press />
           </main>
           <Footer />

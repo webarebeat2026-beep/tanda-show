@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { ArrowUpRight, ChevronDown, CirclePlay, Images, Quote } from 'lucide-react'
 import { PRESS, PRESS_SHOWS, PRESS_UPDATED } from '../press'
+import { fmtDate, imageSrc, safeHref, useLiveContent } from '../content'
 import { Button, Eyebrow, Reveal } from './ui'
 
 const PAGE = 6
@@ -8,7 +9,6 @@ const KIND = {
   video: { label: 'Video', icon: CirclePlay },
   photo: { label: 'Ảnh', icon: Images },
 }
-const fmtDate = (iso) => iso.split('-').reverse().join('.')
 
 /* Ảnh đại diện của bài — chưa có ảnh thì hiện tên báo trên nền giấy */
 function Thumb({ item, featured }) {
@@ -18,8 +18,9 @@ function Thumb({ item, featured }) {
     <div className={`relative overflow-hidden bg-night ${featured ? 'aspect-[16/10] lg:aspect-auto lg:h-full' : 'aspect-[16/10]'}`}>
       {item.image && !broken ? (
         <img
-          src={`./${item.image}`}
+          src={imageSrc(item.image)}
           alt=""
+          referrerPolicy="no-referrer"
           width="640"
           height="400"
           loading="lazy"
@@ -46,7 +47,7 @@ function Thumb({ item, featured }) {
 function PressCard({ item, featured = false }) {
   return (
     <a
-      href={item.url}
+      href={safeHref(item.url)}
       target="_blank"
       rel="noopener noreferrer"
       className={`group flex h-full cursor-pointer flex-col overflow-hidden border border-line bg-card transition-colors duration-200 hover:border-amber/60 ${
@@ -81,23 +82,31 @@ function PressCard({ item, featured = false }) {
 }
 
 export default function Press() {
-  const [filter, setFilter] = useState('all')
+  const [chosen, setChosen] = useState('all')
   const [limit, setLimit] = useState(PAGE)
 
-  const outlets = useMemo(() => [...new Set(PRESS.map((a) => a.outlet))], [])
-  const filters = [{ id: 'all', label: 'Tất cả' }, ...PRESS_SHOWS]
-  const count = (id) => (id === 'all' ? PRESS.length : PRESS.filter((a) => a.showId === id).length)
+  // Danh sách bài do BTC cập nhật trên Google Sheet; Sheet chưa có bài / chưa tải được thì dùng bản đóng sẵn (src/press.js)
+  const live = useLiveContent()
+  const fromSheet = live?.press?.length > 0
+  const items = fromSheet ? live.press : PRESS
+  const shows = fromSheet ? live.shows || [] : PRESS_SHOWS
+  const updated = (fromSheet && live.updated) || PRESS_UPDATED
 
-  const list = filter === 'all' ? PRESS : PRESS.filter((a) => a.showId === filter)
+  const outlets = useMemo(() => [...new Set(items.map((a) => a.outlet))], [items])
+  const filters = [{ id: 'all', label: 'Tất cả' }, ...shows]
+  const filter = filters.some((f) => f.id === chosen) ? chosen : 'all'
+  const count = (id) => (id === 'all' ? items.length : items.filter((a) => a.showId === id).length)
+
+  const list = filter === 'all' ? items : items.filter((a) => a.showId === filter)
   const [featured, ...rest] = list
   const shown = rest.slice(0, limit)
 
   const choose = (id) => {
-    setFilter(id)
+    setChosen(id)
     setLimit(PAGE)
   }
 
-  if (!PRESS.length) return null
+  if (!items.length) return null
 
   return (
     <section id="bao-chi" aria-labelledby="press-title" className="relative overflow-hidden py-24 sm:py-32">
@@ -115,7 +124,7 @@ export default function Press() {
             <dl className="grid grid-cols-2 gap-4">
               <div className="organic-b border border-line bg-card/80 p-5">
                 <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">Bài viết</dt>
-                <dd className="mt-1 font-serif text-4xl font-bold text-amber">{PRESS.length}</dd>
+                <dd className="mt-1 font-serif text-4xl font-bold text-amber">{items.length}</dd>
               </div>
               <div className="organic-c border border-line bg-card/80 p-5">
                 <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted [text-wrap:balance]">Cơ quan báo chí</dt>
@@ -181,7 +190,7 @@ export default function Press() {
             )
           )}
           <p className="max-w-2xl text-center text-xs leading-relaxed text-muted">
-            Tiêu đề, đoạn mở đầu và ảnh đại diện được trích nguyên từ bài gốc của từng cơ quan báo chí — bấm vào thẻ để đọc toàn bài. Cập nhật {fmtDate(PRESS_UPDATED)}.
+            Tiêu đề, đoạn mở đầu và ảnh đại diện được trích nguyên từ bài gốc của từng cơ quan báo chí — bấm vào thẻ để đọc toàn bài. Cập nhật {fmtDate(updated)}.
           </p>
         </div>
       </div>

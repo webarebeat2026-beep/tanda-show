@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { NAV } from '../data'
+import { useLiveContent } from '../content'
 import logoBND from '../assets/logo/bnd-chuyen-trang.svg'
 
 /* 2 nút vàng bên phải thanh đầu trang (menu chữ không lặp lại 2 mục này) */
@@ -22,6 +23,9 @@ export function Logo({ className = '' }) {
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  // Mục "Tin tức" chỉ hiện trên menu khi BTC đã đăng tin (Google Sheet)
+  const hasNews = useLiveContent()?.news?.length > 0
+  const nav = hasNews ? NAV.flatMap((n) => (n.href === '#bao-chi' ? [{ href: '#tin-tuc', label: 'Tin tức' }, n] : [n])) : NAV
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -46,7 +50,7 @@ export default function Navbar() {
       <nav aria-label="Điều hướng chính" className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-8">
         <Logo />
         <ul className="hidden items-center gap-1 lg:flex">
-          {NAV.map((n) => (
+          {nav.map((n) => (
             <li key={n.href}>
               <a href={n.href} className="rounded-full px-4 py-2 text-sm text-muted transition-colors hover:text-amber">
                 {n.label}
@@ -85,7 +89,7 @@ export default function Navbar() {
             transition={{ duration: 0.25 }}
             className="overflow-hidden px-4 lg:hidden"
           >
-            {NAV.map((n) => (
+            {nav.map((n) => (
               <li key={n.href} className="border-t border-line/60 first:border-t-0">
                 <a href={n.href} onClick={() => setOpen(false)} className="block py-4 font-serif text-xl text-cream">
                   {n.label}

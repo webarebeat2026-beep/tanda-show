@@ -37,13 +37,28 @@ Mọi form trên trang (Đăng ký biểu diễn, Đề cử, Gửi lời nhắn
 - Muốn thêm/bớt cột: sửa `FORMS` trong Apps Script → **Triển khai → Quản lý triển khai → ✏️ → Phiên bản mới** (giữ nguyên URL), đồng thời sửa form tương ứng trong `src/components/`.
 - Form **Đăng ký biểu diễn** (`src/components/Register.jsx`, mục `#dang-ky`) gồm 3 bước: Nghệ sĩ → Âm nhạc → Liên hệ.
 
-### Mục "Báo chí nói về Tán Đa"
-Danh sách bài báo nằm ở `tools/press/sources.txt` (mỗi dòng 1 link bài gốc). Khi có bài mới:
-1. Dán link vào cuối `tools/press/sources.txt`.
-2. Chạy `python tools/press/crawl_press.py` (cần Python + `pip install pillow`) — script tự đọc tiêu đề, sapo, ngày đăng, ảnh đại diện của bài, ghi ra `src/press.js` và ảnh `public/press/`.
-3. Commit cả 3 chỗ (`sources.txt`, `src/press.js`, `public/press/`) → trang tự cập nhật.
+### Báo chí & Tin tức — BTC tự cập nhật trên Google Sheet (không cần sửa code)
+Mục **Báo chí nói về Tán Đa** (`#bao-chi`) và **Tin tức** (`#tin-tuc`) đọc thẳng từ Google Sheet *"Tán Đa Show — Hồ sơ đăng ký & form trên landing"* (cùng Sheet nhận form). Sửa Sheet là trang web đổi theo, chậm nhất ~1 phút, trên **mọi tên miền** (tandashow.nhandan.vn, tanda-show.pages.dev) — không cần build, commit hay tải lại code.
 
-Bài được tự xếp vào "Số 01 / Số 02 / ..." theo ngày đăng (danh sách đêm diễn ở biến `SHOWS` đầu file `crawl_press.py`). Muốn ghi đè tên báo hoặc đêm diễn: `link | Tên báo | so-02`.
+| Trang tính | Dùng để | Cách làm |
+|---|---|---|
+| **Báo chí** | Bài báo viết về Tán Đa | Dán link bài gốc vào cột *Link bài* (dòng trống cuối) → máy tự điền tên báo, tiêu đề, sapo, ảnh, ngày đăng, đêm diễn và tick *Hiển thị*. Ô nào sửa tay thì giữ nguyên. Bỏ tick *Hiển thị* = ẩn bài |
+| **Tin tức** | Thông báo, tin thời sự của chương trình | Mỗi dòng 1 tin: *Tiêu đề* (bắt buộc), *Nội dung* (xuống dòng: Ctrl + Enter), *Ảnh* (link), *Link xem thêm* + *Chữ trên nút link* (không bắt buộc). Tick *Hiển thị* để đăng, tick *Ghim lên đầu* để tin luôn đứng đầu. Chưa có tin nào thì mục Tin tức và mục menu "Tin tức" tự ẩn |
+| **Đêm diễn** | Danh sách nút lọc "Số 01 · 19.09…" của mục Báo chí | Có đêm mới: thêm 1 dòng (tên + ngày diễn) — bài báo đăng sau đó tự xếp vào đêm mới |
+
+- Menu **Tán Đa Show** trên thanh công cụ Sheet: *Lấy thông tin cho các bài mới dán link* (khi dán nhiều link một lúc hoặc tự điền chưa chạy) · *Đẩy thay đổi lên web ngay* (bỏ qua bộ nhớ đệm 1 phút).
+- Ảnh từ Google Drive: chia sẻ file ở chế độ *Bất kỳ ai có đường liên kết* rồi dán link vào ô ảnh.
+- Mỗi ô có ghi chú hướng dẫn — rê chuột vào tiêu đề cột để xem.
+- Mã xử lý: `tools/google-sheet/Code.gs` (Apps Script gắn với Sheet). Nếu Sheet không truy cập được, trang tự hiện danh sách bài đóng sẵn trong `src/press.js`.
+
+<details><summary>Cách cũ (dự phòng): cào bài bằng script Python → src/press.js</summary>
+
+1. Dán link vào cuối `tools/press/sources.txt`.
+2. Chạy `python tools/press/crawl_press.py` (cần Python + `pip install pillow`) — ghi ra `src/press.js` và ảnh `public/press/`.
+3. Commit cả 3 chỗ (`sources.txt`, `src/press.js`, `public/press/`).
+
+Danh sách này chỉ hiện khi Google Sheet chưa có bài hoặc không tải được.
+</details>
 
 ### Đổi ảnh
 - Ảnh nằm trong `src/assets/` (`artists/` ảnh nghệ sĩ, `kv/` key visual, `logo/` logo).
@@ -80,7 +95,7 @@ Sau đó nén **toàn bộ nội dung thư mục `dist/`** (`index.html` + thư 
 src/
 ├── data.js            ← TOÀN BỘ nội dung (lịch diễn, nghệ sĩ, đơn vị, menu…)
 ├── artistProfiles.js  ← hồ sơ chi tiết từng nghệ sĩ (bio, thành viên, MXH, bài hát, ảnh, báo chí)
-├── components/        ← Navbar, Hero, About, Artists, ArtistProfile, Vote (Đề cử), Register (Đăng ký biểu diễn), NextShow, Press, Footer, ui.jsx
+├── components/        ← Navbar, Hero, About, Artists, ArtistProfile, Vote (Đề cử), Register (Đăng ký biểu diễn), NextShow, News (Tin tức), Press, Footer, ui.jsx
 ├── assets/            ← ảnh, logo
 ├── index.css          ← màu sắc, font, hiệu ứng (design tokens)
 └── lib.js             ← gửi form, tạo file lịch .ics
