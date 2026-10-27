@@ -52,7 +52,7 @@ export default function Navbar() {
         <ul className="hidden items-center gap-1 lg:flex">
           {nav.map((n) => (
             <li key={n.href}>
-              <a href={n.href} className="rounded-full px-4 py-2 text-sm text-muted transition-colors hover:text-amber">
+              <a href={n.href} className="whitespace-nowrap rounded-full px-3 py-2 text-sm text-muted transition-colors hover:text-amber xl:px-4">
                 {n.label}
               </a>
             </li>

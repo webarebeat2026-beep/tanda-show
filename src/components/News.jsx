@@ -5,20 +5,22 @@ import { Button, Eyebrow, Modal, Reveal } from './ui'
 
 const PAGE = 3
 
-/* Ảnh của tin — link lỗi thì ẩn hẳn, thẻ vẫn đọc được bằng chữ */
-function NewsImage({ src, className = '', fit = 'cover' }) {
+/* Ảnh của tin (kèm khung) — link lỗi thì ẩn cả khung, thẻ vẫn đọc được bằng chữ */
+function NewsImage({ src, frame, className = '', fit = 'cover' }) {
   const [broken, setBroken] = useState(false)
   if (!src || broken) return null
   return (
-    <img
-      src={imageSrc(src)}
-      alt=""
-      loading="lazy"
-      decoding="async"
-      referrerPolicy="no-referrer"
-      onError={() => setBroken(true)}
-      className={`${fit === 'cover' ? 'h-full w-full object-cover' : 'h-auto max-h-[52vh] w-full object-contain'} ${className}`}
-    />
+    <div className={frame}>
+      <img
+        src={imageSrc(src)}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        referrerPolicy="no-referrer"
+        onError={() => setBroken(true)}
+        className={`${fit === 'cover' ? 'h-full w-full object-cover' : 'h-auto max-h-[52vh] w-full object-contain'} ${className}`}
+      />
+    </div>
   )
 }
 
@@ -42,14 +44,14 @@ function NewsCard({ item, featured = false, onOpen }) {
   return (
     <article
       className={`group relative flex h-full flex-col overflow-hidden border border-line bg-card transition-colors duration-200 hover:border-amber/60 focus-within:border-amber ${
-        featured ? `organic-a ${item.image ? 'lg:grid lg:grid-cols-[1.15fr_1fr]' : ''}` : 'organic-d'
+        featured ? 'organic-a lg:has-[img]:grid lg:has-[img]:grid-cols-[1.15fr_1fr]' : 'organic-d'
       }`}
     >
-      {item.image && (
-        <div className={`overflow-hidden bg-night ${featured ? 'aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-80' : 'aspect-[16/10]'}`}>
-          <NewsImage src={item.image} className="saturate-[0.9] transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.04]" />
-        </div>
-      )}
+      <NewsImage
+        src={item.image}
+        frame={`overflow-hidden bg-night ${featured ? 'aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-80' : 'aspect-[16/10]'}`}
+        className="saturate-[0.9] transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.04]"
+      />
       <div className={`flex flex-1 flex-col ${featured ? 'p-6 sm:p-8 lg:p-10' : 'p-5 sm:p-6'}`}>
         <Meta item={item} />
         <h3 className={`mt-3 font-serif font-bold leading-snug text-cream ${featured ? 'text-2xl sm:text-3xl' : 'line-clamp-3 text-xl'}`}>
@@ -127,11 +129,7 @@ export default function News() {
         {open && (
           <div>
             <Meta item={open} />
-            {open.image && (
-              <div className="mt-5 overflow-hidden rounded-xl bg-night">
-                <NewsImage src={open.image} fit="contain" />
-              </div>
-            )}
+            <NewsImage src={open.image} frame="mt-5 overflow-hidden rounded-xl bg-night" fit="contain" />
             {open.body && <p className="mt-5 whitespace-pre-line text-[16px] leading-relaxed text-cream/90">{open.body}</p>}
             {link && (
               <Button as="a" href={link} target="_blank" rel="noopener noreferrer" className="mt-7">
