@@ -51,6 +51,103 @@ const P = {
 const ndPhoto = (src, w, h, caption, source = ND_TANDA_2, credit = 'Báo Nhân Dân') => ({ src, w, h, caption, credit, source })
 
 export const PROFILES = {
+  'hoang-yen-chibi': {
+    intro:
+      'Tên thật Nguyễn Hoàng Yến, sinh năm 1995 tại Hà Nội. Cô được khán giả biết đến từ năm 2014 với ngôi Á quân “Học viện Ngôi sao”, năm 2015 giành Quán quân “Tôi là diễn viên” và vào vai Hiểu Phương thời trẻ trong phim “Tháng năm rực rỡ”. Năm 2024 cô ra mắt EP “Duyệt” sau 4 năm thực hiện, đánh dấu 10 năm làm âm nhạc.',
+    facts: [{ label: 'Sản phẩm', value: 'EP “Duyệt” (2024) — 4 ca khúc của nhạc sĩ Khắc Hưng: “Sốc nhiệt”, “Duyệt”, “Đào đâu ra người như anh”, “Ừ! Em xin lỗi”' }],
+    links: [
+      { type: 'facebook', url: 'https://www.facebook.com/hoangyenfan' },
+      { type: 'instagram', url: 'https://www.instagram.com/hoangyenchibi812' },
+      { type: 'tiktok', url: 'https://www.tiktok.com/@hoangyenchibi812' },
+      { type: 'youtube', url: 'https://www.youtube.com/@hoangyenchibiofficial' },
+      { type: 'spotify', url: 'https://open.spotify.com/artist/1Dd0DajYMxzu1Q6kuXLyJ3' },
+    ],
+    songs: [
+      { title: 'Ngây ngô', url: yt('l5qNARXHSqQ'), note: 'Official MV' },
+      { title: 'Đồi hoa mặt trời', url: yt('wi6ZEDJAlYE'), note: 'Live' },
+      { title: 'Duyệt', url: yt('jV1XgqmOVCc'), note: 'EP “Duyệt” · Track 02' },
+      { title: 'Sốc nhiệt', url: yt('47ogHo5zid4'), note: 'Official MV · EP “Duyệt”' },
+    ],
+    press: [
+      { outlet: 'Báo Tiền Phong', title: '‘Chơi tất tay’ những gì đang có, Hoàng Yến Chibi: ‘Không phải là một cô gái ngây ngô như trước’', date: '2024-05-15', url: 'https://tienphong.vn/choi-tat-tay-nhung-gi-dang-co-hoang-yen-chibi-khong-phai-la-mot-co-gai-ngay-ngo-nhu-truoc-post1637166.tpo' },
+      { outlet: 'Báo Hà Tĩnh (theo VnExpress)', title: 'Nàng “hạt tiêu” cao 1,55 m của phim “Tháng năm rực rỡ”', date: '2018-03-25', url: 'https://baohatinh.vn/nang-hat-tieu-cao-155-m-cua-phim-thang-nam-ruc-ro-post151304.html' },
+    ],
+    // NGUỒN: Báo Hà Tĩnh/VnExpress 25/03/2018 (tên thật, năm sinh, Học viện Ngôi sao, Tôi là diễn viên, phim) · Tiền Phong 15/05/2024 (EP "Duyệt") · link MXH lấy từ mục giới thiệu kênh YouTube chính thức. Giải Zing Music Awards 2019 theo hồ sơ Show #4.
+  },
+
+  'picker-band': {
+    intro:
+      'Ban nhạc 6 thành viên theo đuổi dòng rock và soft rock, do tay trống Hùng Cường sáng lập và tự tay chọn từng thành viên. Picker Band chọn con đường của những nhạc công thực thụ (authentic band) và ra mắt năm 2026 cùng EP đầu tay “Lạc mất bản đồ” — một hành trình cảm xúc liền mạch qua 3 ca khúc.',
+    facts: [{ label: 'Sản phẩm', value: 'EP “Lạc mất bản đồ” (2026) · single “Bức thư từ quá khứ”' }],
+    members: [
+      { name: 'Hùng Cường', role: 'Sáng lập · Trưởng nhóm · Trống' },
+      { name: 'Dương Trần Nghĩa', role: 'Giọng ca chính' },
+      { name: 'Hoàng Anh Minh', role: 'Keyboard' },
+      { name: 'Hòa Ất', role: 'Guitar chính' },
+      { name: 'Hữu Hoàng', role: 'Guitar · Bè' },
+      { name: 'An Thiện', role: 'Bass' },
+    ],
+    links: [
+      { type: 'facebook', url: 'https://www.facebook.com/pickerband' },
+      { type: 'instagram', url: 'https://www.instagram.com/pickerband' },
+      { type: 'tiktok', url: 'https://www.tiktok.com/@pickerband' },
+      { type: 'youtube', url: 'https://www.youtube.com/@PickerBand' },
+    ],
+    songs: [
+      { title: 'Bức thư từ quá khứ', url: yt('Q3mUuOhjOlA'), note: 'Official Visualizer' },
+      { title: 'Lạc mất bản đồ', url: yt('aH62f7rTdkg'), note: 'Official MV' },
+      { title: 'Lời ru để lại', url: yt('DfPDCMBGDFg'), note: 'Official Live Performance' },
+      { title: 'Kho báu tâm hồn', url: yt('cJJcjvuMzrk'), note: 'Official Lyric Video' },
+      { title: 'Bộ phim không hồi kết', url: yt('HeITdwu3Sm8'), note: 'Official Lyrics Video' },
+    ],
+    press: [
+      { outlet: 'Báo Văn hóa', title: 'Picker Band và câu chuyện 6 “gã” chơi nhạc hồi sinh đầy bản lĩnh sau những đau thương', date: '2026-04-16', url: 'https://baovanhoa.vn/nghe-thuat/picker-band-va-cau-chuyen-6-ga-choi-nhac-hoi-sinh-day-ban-linh-sau-nhung-dau-thuong-219840.html' },
+    ],
+    // NGUỒN: Báo Văn hóa 16/04/2026 (thành viên, dòng nhạc, EP) · link MXH theo mục giới thiệu kênh YouTube + mô tả MV "Lạc mất bản đồ" chính thức.
+  },
+
+  'joon-gio-ra-choi': {
+    intro:
+      'Dự án âm nhạc solo của Dũng Joon, ra mắt từ năm 2023 với tinh thần “Chơi nhạc đừng để nhạc chơi”. Dũng Joon (tên thật Nguyễn Việt Dũng) là trưởng nhóm ban nhạc rock Re-Cycle (Tái sinh) của Hà Nội; ngoài âm nhạc anh còn là họa sĩ tranh 3D. Mỗi đêm diễn, dự án quy tụ các nghệ sĩ guitar khách mời.',
+    members: [{ name: 'Dũng Joon (Nguyễn Việt Dũng)', role: 'Chủ dự án · Sáng tác' }],
+    links: [
+      { type: 'facebook', url: 'https://www.facebook.com/joon.giorachoi' },
+      { type: 'youtube', url: 'https://www.youtube.com/@joon.giorachoi' },
+    ],
+    songs: [
+      { title: 'Not good', url: yt('ZldkDoViasA'), note: 'Audio' },
+      { title: 'Đâu là lần cuối', url: yt('VtsIIXnyeYw'), note: 'Acoustic Live 2023' },
+      { title: 'CÒN ZUYÊN', url: '' },
+      { title: 'Ném điện thoại', url: '' },
+      { title: 'Hoa ra lá', url: '' },
+    ],
+    press: [
+      { outlet: 'Việt Nam Mới', title: 'Dũng Joon: “Âm nhạc là một thú chơi kì công”', date: '2017-01-05', url: 'https://vietnammoi.vn/dung-joon-am-nhac-la-mot-thu-choi-ki-cong-16189.htm' },
+    ],
+    // NGUỒN: mô tả kênh YouTube chính thức @joon.giorachoi + mô tả video "Đâu Là Lần Cuối" (2023) · Việt Nam Mới 05/01/2017 (tên thật, Re-Cycle, tranh 3D) · Facebook trang Joon&Giờrachơi (Nhạc sĩ/Ban nhạc). 3 bài cuối chưa có bản chính thức trên YouTube nên không gắn link.
+  },
+
+  'lucy-tra-my-hoang-trung-hai': {
+    intro:
+      'Hai gương mặt nhí của Thủ đô mở màn Tán Đa #04. Lucy Trà My (Đỗ Trà My) học tại Học viện Âm nhạc Quốc gia Việt Nam, là MC – ca sĩ nhí, Á quân Ikids Việt Nam mùa 4 (2022), giải Vàng liên hoan nghệ thuật châu Á – Thái Bình Dương và là đại sứ của nhiều chương trình thiếu nhi. Hoàng Trung Hải (sinh năm 2013) là Quán quân “Tìm kiếm tài năng MC nhí toàn quốc 2023” và Quán quân “Sao nhí triệu view”, từng góp mặt trong concert “80 năm Hành trình Độc lập – Tự do – Hạnh phúc” (2/9/2025).',
+    members: [
+      { name: 'Lucy Trà My (Đỗ Trà My)', role: 'Ca sĩ · MC nhí · Đàn bầu' },
+      { name: 'Hoàng Trung Hải', role: 'MC · Ca sĩ nhí' },
+    ],
+    links: [{ type: 'youtube', url: 'https://www.youtube.com/@LucyTraMyOffical' }],
+    songs: [
+      { title: 'Một vòng Việt Nam (độc tấu đàn bầu · Lucy Trà My)', url: '' },
+      { title: 'Mash up “Ở trường cô dạy em thế” (Lucy Trà My & Hoàng Trung Hải)', url: '' },
+    ],
+    press: [
+      { outlet: 'Kinh tế & Đô thị', title: 'Đôi nét phác họa Quán quân “Sao nhí triệu view” Hoàng Trung Hải', date: '2026-01-26', url: 'https://kinhtedothi.vn/doi-net-phac-hoa-quan-quan-sao-nhi-trieu-view-hoang-trung-hai.970536.html' },
+      { outlet: 'Báo Dân trí', title: 'MC nhí Hoàng Trung Hải: Ngôi vị quán quân là bước đệm để theo đuổi ước mơ', date: '2025-01-08', url: 'https://dantri.com.vn/giai-tri/mc-nhi-hoang-trung-hai-ngoi-vi-quan-quan-la-buoc-dem-de-theo-duoi-uoc-mo-20250108165700613.htm' },
+      { outlet: 'Tài chính Toàn diện', title: 'Lucy Trà My - Gương mặt Đại sứ', date: '2024-12-25', url: 'https://taichinhtoandien.vn/giai-tri/lucy-tra-my-guong-mat-dai-su.html' },
+    ],
+    // NGUỒN: hồ sơ Show #4 (danh hiệu, tiết mục) · Tài chính Toàn diện 25/12/2024 (Lucy Trà My) · Kinh tế & Đô thị 26/01/2026, Dân trí 08/01/2025 (Hoàng Trung Hải).
+    // Nghệ sĩ nhí → chỉ gắn kênh YouTube chính thức của Lucy Trà My; Hoàng Trung Hải chưa có kênh chính thức nên không gắn link.
+  },
+
   'lynk-lee': {
     intro:
       'Ca sĩ – nhạc sĩ với nhiều ca khúc tự sáng tác; MV “Buồn thì cứ khóc đi” đã vượt 96 triệu lượt xem trên YouTube. Năm 2023 cô tham gia “Chị đẹp đạp gió rẽ sóng”, năm 2025 thi Miss International Queen Vietnam, và năm 2026 trở lại với single R&B/pop tự sáng tác “Thì quá khứ”.',
