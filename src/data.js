@@ -13,6 +13,10 @@ import tuanCry from './assets/artists/tuan-cry.webp'
 import macMaiSuong from './assets/artists/mac-mai-suong.webp'
 import ocean502 from './assets/artists/502-ocean.webp'
 import thienKim from './assets/artists/thien-kim.webp'
+import hoangYenChibi from './assets/artists/hoang-yen-chibi.webp'
+import pickerBand from './assets/artists/picker-band.webp'
+import joonGioRaChoi from './assets/artists/joon-gio-ra-choi.webp'
+import lucyTraMyTrungHai from './assets/artists/lucy-tra-my-hoang-trung-hai.webp'
 import logoBND from './assets/logo/bao-nhan-dan.webp'
 import logoBeat from './assets/logo/beat-network.webp'
 import logoNVH from './assets/logo/nha-van-hoa.webp'
@@ -26,7 +30,8 @@ export const NAV = [
   { href: '#bao-chi', label: 'Báo chí' },
 ]
 
-/* Section 3 — Nghệ sĩ từng đêm diễn (nguồn: hồ sơ chương trình chính thức "SHOW tháng 9.pdf", "Chính.pdf").
+/* Section 3 — Nghệ sĩ từng đêm diễn (nguồn: hồ sơ chương trình chính thức "SHOW tháng 9.pdf", "Chính.pdf",
+   "BEAT Network - Kế hoạch Tán Đa Show #4.pdf").
    showId: khớp với SHOWS bên dưới — thẻ được nhóm theo đêm diễn, thẻ đầu mỗi nhóm là thẻ dọc lớn.
    Trên trang: đêm sắp tới (hoặc mới nhất) hiện đầy đủ, các đêm trước thu gọn — rê chuột / bấm để mở.
    tone: màu duotone khi hover (amber | brick | moss).
@@ -36,6 +41,66 @@ export const NAV = [
    tentative: true → hiện nhãn "Dự kiến".
    videoUrl / preview: để '' thì ẩn nút xem lại / nghe thử. */
 export const ARTISTS = [
+  {
+    id: 'hoang-yen-chibi',
+    showId: 'nha-giao',
+    name: 'Hoàng Yến Chibi',
+    role: 'Nghệ sĩ trình diễn',
+    blurb: 'Á quân Học viện Ngôi sao 2014, Nữ ca sĩ được yêu thích nhất tại Zing Music Awards 2019.',
+    setlist: ['Ngây ngô', 'Đồi hoa mặt trời', 'Duyệt ver nhị'],
+    image: hoangYenChibi,
+    w: 350, h: 374,
+    pos: 'center 20%',
+    alt: 'Ca sĩ Hoàng Yến Chibi tóc bạch kim, mặc váy xanh pastel lệch vai',
+    tone: 'amber',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'picker-band',
+    showId: 'nha-giao',
+    name: 'Picker Band',
+    role: 'Nghệ sĩ trình diễn',
+    blurb: '',
+    setlist: ['Bức thư từ quá khứ', 'Lạc mất bản đồ', 'Lời ru để lại', 'Kho báu tâm hồn', 'Bộ phim không hồi kết'],
+    image: pickerBand,
+    w: 648, h: 362,
+    pos: 'center 25%',
+    alt: 'Sáu thành viên Picker Band trong trang phục đen',
+    tone: 'brick',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'joon-gio-ra-choi',
+    showId: 'nha-giao',
+    name: 'JOON&GIỜRACHƠI',
+    role: 'Nghệ sĩ trình diễn',
+    blurb: '',
+    setlist: ['Not good', 'Đâu là lần cuối', 'CÒN ZUYÊN', 'Ném điện thoại', 'Hoa ra lá'],
+    image: joonGioRaChoi,
+    w: 648, h: 360,
+    pos: 'center 25%',
+    alt: 'Ba thành viên JOON&GIỜRACHƠI mặc áo da đen, khoác vai nhau',
+    tone: 'moss',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'lucy-tra-my-hoang-trung-hai',
+    showId: 'nha-giao',
+    name: 'Lucy Trà My & Hoàng Trung Hải',
+    role: 'Nghệ sĩ trình diễn',
+    blurb: 'Lucy Trà My (Đỗ Trà My): Đại biểu Quốc hội Trẻ em, Bằng khen Kim Đồng toàn quốc 2025, Cháu ngoan Bác Hồ cấp Trung ương 2025; giải vàng Liên hoan nghệ thuật tại Thái Lan & Indonesia, học sinh xuất sắc Học viện Âm nhạc Quốc gia Việt Nam. Hoàng Trung Hải: Quán quân MC nhí toàn quốc, Quán quân Sao Nhí Triệu view, Học sinh tiêu biểu Thủ đô.',
+    setlist: ['Độc tấu đàn bầu “Một vòng Việt Nam” (Lucy Trà My)', 'Mash up “Ở trường cô dạy em thế”'],
+    image: lucyTraMyTrungHai,
+    w: 620, h: 348,
+    pos: 'center 20%',
+    alt: 'Lucy Trà My mặc váy tím nơ to đứng cạnh Hoàng Trung Hải mặc vest trắng',
+    tone: 'amber',
+    videoUrl: '',
+    preview: '',
+  },
   {
     id: 'lynk-lee',
     showId: 'ha-noi',
@@ -248,6 +313,24 @@ export const SHOWS = [
     parts: [
       { title: 'Phần 1 · Ngày Phụ nữ Việt Nam 20.10', text: 'Nhóm hợp xướng 10–15 nghệ sĩ nam biểu diễn và gửi tặng quà tới những người phụ nữ đi dạo phố đi bộ, cùng theo dõi chương trình.' },
       { title: 'Phần 2 · Thanh âm', text: '2 band nhạc/nghệ sĩ indie trẻ trình diễn ca khúc của chính mình và 1 nghệ sĩ nổi tiếng giao lưu cùng khán giả.' },
+    ],
+  },
+  {
+    // nguồn: "BEAT Network - Kế hoạch Tán Đa Show #4.pdf" (giờ + ngày lấy từ poster nghệ sĩ: 19:00 | 07.11.2026)
+    id: 'nha-giao',
+    title: 'Tán Đa Show',
+    theme: 'Số 04 · Chủ đề Ngày Nhà giáo Việt Nam',
+    shortTheme: 'Chủ đề Ngày Nhà giáo Việt Nam',
+    start: '2026-11-07T19:00:00+07:00',
+    durationHours: 1.5,
+    durationLabel: 'Khoảng 75–90 phút',
+    timeLabel: '19H',
+    dateLabel: '07.11.2026',
+    dayLabel: '07.11',
+    ...VENUE,
+    parts: [
+      { title: 'Phần 1 · Ngày Nhà giáo Việt Nam', text: 'Lucy Trà My độc tấu đàn bầu “Một vòng Việt Nam” và cùng Hoàng Trung Hải thể hiện mash up “Ở trường cô dạy em thế”.' },
+      { title: 'Phần 2 · Thanh âm', text: 'Hoàng Yến Chibi, JOON&GIỜRACHƠI và Picker Band trình diễn những ca khúc của mình.' },
     ],
   },
 ]

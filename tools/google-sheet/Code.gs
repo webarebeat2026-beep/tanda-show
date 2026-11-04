@@ -38,6 +38,10 @@ const FORMS = {
     sheet: 'Đăng ký nhắc lịch',
     cols: [['at', 'Thời gian gửi'], ['contact', 'Email / SĐT']],
   },
+  'visit-count': {
+    sheet: 'Số lần tới Tán Đa',
+    cols: [['at', 'Thời gian'], ['count', 'Đã tới (lần)']],
+  },
 }
 
 function doPost(e) {

@@ -10,6 +10,7 @@ import News from './components/News'
 import Press from './components/Press'
 import Footer from './components/Footer'
 import FloatingNotes from './components/FloatingNotes'
+import VisitPoll from './components/VisitPoll'
 import { ToastProvider } from './components/ui'
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
             <Press />
           </main>
           <Footer />
+          <VisitPoll />
         </div>
       </ToastProvider>
     </MotionConfig>
