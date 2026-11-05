@@ -77,14 +77,36 @@ export const PROFILES = {
 
   'picker-band': {
     intro:
-      'Ban nhạc 6 thành viên theo đuổi dòng rock và soft rock, do tay trống Hùng Cường sáng lập và tự tay chọn từng thành viên. Picker Band chọn con đường của những nhạc công thực thụ (authentic band) và ra mắt năm 2026 cùng EP đầu tay “Lạc mất bản đồ” — một hành trình cảm xúc liền mạch qua 3 ca khúc.',
-    facts: [{ label: 'Sản phẩm', value: 'EP “Lạc mất bản đồ” (2026) · single “Bức thư từ quá khứ”' }],
+      'Picker Band — kết nối từ những cảm xúc trưởng thành. Giữa dòng chảy vội vã của nhịp sống đương đại, Picker Band tựa như một nốt lặng đầy thi vị — nơi âm nhạc không chỉ để nghe, mà để cảm nhận bằng cả tâm hồn của những người trưởng thành. Họ là những người “chắt lọc” (Pickers), tỉ mỉ lựa chọn từng âm sắc, từng nhịp điệu để dệt nên những câu chuyện tình tự, những chiêm nghiệm về cuộc đời. Âm nhạc của Picker Band không ồn ào vội vã, mà là sự giao thoa giữa dư vị hoài niệm và hơi thở hiện đại.',
+    facts: [
+      { label: 'Tôn chỉ', value: '“Lựa chọn những giai điệu, lưu giữ những khoảng lặng.”' },
+      {
+        label: 'Ra mắt',
+        value:
+          '15/04/2026 cùng EP đầu tay “Lạc mất bản đồ”. Đêm debut quy tụ hơn 400 khách mời và khán giả, ban nhạc trình diễn 6 bài hát (3 bài trong EP), có sự góp mặt của nhạc sĩ Anh Quân, nhạc sĩ Huy Tuấn, Anh tài Hà Lê, Anh tài Đinh Mạnh Ninh, diễn viên Doãn Quốc Đam, Pia Linh… MV và EP do đạo diễn Khánh Nguyễn (taichin creative) sản xuất.',
+      },
+      { label: 'Sản phẩm', value: 'EP “Lạc mất bản đồ” (2026) · single “Bức thư từ quá khứ”' },
+      {
+        label: '2 tuần đầu tiên',
+        value:
+          'MV “Lạc mất bản đồ” đạt 200.000 lượt xem trên YouTube; EP đạt 10.000 lượt stream, lọt vào các playlist như Viral 50 Vietnam, Rock Việt; hơn 20 đầu báo đăng bài về ban nhạc.',
+      },
+      {
+        label: 'Dấu ấn',
+        value:
+          'Biểu diễn các ca khúc trong EP “Lạc mất bản đồ” tại bữa tối thân mật do Thủ tướng Lê Minh Hưng tổ chức tiếp đón Thủ tướng Nhật Bản Sanae Takaichi (cùng Bộ Ngoại giao). Trưởng nhóm Hùng Cường cùng Thủ tướng tặng Thủ tướng Nhật Bản một bộ trống dân tộc Việt Nam.',
+      },
+      {
+        label: 'Định hướng',
+        value: 'Trở thành biểu tượng đại diện cho dòng nhạc giàu chiều sâu, truyền cảm hứng và mang đậm tính tự sự của thế hệ trưởng thành.',
+      },
+    ],
     members: [
-      { name: 'Hùng Cường', role: 'Sáng lập · Trưởng nhóm · Trống' },
-      { name: 'Dương Trần Nghĩa', role: 'Giọng ca chính' },
-      { name: 'Hoàng Anh Minh', role: 'Keyboard' },
+      { name: 'Hùng Cường', role: 'Trưởng nhóm · Trống' },
+      { name: 'Dương Trần Nghĩa', role: 'Giọng ca chính · Visual' },
+      { name: 'Hoàng Anh Minh', role: 'Keyboard chính' },
       { name: 'Hòa Ất', role: 'Guitar chính' },
-      { name: 'Hữu Hoàng', role: 'Guitar · Bè' },
+      { name: 'Hữu Hoàng', role: 'Giọng phụ · Guitar phụ' },
       { name: 'An Thiện', role: 'Bass' },
     ],
     links: [
@@ -94,8 +116,8 @@ export const PROFILES = {
       { type: 'youtube', url: 'https://www.youtube.com/@PickerBand' },
     ],
     songs: [
+      { title: 'Lạc mất bản đồ', url: yt('aH62f7rTdkg'), note: 'Official MV · EP “Lạc mất bản đồ”' },
       { title: 'Bức thư từ quá khứ', url: yt('Q3mUuOhjOlA'), note: 'Official Visualizer' },
-      { title: 'Lạc mất bản đồ', url: yt('aH62f7rTdkg'), note: 'Official MV' },
       { title: 'Lời ru để lại', url: yt('DfPDCMBGDFg'), note: 'Official Live Performance' },
       { title: 'Kho báu tâm hồn', url: yt('cJJcjvuMzrk'), note: 'Official Lyric Video' },
       { title: 'Bộ phim không hồi kết', url: yt('HeITdwu3Sm8'), note: 'Official Lyrics Video' },
@@ -103,28 +125,45 @@ export const PROFILES = {
     press: [
       { outlet: 'Báo Văn hóa', title: 'Picker Band và câu chuyện 6 “gã” chơi nhạc hồi sinh đầy bản lĩnh sau những đau thương', date: '2026-04-16', url: 'https://baovanhoa.vn/nghe-thuat/picker-band-va-cau-chuyen-6-ga-choi-nhac-hoi-sinh-day-ban-linh-sau-nhung-dau-thuong-219840.html' },
     ],
-    // NGUỒN: Báo Văn hóa 16/04/2026 (thành viên, dòng nhạc, EP) · link MXH theo mục giới thiệu kênh YouTube + mô tả MV "Lạc mất bản đồ" chính thức.
+    // NGUỒN: EPK chính thức "Picker Band EPK 062026 Vietver.pdf" (nhận 05/11/2026: triết lý, thành viên + vai trò, ra mắt, số liệu 2 tuần đầu, sự kiện Bộ Ngoại giao, tầm nhìn, link MXH) · Báo Văn hóa 16/04/2026 · bài hát = video kênh YouTube chính thức @PickerBand.
   },
 
   'joon-gio-ra-choi': {
     intro:
-      'Dự án âm nhạc solo của Dũng Joon, ra mắt từ năm 2023 với tinh thần “Chơi nhạc đừng để nhạc chơi”. Dũng Joon (tên thật Nguyễn Việt Dũng) là trưởng nhóm ban nhạc rock Re-Cycle (Tái sinh) của Hà Nội; ngoài âm nhạc anh còn là họa sĩ tranh 3D. Mỗi đêm diễn, dự án quy tụ các nghệ sĩ guitar khách mời.',
-    members: [{ name: 'Dũng Joon (Nguyễn Việt Dũng)', role: 'Chủ dự án · Sáng tác' }],
+      'Joon&Giờrachơi là một dự án âm nhạc độc lập của Joon, nơi ba nghệ sĩ cùng tạo nên một không gian âm nhạc giàu tính cá nhân, tự do và giàu tính trình diễn. Âm nhạc của dự án lấy câu chuyện và cảm xúc làm điểm xuất phát, không bị giới hạn bởi một thể loại cố định. Pop là nền tảng, được mở rộng bằng Alternative, Electronic, Disco Funk, Synth Pop và những ảnh hưởng khác tùy theo tinh thần của từng ca khúc.',
+    facts: [
+      { label: 'Thể loại', value: 'Pop · Alternative · Electronic · Disco Funk · Synth Pop' },
+      { label: 'Biểu diễn', value: '4 người trên sân khấu · full band + backing track, có một số bài chơi acoustic' },
+      {
+        label: 'Về Joon',
+        value:
+          'Dũng Joon (tên thật Nguyễn Việt Dũng) là trưởng nhóm ban nhạc rock Re-Cycle (Tái sinh) của Hà Nội, đồng thời là họa sĩ tranh 3D. Dự án Joon&Giờrachơi ra mắt từ năm 2023 với tinh thần “Chơi nhạc đừng để nhạc chơi”.',
+      },
+    ],
+    members: [
+      { name: 'Joon', role: 'Vocal · Guitar · Sáng tác · Producer' },
+      { name: 'Vũ Hiệp', role: 'Guitar' },
+      { name: 'Chu Đức Anh', role: 'Guitar · Keyboard · Hát bè' },
+      { name: 'Tay trống', role: 'Biểu diễn live cùng ban nhạc' },
+    ],
     links: [
       { type: 'facebook', url: 'https://www.facebook.com/joon.giorachoi' },
       { type: 'youtube', url: 'https://www.youtube.com/@joon.giorachoi' },
     ],
     songs: [
-      { title: 'Not good', url: yt('ZldkDoViasA'), note: 'Audio' },
-      { title: 'Đâu là lần cuối', url: yt('VtsIIXnyeYw'), note: 'Acoustic Live 2023' },
-      { title: 'CÒN ZUYÊN', url: '' },
-      { title: 'Ném điện thoại', url: '' },
-      { title: 'Hoa ra lá', url: '' },
+      { title: 'Hoa ra lá', url: 'https://drive.google.com/file/d/1i0Wcah1emcRnl-Ut8DgT-vg0eGNbIlZU/view', note: 'Dũng Joon · Audio' },
+      { title: 'Đâu là lần cuối', url: yt('VtsIIXnyeYw'), note: 'Chu Đức Anh, Dũng Joon, Hali · Acoustic Live 2023' },
+      { title: 'Ném điện thoại', url: '', note: 'Dũng Joon' },
+      { title: 'Crazy', url: yt('qG1XlV5QuEU'), note: 'Dũng Joon · Live at KoFi Tour 9 of Us (cùng “Not Good”)' },
+      { title: 'Not Good', url: 'https://open.spotify.com/album/4sHPzwoLRmDF4HCHmWTLbl', note: 'Dũng Joon' },
+      { title: 'Mêgic', url: 'https://open.spotify.com/track/2h39tgeXHVc2ohoOLqXFNY', note: 'Dũng Joon, KraziNoyze' },
+      { title: 'Qua cầu cởi áo', url: '', note: 'Phóng tác từ dân ca' },
+      { title: 'Còn duyên', url: 'https://open.spotify.com/track/6p0ovErEf4hca2c1xqzTo3', note: 'Dân ca' },
     ],
     press: [
       { outlet: 'Việt Nam Mới', title: 'Dũng Joon: “Âm nhạc là một thú chơi kì công”', date: '2017-01-05', url: 'https://vietnammoi.vn/dung-joon-am-nhac-la-mot-thu-choi-ki-cong-16189.htm' },
     ],
-    // NGUỒN: mô tả kênh YouTube chính thức @joon.giorachoi + mô tả video "Đâu Là Lần Cuối" (2023) · Việt Nam Mới 05/01/2017 (tên thật, Re-Cycle, tranh 3D) · Facebook trang Joon&Giờrachơi (Nhạc sĩ/Ban nhạc). 3 bài cuối chưa có bản chính thức trên YouTube nên không gắn link.
+    // NGUỒN: EPK chính thức "Joon_GioRaChoi_EPK.pdf" (nhận 05/11/2026: giới thiệu, thể loại, thành viên, hình thức biểu diễn, 8 ca khúc + tác giả, link nghe Drive/Spotify/YouTube) · Việt Nam Mới 05/01/2017 (tên thật, Re-Cycle, tranh 3D) · mô tả kênh YouTube @joon.giorachoi (2023, "Chơi nhạc đừng để nhạc chơi").
   },
 
   'lucy-tra-my-hoang-trung-hai': {

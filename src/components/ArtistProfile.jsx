@@ -130,7 +130,9 @@ function SongsTab({ p }) {
                   )}
                 </span>
                 {(s.note || !s.url) && (
-                  <span className="mt-0.5 block text-sm text-muted">{s.url ? s.note : 'Chưa có link nghe chính thức'}</span>
+                  <span className="mt-0.5 block text-sm text-muted">
+                    {s.url ? s.note : s.note ? `${s.note} · chưa có link nghe chính thức` : 'Chưa có link nghe chính thức'}
+                  </span>
                 )}
               </span>
               {s.url && (
@@ -148,7 +150,7 @@ function SongsTab({ p }) {
                   href={s.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Nghe “${s.title}” trên ${platform === 'spotify' ? 'Spotify' : 'YouTube'} (mở tab mới)`}
+                  aria-label={`Nghe “${s.title}”${platform ? ` trên ${platform === 'spotify' ? 'Spotify' : 'YouTube'}` : ''} (mở tab mới)`}
                   className="group flex min-h-14 items-center gap-3 bg-card px-4 py-3 transition-colors hover:bg-night/60"
                 >
                   {body}
