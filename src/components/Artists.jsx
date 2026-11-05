@@ -21,9 +21,20 @@ const LAYOUT = [
   { grid: 'lg:col-span-7', shape: 'organic-c', horizontal: true, reverse: true },
   { grid: 'sm:col-span-2 lg:col-span-12', shape: 'organic-d', horizontal: true },
 ]
+/* Bố cục cho đêm có thẻ 2 + 3 là ảnh NGANG (ảnh band nhiều người, vd. đêm 07.11):
+   ảnh band giữ đúng tỉ lệ gốc (fit) để không cắt mất thành viên.
+   media: class khung ảnh (ghi đè mặc định). */
+const LAYOUT_WIDE = [
+  { grid: 'sm:col-span-2 lg:col-span-12', shape: 'organic-a', horizontal: true, media: 'min-h-[360px] sm:min-h-[420px] lg:min-h-[400px] lg:w-[36%] lg:flex-none' },
+  { grid: 'lg:col-span-6', shape: 'organic-b', horizontal: false, fit: true },
+  { grid: 'lg:col-span-6', shape: 'organic-c', horizontal: false, fit: true },
+  { grid: 'sm:col-span-2 lg:col-span-12', shape: 'organic-d', horizontal: true, fit: true, reverse: true },
+]
+const isWide = (a) => a && a.w / a.h >= 1.7 // ảnh ~16:9 trở lên (ảnh 3:2 các đêm trước vẫn dùng bố cục cũ)
+const layoutFor = (list) => (isWide(list[1]) && isWide(list[2]) ? LAYOUT_WIDE : LAYOUT)
 const hasPreview = ARTISTS.some((a) => a.preview)
 
-function GlitchImage({ artist, tone, horizontal }) {
+function GlitchImage({ artist, tone, horizontal, fit }) {
   const reduce = useReducedMotion()
   const slice = reduce
     ? {}
@@ -50,13 +61,15 @@ function GlitchImage({ artist, tone, horizontal }) {
 
   return (
     <div className="absolute inset-0 overflow-hidden">
+      {/* fit: phần khung dư (nếu có) lấp bằng chính ảnh làm mờ, ảnh chính hiện trọn không cắt */}
+      {fit && <img src={artist.image} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-110 object-cover blur-2xl" />}
       <motion.img
         src={artist.image}
         alt={artist.alt}
         width={artist.w}
         height={artist.h}
         loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover"
+        className={`absolute inset-0 h-full w-full ${fit ? 'object-contain' : 'object-cover'}`}
         style={{ objectPosition: artist.pos || 'center 25%' }}
         variants={{
           rest: { scale: 1, filter: 'saturate(1) contrast(1)' },
@@ -69,7 +82,7 @@ function GlitchImage({ artist, tone, horizontal }) {
         src={artist.image}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover mix-blend-screen"
+        className={`absolute inset-0 h-full w-full ${fit ? 'object-contain' : 'object-cover'} mix-blend-screen`}
         style={{ objectPosition: artist.pos || 'center 25%', filter: 'sepia(1) saturate(7) hue-rotate(-35deg)' }}
         variants={slice}
         initial={{ opacity: 0 }}
@@ -78,7 +91,7 @@ function GlitchImage({ artist, tone, horizontal }) {
         src={artist.image}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover mix-blend-screen"
+        className={`absolute inset-0 h-full w-full ${fit ? 'object-contain' : 'object-cover'} mix-blend-screen`}
         style={{ objectPosition: artist.pos || 'center 25%', filter: 'sepia(1) saturate(5) hue-rotate(60deg)' }}
         variants={sliceB}
         initial={{ opacity: 0 }}
@@ -97,16 +110,20 @@ function GlitchImage({ artist, tone, horizontal }) {
         className="absolute inset-0 bg-[repeating-linear-gradient(0deg,rgba(43,26,18,0.25)_0_1px,transparent_1px_4px)]"
         variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
       />
-      <div aria-hidden="true" className={`absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-card via-card/40 to-transparent ${horizontal ? 'lg:hidden' : ''}`} />
+      <div aria-hidden="true" className={`absolute inset-x-0 bottom-0 ${fit ? 'h-1/4' : 'h-1/2'} bg-gradient-to-t from-card via-card/40 to-transparent ${horizontal ? 'lg:hidden' : ''}`} />
     </div>
   )
 }
 
-function ArtistCard({ artist, show, index, audio, soundOn, onMessage, onProfile, wanted, onWant, reveal = true }) {
+function ArtistCard({ artist, show, index, layout = LAYOUT, audio, soundOn, onMessage, onProfile, wanted, onWant, reveal = true }) {
   const tone = TONES[artist.tone]
   const toast = useToast()
   const playing = audio.playingId === artist.id
-  const L = LAYOUT[index % LAYOUT.length]
+  const L = layout[index % layout.length]
+  /* fit: khung ảnh đúng tỉ lệ ảnh gốc → không cắt; thẻ nằm ngang (lg) thì khung cao bằng thẻ, ảnh hiện trọn trên nền mờ */
+  const media = L.fit
+    ? `w-full shrink-0 aspect-[var(--ar)] ${L.horizontal ? 'lg:w-1/2 lg:flex-none lg:aspect-auto' : ''}`
+    : L.media || `min-h-[340px] flex-1 ${L.horizontal ? 'lg:min-h-[330px] lg:w-[44%] lg:flex-none' : 'sm:min-h-[400px]'}`
 
   const togglePreview = () => {
     if (!audio.play(artist.id, artist.preview)) toast(`Bản nghe thử của ${artist.name} sẽ sớm được cập nhật.`)
@@ -128,9 +145,10 @@ function ArtistCard({ artist, show, index, audio, soundOn, onMessage, onProfile,
         style={{ '--glow': tone.glow }}
         variants={{ rest: { boxShadow: '0 0 0 0 rgba(0,0,0,0)' }, hover: { boxShadow: `0 24px 70px -28px ${tone.glow}` } }}
       >
-        <div className={`relative min-h-[340px] flex-1 ${L.horizontal ? 'lg:min-h-[330px] lg:w-[44%] lg:flex-none' : 'sm:min-h-[400px]'}`}>
-          <GlitchImage artist={artist} tone={tone} horizontal={L.horizontal} />
-          <span className={`absolute left-4 top-4 rounded-full px-3 py-1 font-mono text-[11px] uppercase tracking-wider ${tone.chip}`}>
+        <div className={`relative ${media}`} style={L.fit ? { '--ar': `${artist.w} / ${artist.h}` } : undefined}>
+          <GlitchImage artist={artist} tone={tone} horizontal={L.horizontal} fit={L.fit} />
+          {/* ảnh band giữ nguyên khung: nhãn xuống góc dưới để không che đầu thành viên */}
+          <span className={`absolute left-4 ${L.fit ? 'bottom-4' : 'top-4'} rounded-full px-3 py-1 font-mono text-[11px] uppercase tracking-wider ${tone.chip}`}>
             {artist.role}
           </span>
           {artist.tentative && (
@@ -386,6 +404,7 @@ export default function Artists() {
 
         {ordered.map((show, idx) => {
           const list = ARTISTS.filter((a) => a.showId === show.id)
+          const layout = layoutFor(list)
           const cards = (
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-12">
               {list.map((a, i) => (
@@ -394,6 +413,7 @@ export default function Artists() {
                   artist={a}
                   show={show}
                   index={i}
+                  layout={layout}
                   audio={audio}
                   soundOn={soundOn}
                   onMessage={setMessaging}
