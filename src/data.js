@@ -17,6 +17,11 @@ import hoangYenChibi from './assets/artists/hoang-yen-chibi.webp'
 import pickerBand from './assets/artists/picker-band.webp'
 import joonGioRaChoi from './assets/artists/joon-gio-ra-choi.webp'
 import lucyTraMyTrungHai from './assets/artists/lucy-tra-my-hoang-trung-hai.webp'
+import hoangThuyLinh from './assets/artists/hoang-thuy-linh.webp'
+import theMagma5 from './assets/artists/the-magma-5.webp'
+import munGo from './assets/artists/mun-go.webp'
+import lucyTraMyNhatAnh from './assets/artists/lucy-tra-my-nhat-anh.webp'
+import clbHcct from './assets/artists/clb-nghe-thuat-hcct.webp'
 import logoBND from './assets/logo/bao-nhan-dan.webp'
 import logoBeat from './assets/logo/beat-network.webp'
 import logoNVH from './assets/logo/nha-van-hoa.webp'
@@ -31,7 +36,8 @@ export const NAV = [
 ]
 
 /* Section 3 — Nghệ sĩ từng đêm diễn (nguồn: hồ sơ chương trình chính thức "SHOW tháng 9.pdf", "Chính.pdf",
-   "BEAT Network - Kế hoạch Tán Đa Show #4.pdf").
+   "BEAT Network - Kế hoạch Tán Đa Show #4.pdf",
+   Canva "BEAT Network - Kế hoạch Tán Đa Show #5" — canva.com/design/DAHagoJ29Qw).
    showId: khớp với SHOWS bên dưới — thẻ được nhóm theo đêm diễn, thẻ đầu mỗi nhóm là thẻ dọc lớn.
    Trên trang: đêm sắp tới (hoặc mới nhất) hiện đầy đủ, các đêm trước thu gọn — rê chuột / bấm để mở.
    tone: màu duotone khi hover (amber | brick | moss).
@@ -41,6 +47,84 @@ export const NAV = [
    tentative: true → hiện nhãn "Dự kiến".
    videoUrl / preview: để '' thì ẩn nút xem lại / nghe thử. */
 export const ARTISTS = [
+  /* ── Show #5 · 21.11.2026 · Ngày Văn hóa Việt Nam (nguồn: Canva kế hoạch Show #5, trang 4–5; ảnh crop từ poster nghệ sĩ) ── */
+  {
+    id: 'hoang-thuy-linh',
+    showId: 'van-hoa',
+    name: 'Hoàng Thùy Linh',
+    role: 'Nghệ sĩ trình diễn',
+    blurb: 'Nữ ca sĩ của năm (Làn Sóng Xanh 2022), Nghệ sĩ châu Á xuất sắc nhất Việt Nam (MAMA 2019).',
+    setlist: ['See tình', 'Mashup “Để Mị nói cho mà nghe” + “Bo xì bo”'],
+    image: hoangThuyLinh,
+    w: 550, h: 448,
+    pos: 'center 20%',
+    alt: 'Ca sĩ Hoàng Thùy Linh choàng khăn voan xanh cốm, đeo vòng cổ bạc',
+    tone: 'amber',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    // The Magma từng diễn đêm 10.10 → id riêng cho đêm 21.11, hồ sơ dùng chung (artistProfiles.js)
+    id: 'the-magma-5',
+    showId: 'van-hoa',
+    name: 'The Magma',
+    role: 'Nghệ sĩ trình diễn',
+    blurb: 'Ban nhạc pop rock trẻ chơi sáng tác của chính mình, giọng ca chính Thanh Hiền (Bí Đỏ) — trở lại Tán Đa sau đêm 10.10.',
+    setlist: ['Manifest (Trộm vía)', 'Hơi men đầu môi', 'Can I Say Love You Today', 'Cố chấp', 'Trái tim tự do'],
+    image: theMagma5,
+    w: 800, h: 445,
+    pos: 'center 25%',
+    alt: 'Sáu thành viên ban nhạc The Magma trong trang phục đen trắng',
+    tone: 'brick',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'mun-go',
+    showId: 'van-hoa',
+    name: 'Mủn Gỗ',
+    role: 'Nghệ sĩ trình diễn',
+    blurb: '',
+    setlist: ['Ông Hoàng Bảy', 'Lời nguyền Quan họ', 'Thênh thênh đại ngàn', 'Hoa trắng Sơn', 'Ô Quy Hồ', 'Anh có về cùng em (collab với The Magma)'],
+    image: munGo,
+    w: 800, h: 445,
+    pos: 'center 25%',
+    alt: 'Sáu thành viên Mủn Gỗ mặc vest đen',
+    tone: 'moss',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'lucy-tra-my-nhat-anh',
+    showId: 'van-hoa',
+    name: 'Lucy Trà My & Nhật Anh',
+    role: 'Nghệ sĩ trình diễn',
+    blurb: 'Lucy Trà My: Đại biểu Quốc hội Trẻ em, Cháu ngoan Bác Hồ cấp Trung ương 2025. Nhật Anh: Cháu ngoan Bác Hồ cấp quận giai đoạn 2020–2025.',
+    setlist: ['Việt Nam những chuyến đi', 'Tựa như cơn gió'],
+    image: lucyTraMyNhatAnh,
+    w: 730, h: 408,
+    pos: 'center 20%',
+    alt: 'Lucy Trà My mặc áo dài trắng đứng cạnh Nhật Anh mặc áo dài hồng đính hoa',
+    tone: 'amber',
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'clb-nghe-thuat-hcct',
+    showId: 'van-hoa',
+    name: 'CLB Nghệ thuật HCCT',
+    role: 'Nhóm nhảy',
+    blurb: 'Trường Cao đẳng Thương mại và Du lịch Hà Nội.',
+    setlist: ['Sắc núi'],
+    image: clbHcct,
+    w: 800, h: 533,
+    pos: 'center 40%',
+    alt: 'Nhóm nhảy CLB Nghệ thuật HCCT biểu diễn trên sân khấu hội trường',
+    tone: 'brick',
+    videoUrl: '',
+    preview: '',
+  },
+  /* ── Show #4 · 07.11.2026 ── */
   {
     id: 'hoang-yen-chibi',
     showId: 'nha-giao',
@@ -331,6 +415,24 @@ export const SHOWS = [
     parts: [
       { title: 'Phần 1 · Ngày Nhà giáo Việt Nam', text: 'Lucy Trà My độc tấu đàn bầu “Một vòng Việt Nam” và cùng Hoàng Trung Hải thể hiện mash up “Ở trường cô dạy em thế”.' },
       { title: 'Phần 2 · Thanh âm', text: 'Hoàng Yến Chibi, JOON&GIỜRACHƠI và Picker Band trình diễn những ca khúc của mình.' },
+    ],
+  },
+  {
+    // nguồn: Canva "BEAT Network - Kế hoạch Tán Đa Show #5" (giờ + ngày lấy từ poster nghệ sĩ: 19:00 | 21.11.2026)
+    id: 'van-hoa',
+    title: 'Tán Đa Show',
+    theme: 'Số 05 · Chủ đề Ngày Văn hóa Việt Nam',
+    shortTheme: 'Chủ đề Ngày Văn hóa Việt Nam',
+    start: '2026-11-21T19:00:00+07:00',
+    durationHours: 1.5,
+    durationLabel: 'Khoảng 75–90 phút',
+    timeLabel: '19H',
+    dateLabel: '21.11.2026',
+    dayLabel: '21.11',
+    ...VENUE,
+    parts: [
+      { title: 'Phần 1 · Ngày Văn hóa Việt Nam', text: 'Nhóm nhảy CLB Nghệ thuật HCCT (Trường Cao đẳng Thương mại và Du lịch Hà Nội) với tiết mục “Sắc núi”; Lucy Trà My và Nhật Anh thể hiện “Việt Nam những chuyến đi” và “Tựa như cơn gió”.' },
+      { title: 'Phần 2 · Thanh âm', text: 'Hoàng Thùy Linh, The Magma và Mủn Gỗ trình diễn những ca khúc của mình.' },
     ],
   },
 ]

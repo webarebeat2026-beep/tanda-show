@@ -30,8 +30,15 @@ const LAYOUT_WIDE = [
   { grid: 'lg:col-span-6', shape: 'organic-c', horizontal: false, fit: true },
   { grid: 'sm:col-span-2 lg:col-span-12', shape: 'organic-d', horizontal: true, fit: true, reverse: true },
 ]
+/* Đêm có 5 thẻ (vd. 21.11): thẻ 4 + 5 (Phần 1) đứng cạnh nhau, mỗi thẻ nửa hàng */
+const LAYOUT_WIDE_5 = [
+  ...LAYOUT_WIDE.slice(0, 3),
+  { grid: 'lg:col-span-6', shape: 'organic-d', horizontal: false, fit: true },
+  { grid: 'lg:col-span-6', shape: 'organic-b', horizontal: false, fit: true },
+]
 const isWide = (a) => a && a.w / a.h >= 1.7 // ảnh ~16:9 trở lên (ảnh 3:2 các đêm trước vẫn dùng bố cục cũ)
-const layoutFor = (list) => (isWide(list[1]) && isWide(list[2]) ? LAYOUT_WIDE : LAYOUT)
+const layoutFor = (list) =>
+  isWide(list[1]) && isWide(list[2]) ? (list.length === 5 ? LAYOUT_WIDE_5 : LAYOUT_WIDE) : LAYOUT
 const hasPreview = ARTISTS.some((a) => a.preview)
 
 function GlitchImage({ artist, tone, horizontal, fit }) {

@@ -187,6 +187,22 @@ export const PROFILES = {
     // Nghệ sĩ nhí → chỉ gắn kênh YouTube chính thức của Lucy Trà My; Hoàng Trung Hải chưa có kênh chính thức nên không gắn link.
   },
 
+  'lucy-tra-my-nhat-anh': {
+    intro:
+      'Hai gương mặt nhí mở màn Tán Đa #05 – Ngày Văn hóa Việt Nam. Lucy Trà My (Đỗ Trà My) học tại Học viện Âm nhạc Quốc gia Việt Nam, là MC – ca sĩ nhí, Đại biểu Quốc hội Trẻ em, Cháu ngoan Bác Hồ cấp Trung ương 2025; cô từng mở màn Tán Đa #04 với tiết mục độc tấu đàn bầu. Nhật Anh là Cháu ngoan Bác Hồ cấp quận giai đoạn 2020–2025.',
+    members: [
+      { name: 'Lucy Trà My (Đỗ Trà My)', role: 'Ca sĩ · MC nhí' },
+      { name: 'Nhật Anh', role: 'Ca sĩ nhí' },
+    ],
+    links: [{ type: 'youtube', url: 'https://www.youtube.com/@LucyTraMyOffical' }],
+    songs: [
+      { title: 'Việt Nam những chuyến đi', url: '' },
+      { title: 'Tựa như cơn gió', url: '' },
+    ],
+    // NGUỒN: kế hoạch Show #5 trên Canva (danh hiệu, tiết mục) · Tài chính Toàn diện 25/12/2024 (Lucy Trà My học Học viện Âm nhạc Quốc gia).
+    // Nghệ sĩ nhí → chỉ gắn kênh YouTube chính thức của Lucy Trà My; Nhật Anh chưa có kênh chính thức nên không gắn link.
+  },
+
   'lynk-lee': {
     intro:
       'Ca sĩ – nhạc sĩ với nhiều ca khúc tự sáng tác; MV “Buồn thì cứ khóc đi” đã vượt 96 triệu lượt xem trên YouTube. Năm 2023 cô tham gia “Chị đẹp đạp gió rẽ sóng”, năm 2025 thi Miss International Queen Vietnam, và năm 2026 trở lại với single R&B/pop tự sáng tác “Thì quá khứ”.',
@@ -460,3 +476,6 @@ export const PROFILES = {
     // NGUỒN: mục giới thiệu kênh YouTube chính thức Nghịch (thành viên, EP/album, lưu diễn 2025) · Tuổi Trẻ 16/06/2024.
   },
 }
+
+/* The Magma diễn cả đêm 10.10 lẫn 21.11 → thẻ đêm 21.11 (id 'the-magma-5') dùng chung hồ sơ */
+PROFILES['the-magma-5'] = PROFILES['the-magma']
