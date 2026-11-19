@@ -22,6 +22,10 @@ import theMagma5 from './assets/artists/the-magma-5.webp'
 import munGo from './assets/artists/mun-go.webp'
 import lucyTraMyNhatAnh from './assets/artists/lucy-tra-my-nhat-anh.webp'
 import clbHcct from './assets/artists/clb-nghe-thuat-hcct.webp'
+import haMyo from './assets/artists/ha-myo.webp'
+import maiQuinn from './assets/artists/maiquinn.webp'
+import heatherBand from './assets/artists/heather-band.webp'
+import f5Band from './assets/artists/f5-band.webp'
 import logoBND from './assets/logo/bao-nhan-dan.webp'
 import logoBeat from './assets/logo/beat-network.webp'
 import logoNVH from './assets/logo/nha-van-hoa.webp'
@@ -44,9 +48,74 @@ export const NAV = [
    setlist: tiết mục chính (không đưa tiết mục dự phòng lên trang). Đêm đã diễn: theo tiết mục THỰC TẾ báo chí đưa tin
             (Báo Nhân Dân 19.09 & 10–11.10), có thể khác danh sách dự kiến trong hồ sơ chương trình.
    Hồ sơ chi tiết (bio, thành viên, mạng xã hội, bài hát, ảnh, báo chí) nằm ở src/artistProfiles.js.
-   tentative: true → hiện nhãn "Dự kiến".
+   tentative: true → hiện nhãn "Dự kiến" (thẻ nghệ sĩ). Ở SHOWS, tentative: true = cả đêm mới là dự kiến.
    videoUrl / preview: để '' thì ẩn nút xem lại / nghe thử. */
 export const ARTISTS = [
+  /* ── Show #6 · 05.12.2026 · DỰ KIẾN (nguồn: Canva kế hoạch Show #5, trang 8–10; chưa có giờ, tiểu sử, tiết mục) ── */
+  {
+    id: 'ha-myo',
+    showId: 'khang-chien',
+    name: 'Hà Myo',
+    role: 'Headliner',
+    blurb: '',
+    setlist: [],
+    image: haMyo,
+    w: 300, h: 300,
+    pos: 'center 25%',
+    alt: 'Ca sĩ Hà Myo búi tóc cao, mặc áo voan xanh lá, đeo hoa tai ngọc xanh',
+    tone: 'moss',
+    tentative: true,
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'maiquinn',
+    showId: 'khang-chien',
+    name: 'MaiQuinn',
+    role: 'Headliner',
+    blurb: '',
+    setlist: [],
+    image: maiQuinn,
+    w: 500, h: 500,
+    pos: 'center 30%',
+    alt: 'Ca sĩ MaiQuinn tóc vàng ôm đàn guitar sọc đen trắng, ngồi trên ampli',
+    tone: 'brick',
+    tentative: true,
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'heather-band',
+    showId: 'khang-chien',
+    name: 'Heather & Band',
+    role: 'Indie band',
+    blurb: '',
+    setlist: [],
+    image: heatherBand,
+    w: 799, h: 533,
+    pos: 'center 45%',
+    alt: 'Heather & Band biểu diễn trên sân khấu dưới ánh đèn',
+    tone: 'amber',
+    tentative: true,
+    videoUrl: '',
+    preview: '',
+  },
+  {
+    id: 'f5-band',
+    showId: 'khang-chien',
+    name: 'F5 Band',
+    role: 'Indie band',
+    blurb: '',
+    setlist: [],
+    image: f5Band,
+    w: 800, h: 598,
+    pos: 'center 45%',
+    alt: 'F5 Band biểu diễn trên sân khấu ánh đèn cam',
+    tone: 'brick',
+    tentative: true,
+    videoUrl: '',
+    preview: '',
+  },
   /* ── Show #5 · 21.11.2026 · Ngày Văn hóa Việt Nam (nguồn: Canva kế hoạch Show #5, trang 4–5; ảnh crop từ poster nghệ sĩ) ── */
   {
     id: 'hoang-thuy-linh',
@@ -84,7 +153,7 @@ export const ARTISTS = [
     showId: 'van-hoa',
     name: 'Mủn Gỗ',
     role: 'Nghệ sĩ trình diễn',
-    blurb: '',
+    blurb: 'Ban nhạc rock trẻ Hà Nội khai thác chất liệu văn hóa, âm hưởng dân gian các vùng miền; album “Yêu và Đi” (2023), “Cùng Em” (2026).',
     setlist: ['Ông Hoàng Bảy', 'Lời nguyền Quan họ', 'Thênh thênh đại ngàn', 'Hoa trắng Sơn', 'Ô Quy Hồ', 'Anh có về cùng em (collab với The Magma)'],
     image: munGo,
     w: 800, h: 445,
@@ -435,11 +504,31 @@ export const SHOWS = [
       { title: 'Phần 2 · Thanh âm', text: 'Hoàng Thùy Linh, The Magma và Mủn Gỗ trình diễn những ca khúc của mình.' },
     ],
   },
+  {
+    // nguồn: Canva "BEAT Network - Kế hoạch Tán Đa Show #5", trang 8–10 — "DỰ KIẾN TỔ CHỨC 5.12.2026", chưa công bố giờ
+    id: 'khang-chien',
+    tentative: true,
+    title: 'Tán Đa Show',
+    theme: 'Số 06 · Kỷ niệm 80 năm Ngày Toàn quốc kháng chiến (dự kiến)',
+    shortTheme: 'Kỷ niệm 80 năm Ngày Toàn quốc kháng chiến (dự kiến)',
+    start: '2026-12-05T00:00:00+07:00',
+    durationHours: 1.5,
+    durationLabel: 'Khoảng 75–90 phút',
+    timeLabel: null,
+    dateLabel: '05.12.2026',
+    dayLabel: '05.12',
+    ...VENUE,
+    parts: [
+      { title: 'Phần 2 · Thanh âm (dự kiến)', text: 'Headliner Hà Myo và MaiQuinn cùng các ban nhạc indie Heather & Band, F5 Band.' },
+    ],
+  },
 ]
 
 /* Nghệ sĩ của một đêm diễn (tên kèm "dự kiến" nếu đánh dấu tentative) */
-export const lineupOf = (showId) =>
-  ARTISTS.filter((a) => a.showId === showId).map((a) => (a.tentative ? `${a.name} (dự kiến)` : a.name))
+export const lineupOf = (showId) => {
+  const wholeShowTentative = SHOWS.find((s) => s.id === showId)?.tentative // cả đêm đã ghi "dự kiến" → không lặp sau từng tên
+  return ARTISTS.filter((a) => a.showId === showId).map((a) => (a.tentative && !wholeShowTentative ? `${a.name} (dự kiến)` : a.name))
+}
 
 /* Thời điểm kết thúc của một đêm (giờ chưa công bố → hết ngày) */
 export const showEnd = (show) =>

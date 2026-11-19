@@ -296,7 +296,7 @@ function CollapsedShow({ show, children }) {
         </span>
         <span className="ml-auto flex items-center gap-3">
           <span className={`rounded-full px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider ${done ? 'border border-line text-muted' : 'bg-moss text-cream'}`}>
-            {done ? 'Đã diễn ra' : 'Sắp diễn ra'}
+            {done ? 'Đã diễn ra' : show.tentative ? 'Dự kiến' : 'Sắp diễn ra'}
           </span>
           <span className="hidden font-mono text-[11px] uppercase tracking-wider text-muted sm:inline">
             {open ? (pinned ? 'Thu gọn' : 'Bấm để giữ mở') : canHover ? 'Rê chuột để xem' : 'Bấm để xem'}
@@ -442,7 +442,7 @@ export default function Artists() {
               {cards}
               {ordered.length > 1 && (
                 <Reveal className="mt-14 border-b border-line pb-4">
-                  <h3 className="font-mono text-xs uppercase tracking-[0.22em] text-muted">Các đêm diễn trước</h3>
+                  <h3 className="font-mono text-xs uppercase tracking-[0.22em] text-muted">{ordered.slice(1).some((s) => showEnd(s) > now) ? 'Các đêm diễn khác' : 'Các đêm diễn trước'}</h3>
                 </Reveal>
               )}
             </div>

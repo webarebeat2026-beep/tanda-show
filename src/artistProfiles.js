@@ -19,6 +19,7 @@ const yt = (id) => `https://www.youtube.com/watch?v=${id}`
 
 /* Bài báo về Tán Đa có nhắc tới nghệ sĩ (dùng chung giữa các hồ sơ) */
 const P = {
+  ndSo5: { outlet: 'Báo Nhân Dân', title: 'Ca sĩ Hoàng Thùy Linh sẽ xuất hiện trong “Tán Đa show” số 5', date: '2026-11-17', url: 'https://nhandan.vn/ca-si-hoang-thuy-linh-se-xuat-hien-trong-tan-da-show-so-5-post1003378.html' },
   ndSacMau: { outlet: 'Báo Nhân Dân', title: 'Những sắc màu âm nhạc dưới tán đa', date: '2026-09-19', url: ND_TANDA_1 },
   ndHenNhau: { outlet: 'Báo Nhân Dân', title: 'Tán Đa số thứ 2 - Hẹn nhau giữa Thủ đô tháng Mười', date: '2026-10-11', url: ND_TANDA_2 },
   nd2000: {
@@ -187,6 +188,73 @@ export const PROFILES = {
     // Nghệ sĩ nhí → chỉ gắn kênh YouTube chính thức của Lucy Trà My; Hoàng Trung Hải chưa có kênh chính thức nên không gắn link.
   },
 
+  'hoang-thuy-linh': {
+    intro:
+      'Ca sĩ, diễn viên sinh ngày 11/8/1988. Album “Hoàng” (2019) với “Để Mị nói cho mà nghe” đưa cô tới giải Nghệ sĩ châu Á xuất sắc nhất Việt Nam tại MAMA 2019; album “LINK” với “See tình” thắng 5 hạng mục Làn Sóng Xanh 2022, trong đó có Nữ ca sĩ của năm và Album của năm. Âm nhạc của cô kết hợp chất liệu dân gian với âm nhạc hiện đại, đưa văn hóa Việt đến gần hơn với khán giả trẻ. Tháng 11/2026, hướng tới Ngày Văn hóa Việt Nam, cô ra mắt “Vô Lượng Kiếp” — single thứ hai của album phòng thu thứ năm.',
+    facts: [
+      { label: 'Giải thưởng', value: 'Nghệ sĩ châu Á xuất sắc nhất Việt Nam (MAMA 2019) · Nữ ca sĩ của năm, Album của năm, Ca khúc của năm (Làn Sóng Xanh 2022)' },
+      { label: 'Sản phẩm', value: 'Album “Hoàng” (2019) · Album “LINK” (2022) · Album phòng thu vol. 5 (2026): “Thầy Dùi”, “Vô Lượng Kiếp”' },
+    ],
+    links: [
+      { type: 'facebook', url: 'https://www.facebook.com/hoangthuylinh.singer' },
+      { type: 'instagram', url: 'https://www.instagram.com/hoangthuylinhofficial' },
+      { type: 'youtube', url: 'https://www.youtube.com/@HoangThuyLinh1108' },
+      { type: 'spotify', url: 'https://open.spotify.com/artist/0r63ReVRjxrS4ATbLrdcrL' },
+    ],
+    songs: [
+      { title: 'See tình', url: yt('gJHSDZfJrRY'), note: 'Official Music Video · album “LINK”' },
+      { title: 'Để Mị nói cho mà nghe', url: yt('JAhdeizXpaQ'), note: 'Official Music Video · album “Hoàng”' },
+      { title: 'Bo xì bo', url: yt('LxNzRN8EMcw'), note: 'Official Music Video' },
+      { title: 'Vô Lượng Kiếp', url: yt('JlmKqFJIp8k'), note: 'Music Gallery Video · 2026' },
+    ],
+    press: [
+      P.ndSo5,
+      { outlet: 'Báo Sài Gòn Giải Phóng', title: 'Hoàng Thùy Linh “thắng lớn” 5 hạng mục Làn Sóng Xanh 2022, Mỹ Tâm nhận giải Biểu tượng của năm', date: '2023-01-06', url: 'https://www.sggp.org.vn/hoang-thuy-linh-thang-lon-5-hang-muc-lan-song-xanh-2022-my-tam-nhan-giai-bieu-tuong-cua-nam-post674688.html' },
+    ],
+    // NGUỒN: mục giới thiệu kênh YouTube chính thức @HoangThuyLinh1108 (ngày sinh, link MXH; mô tả "Vô Lượng Kiếp" — single thứ 2 album vol. 5) · Báo Nhân Dân 17/11/2026 (chất liệu dân gian + hiện đại) ·
+    //         SGGP 06/01/2023 (Làn Sóng Xanh 2022) · Việt Nam News (MAMA 2019 Best Asian Artist Vietnam) · Canva kế hoạch Show #5. Link TikTok trên kênh là link rút gọn hỏng → không gắn.
+  },
+
+  'mun-go': {
+    intro:
+      'Ban nhạc rock trẻ của Hà Nội — kênh chính thức tự giới thiệu “tập chơi rock” — ra mắt từ cuối năm 2021. Âm nhạc của Mủn Gỗ khai thác chất liệu văn hóa, âm hưởng dân gian và vẻ đẹp các vùng miền Việt Nam theo cách mới mẻ; trên sân khấu, nhóm đưa sáo, đàn tranh và dàn bè biểu diễn trực tiếp. Những bài được đón nhận có “Mị Châu”, “Ông Hoàng Bảy”, “Ô Quy Hồ” và OST phim “Cách em 1 milimet”.',
+    facts: [
+      { label: 'Sản phẩm', value: 'Album “Chuyện chàng Mủn Gỗ” (2022) · “Yêu và Đi” (2023) · “Cùng Em” (2026)' },
+      { label: 'Sân khấu', value: 'Liveshow “Yêu và Đi” · Lễ hội âm nhạc quốc tế Hò Dô 2024 (TP.HCM) · minishow “Cùng Em” (01/2026)' },
+    ],
+    links: [
+      { type: 'facebook', url: 'https://www.facebook.com/bannhac.mungo' },
+      { type: 'instagram', url: 'https://www.instagram.com/bannhac.mungo' },
+      { type: 'youtube', url: 'https://www.youtube.com/@bannhac.mungo21' },
+      { type: 'spotify', url: 'https://open.spotify.com/artist/0b1nspkUgNsPxKjQaE3NWk' },
+      { type: 'soundcloud', url: 'https://soundcloud.com/g-m-n-286260719' },
+    ],
+    songs: [
+      { title: 'Ông Hoàng Bảy', url: yt('puHT4_eBRyU'), note: 'MV Lyrics · album “Yêu và Đi”' },
+      { title: 'Lời nguyền Quan họ', url: yt('qz6ZBI-kDHg'), note: 'MV Lyrics' },
+      { title: 'Thênh thênh đại ngàn', url: 'https://www.youtube.com/watch?v=KC7bGDvYsD8&t=568s', note: 'Live · Liveshow “Yêu và Đi”' },
+      { title: 'Ô Quy Hồ', url: yt('njVwnUdOCFg'), note: 'MV Lyrics · album “Chuyện chàng Mủn Gỗ”' },
+      { title: 'Anh có về cùng em', url: yt('vHv8rnPmGOQ'), note: 'MV Lyrics · album “Yêu và Đi”' },
+      { title: 'Hoa trắng Sơn', url: '' },
+      { title: 'Mị Châu', url: yt('qUkVyKWTamE'), note: 'Audio' },
+      { title: 'Cách em 1 milimet', url: yt('662hq9mxKlA'), note: 'OST phim “Cách em 1 milimet” · Official MV' },
+    ],
+    press: [
+      P.ndSo5,
+      { outlet: 'Báo Tuổi Trẻ', title: 'Rap giảm nhiệt, rock ấm lên', date: '2024-12-04', url: 'https://tuoitre.vn/rap-giam-nhiet-rock-am-len-20241204093350571.htm' },
+    ],
+    // NGUỒN: kênh YouTube chính thức @bannhac.mungo21 (mô tả "tập chơi rock", tham gia YouTube 16/12/2021, link MXH, mô tả MV + danh sách bài Full Liveshow "Yêu và Đi") ·
+    //         Apple Music (album + năm) · Tuổi Trẻ 04/12/2024 (rocker trẻ, sáo/đàn tranh/dàn bè, Hò Dô, Mị Châu/Ông Hoàng Bảy) · Báo Nhân Dân 17/11/2026 (chất liệu văn hóa, âm hưởng dân gian).
+    // Chưa tìm được nguồn ghi tên/vai trò thành viên → không có mục Thành viên. "Hoa trắng Sơn" chưa có bản chính thức trên kênh nên không gắn link.
+  },
+
+  'clb-nghe-thuat-hcct': {
+    intro:
+      'Nhóm nhảy thuộc CLB Nghệ thuật của Trường Cao đẳng Thương mại và Du lịch Hà Nội (HCCT), mở màn Phần 1 của Tán Đa #05 – Ngày Văn hóa Việt Nam với tiết mục “Sắc núi”.',
+    songs: [{ title: 'Sắc núi (tiết mục nhảy)', url: '' }],
+    // NGUỒN: kế hoạch Show #5 trên Canva (tên nhóm, trường, tiết mục). Chưa tìm thấy trang chính thức của CLB → không gắn link.
+  },
+
   'lucy-tra-my-nhat-anh': {
     intro:
       'Hai gương mặt nhí mở màn Tán Đa #05 – Ngày Văn hóa Việt Nam. Lucy Trà My (Đỗ Trà My) học tại Học viện Âm nhạc Quốc gia Việt Nam, là MC – ca sĩ nhí, Đại biểu Quốc hội Trẻ em, Cháu ngoan Bác Hồ cấp Trung ương 2025; cô từng mở màn Tán Đa #04 với tiết mục độc tấu đàn bầu. Nhật Anh là Cháu ngoan Bác Hồ cấp quận giai đoạn 2020–2025.',
@@ -199,6 +267,7 @@ export const PROFILES = {
       { title: 'Việt Nam những chuyến đi', url: '' },
       { title: 'Tựa như cơn gió', url: '' },
     ],
+    press: [P.ndSo5],
     // NGUỒN: kế hoạch Show #5 trên Canva (danh hiệu, tiết mục) · Tài chính Toàn diện 25/12/2024 (Lucy Trà My học Học viện Âm nhạc Quốc gia).
     // Nghệ sĩ nhí → chỉ gắn kênh YouTube chính thức của Lucy Trà My; Nhật Anh chưa có kênh chính thức nên không gắn link.
   },
@@ -292,7 +361,7 @@ export const PROFILES = {
       ndPhoto('artists/the-magma-2.webp', 1280, 854, 'Main vocal Thanh Hiền (Bí Đỏ) tại chương trình.'),
       ndPhoto('artists/the-magma-3.webp', 1280, 853, 'Các thành viên của MAGMA trình diễn tại Tán Đa 2.'),
     ],
-    press: [P.nd2000, P.ndHenNhau, P.tienPhong],
+    press: [P.ndSo5, P.nd2000, P.ndHenNhau, P.tienPhong],
     // NGUỒN: thành viên theo phần mô tả video "Cố Chấp" trên kênh YouTube chính thức The MAGMA · EP/năm theo Spotify · Báo Nhân Dân, Tiền Phong 10–13/10/2026.
   },
 
