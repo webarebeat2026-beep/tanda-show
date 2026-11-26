@@ -140,6 +140,7 @@ function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('Tán Đa Show')
     .addItem('Lấy thông tin cho các bài mới dán link', 'fillAllPress')
+    .addItem('Lấy lại tiêu đề/sapo cho dòng đang chọn (ghi đè)', 'refreshSelectedPress')
     .addItem('Đẩy thay đổi lên web ngay', 'clearContentCache')
     .addSeparator()
     .addItem('Tạo các trang tính nội dung', 'setupContentSheets')
@@ -245,19 +246,40 @@ function handleEdit(e) {
   const head = headerIndex(sh)
   const urlCol = head['Link bài'] + 1
   if (e.range.getColumn() > urlCol || e.range.getLastColumn() < urlCol) return
-  for (let r = Math.max(2, e.range.getRow()); r <= e.range.getLastRow(); r++) fillPressRow(sh, r, head)
+  // Link vừa dán/đổi → thông tin cũ trên dòng (nếu có) thuộc về link khác, phải GHI ĐÈ.
+  // (Trước đây chỉ điền ô trống nên dán link mới vào dòng còn tiêu đề cũ / dòng bị lệch ô sẽ giữ tiêu đề sai.)
+  for (let r = Math.max(2, e.range.getRow()); r <= e.range.getLastRow(); r++) fillPressRow(sh, r, head, true)
 }
 
-/* Menu: điền mọi dòng có link mà chưa có tiêu đề */
+/* Menu: đọc lại bài gốc cho các dòng đang bôi chọn và ghi đè Tên báo / Tiêu đề / Sapo / Ảnh / Ngày / Loại */
+function refreshSelectedPress() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet()
+  const sh = ss.getActiveSheet()
+  if (sh.getName() !== CONTENT.press.sheet) return ss.toast('Mở trang tính "Báo chí" và bôi chọn các dòng cần lấy lại.', 'Tán Đa Show', 6)
+  const head = headerIndex(sh)
+  const sel = sh.getActiveRange()
+  let n = 0
+  for (let r = Math.max(2, sel.getRow()); r <= sel.getLastRow(); r++) {
+    fillPressRow(sh, r, head, true)
+    n++
+  }
+  clearContentCache(true)
+  ss.toast(`Đã lấy lại ${n} dòng — xem cột "Tình trạng".`, 'Tán Đa Show', 6)
+}
+
+/* Menu: điền mọi dòng có link mà còn thiếu Tiêu đề / Ảnh, hoặc lần trước báo "Không đọc được bài" */
 function fillAllPress() {
   const ss = SpreadsheetApp.getActiveSpreadsheet()
   const sh = ss.getSheetByName(CONTENT.press.sheet)
   if (!sh) return ss.toast('Chưa có trang tính "Báo chí" — chạy "Tạo các trang tính nội dung" trước.', 'Tán Đa Show', 6)
+  UrlFetchApp.fetch('https://www.google.com/generate_204', { muteHttpExceptions: true }) // buộc hỏi quyền nếu còn thiếu
   const head = headerIndex(sh)
   const values = sh.getDataRange().getValues()
+  const empty = (i, h) => !String(values[i][head[h]]).trim()
   let n = 0
   for (let i = 1; i < values.length; i++) {
-    if (String(values[i][head['Link bài']]).trim() && !String(values[i][head['Tiêu đề']]).trim()) {
+    const failed = /^Không đọc được bài|chưa được cấp quyền/.test(String(values[i][head['Tình trạng']]))
+    if (!empty(i, 'Link bài') && (empty(i, 'Tiêu đề') || empty(i, 'Ảnh đại diện') || failed)) {
       fillPressRow(sh, i + 1, head)
       n++
     }
@@ -266,8 +288,9 @@ function fillAllPress() {
   ss.toast(n ? `Đã xử lý ${n} bài — xem cột "Tình trạng".` : 'Không có bài mới nào cần lấy thông tin.', 'Tán Đa Show', 6)
 }
 
-/* Đọc thẻ meta của bài gốc rồi điền vào các ô ĐANG TRỐNG (không ghi đè chỗ BTC đã sửa tay) */
-function fillPressRow(sh, row, head) {
+/* Đọc thẻ meta của bài gốc rồi điền vào các ô ĐANG TRỐNG (không ghi đè chỗ BTC đã sửa tay).
+   overwrite = true (vừa dán/đổi link, hoặc chọn menu lấy lại): ghi đè các cột tự lấy bằng thông tin của đúng link này. */
+function fillPressRow(sh, row, head, overwrite) {
   const cell = (h) => sh.getRange(row, head[h] + 1)
   const url = String(cell('Link bài').getValue()).trim()
   if (!/^https?:\/\//i.test(url)) {
@@ -278,17 +301,19 @@ function fillPressRow(sh, row, head) {
   try {
     const info = readArticle(url)
     const setIfEmpty = (h, v) => { if (v && !String(cell(h).getValue()).trim()) cell(h).setValue(v) }
-    setIfEmpty('Tên báo', info.outlet)
-    setIfEmpty('Tiêu đề', info.title)
-    setIfEmpty('Sapo', info.excerpt)
-    setIfEmpty('Ảnh đại diện', info.image)
-    setIfEmpty('Ngày đăng', info.date)
-    setIfEmpty('Loại', info.kind)
+    const put = overwrite ? (h, v) => { if (v) cell(h).setValue(v) } : setIfEmpty
+    put('Tên báo', info.outlet)
+    put('Tiêu đề', info.title)
+    put('Sapo', info.excerpt)
+    put('Ảnh đại diện', info.image)
+    put('Ngày đăng', info.date)
+    put('Loại', info.kind)
     setIfEmpty('Đêm diễn', showForDate(info.date || new Date()))
     if (isNew) cell('Hiển thị').setValue(true)
     cell('Tình trạng').setValue(`Đã tự lấy thông tin lúc ${Utilities.formatDate(new Date(), TZ, 'HH:mm dd/MM')}${info.title ? '' : ' — KHÔNG thấy tiêu đề, cần điền tay'}`)
   } catch (err) {
-    cell('Tình trạng').setValue('Không đọc được bài (' + String(err.message || err).slice(0, 80) + ') — điền tay Tiêu đề / Sapo / Ảnh / Ngày')
+    cell('Tình trạng').setValue('Không đọc được bài (' + String(err.message || err).slice(0, 80) + ') — điền tay Tiêu đề / Sapo / Ảnh / Ngày' +
+      (overwrite && !isNew ? ' (dòng đang có tiêu đề cũ — kiểm tra xem có đúng bài này không)' : ''))
   }
 }
 
@@ -317,9 +342,11 @@ function readArticle(url) {
 function meta(page, keys) {
   for (const k of keys) {
     const q = k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    const m = page.match(new RegExp(`<meta[^>]+(?:property|name|itemprop)=["']${q}["'][^>]*content=["']([^"']*)["']`, 'i')) ||
-      page.match(new RegExp(`<meta[^>]+content=["']([^"']*)["'][^>]*(?:property|name|itemprop)=["']${q}["']`, 'i'))
-    if (m && m[1].trim()) return unescapeHtml(m[1]).trim()
+    // content="..." có thể chứa dấu nháy đơn (vd. hit 'See tình') và ngược lại → khớp đúng loại nháy mở
+    const m = page.match(new RegExp(`<meta[^>]+(?:property|name|itemprop)=["']${q}["'][^>]*content=(?:"([^"]*)"|'([^']*)')`, 'i')) ||
+      page.match(new RegExp(`<meta[^>]+content=(?:"([^"]*)"|'([^']*)')[^>]*(?:property|name|itemprop)=["']${q}["']`, 'i'))
+    const v = m ? (m[1] != null ? m[1] : m[2]) : ''
+    if (v && v.trim()) return unescapeHtml(v).trim()
   }
   return ''
 }
@@ -399,6 +426,7 @@ function getContent() {
         image: safeImage(r.image),
       }
     })
+    .filter((p, i, all) => all.findIndex((q) => sameUrl(q.url, p.url)) === i) // cùng 1 link dán 2 lần → chỉ hiện 1
     .sort(byDateDesc)
 
   const news = (newsSh ? readTable(newsSh, CONTENT.news.cols) : [])
@@ -457,6 +485,11 @@ function slug(s) {
 }
 
 /* Chỉ cho phép link http(s) — chặn javascript: và các kiểu link lạ */
+function sameUrl(a, b) {
+  const k = (u) => String(u).replace(/#.*$/, '').replace(/\/+$/, '').replace(/^https?:\/\/(www\.)?/i, '').toLowerCase()
+  return k(a) === k(b)
+}
+
 function safeUrl(v) {
   v = String(v || '').trim()
   return /^https?:\/\/[^\s"'<>]+$/i.test(v) ? v : ''
