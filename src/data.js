@@ -21,9 +21,7 @@ import hoangThuyLinh from './assets/artists/hoang-thuy-linh.webp'
 import theMagma5 from './assets/artists/the-magma-5.webp'
 import munGo from './assets/artists/mun-go.webp'
 import lucyTraMyNhatAnh from './assets/artists/lucy-tra-my-nhat-anh.webp'
-import clbHcct from './assets/artists/clb-nghe-thuat-hcct.webp'
 import haMyo from './assets/artists/ha-myo.webp'
-import maiQuinn from './assets/artists/maiquinn.webp'
 import heatherBand from './assets/artists/heather-band.webp'
 import f5Band from './assets/artists/f5-band.webp'
 import logoBND from './assets/logo/bao-nhan-dan.webp'
@@ -64,22 +62,6 @@ export const ARTISTS = [
     pos: 'center 25%',
     alt: 'Ca sĩ Hà Myo búi tóc cao, mặc áo voan xanh lá, đeo hoa tai ngọc xanh',
     tone: 'moss',
-    tentative: true,
-    videoUrl: '',
-    preview: '',
-  },
-  {
-    id: 'maiquinn',
-    showId: 'khang-chien',
-    name: 'MaiQuinn',
-    role: 'Headliner',
-    blurb: '',
-    setlist: [],
-    image: maiQuinn,
-    w: 500, h: 500,
-    pos: 'center 30%',
-    alt: 'Ca sĩ MaiQuinn tóc vàng ôm đàn guitar sọc đen trắng, ngồi trên ampli',
-    tone: 'brick',
     tentative: true,
     videoUrl: '',
     preview: '',
@@ -175,21 +157,6 @@ export const ARTISTS = [
     pos: 'center 20%',
     alt: 'Lucy Trà My mặc áo dài trắng đứng cạnh Nhật Anh mặc áo dài hồng đính hoa',
     tone: 'amber',
-    videoUrl: '',
-    preview: '',
-  },
-  {
-    id: 'clb-nghe-thuat-hcct',
-    showId: 'van-hoa',
-    name: 'CLB Nghệ thuật HCCT',
-    role: 'Nhóm nhảy',
-    blurb: 'Trường Cao đẳng Thương mại và Du lịch Hà Nội.',
-    setlist: ['Sắc núi'],
-    image: clbHcct,
-    w: 800, h: 533,
-    pos: 'center 40%',
-    alt: 'Nhóm nhảy CLB Nghệ thuật HCCT biểu diễn trên sân khấu hội trường',
-    tone: 'brick',
     videoUrl: '',
     preview: '',
   },
@@ -500,7 +467,7 @@ export const SHOWS = [
     dayLabel: '21.11',
     ...VENUE,
     parts: [
-      { title: 'Phần 1 · Ngày Văn hóa Việt Nam', text: 'Nhóm nhảy CLB Nghệ thuật HCCT (Trường Cao đẳng Thương mại và Du lịch Hà Nội) với tiết mục “Sắc núi”; Lucy Trà My và Nhật Anh thể hiện “Việt Nam những chuyến đi” và “Tựa như cơn gió”.' },
+      { title: 'Phần 1 · Ngày Văn hóa Việt Nam', text: 'Lucy Trà My và Nhật Anh thể hiện “Việt Nam những chuyến đi” và “Tựa như cơn gió”.' },
       { title: 'Phần 2 · Thanh âm', text: 'Hoàng Thùy Linh, The Magma và Mủn Gỗ trình diễn những ca khúc của mình.' },
     ],
   },
@@ -519,7 +486,7 @@ export const SHOWS = [
     dayLabel: '05.12',
     ...VENUE,
     parts: [
-      { title: 'Phần 2 · Thanh âm (dự kiến)', text: 'Headliner Hà Myo và MaiQuinn cùng các ban nhạc indie Heather & Band, F5 Band.' },
+      { title: 'Phần 2 · Thanh âm (dự kiến)', text: 'Headliner Hà Myo cùng các ban nhạc indie Heather & Band, F5 Band.' },
     ],
   },
 ]

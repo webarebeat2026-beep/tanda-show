@@ -248,13 +248,6 @@ export const PROFILES = {
     // Chưa tìm được nguồn ghi tên/vai trò thành viên → không có mục Thành viên. "Hoa trắng Sơn" chưa có bản chính thức trên kênh nên không gắn link.
   },
 
-  'clb-nghe-thuat-hcct': {
-    intro:
-      'Nhóm nhảy thuộc CLB Nghệ thuật của Trường Cao đẳng Thương mại và Du lịch Hà Nội (HCCT), mở màn Phần 1 của Tán Đa #05 – Ngày Văn hóa Việt Nam với tiết mục “Sắc núi”.',
-    songs: [{ title: 'Sắc núi (tiết mục nhảy)', url: '' }],
-    // NGUỒN: kế hoạch Show #5 trên Canva (tên nhóm, trường, tiết mục). Chưa tìm thấy trang chính thức của CLB → không gắn link.
-  },
-
   'lucy-tra-my-nhat-anh': {
     intro:
       'Hai gương mặt nhí mở màn Tán Đa #05 – Ngày Văn hóa Việt Nam. Lucy Trà My (Đỗ Trà My) học tại Học viện Âm nhạc Quốc gia Việt Nam, là MC – ca sĩ nhí, Đại biểu Quốc hội Trẻ em, Cháu ngoan Bác Hồ cấp Trung ương 2025; cô từng mở màn Tán Đa #04 với tiết mục độc tấu đàn bầu. Nhật Anh là Cháu ngoan Bác Hồ cấp quận giai đoạn 2020–2025.',
